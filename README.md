@@ -3,7 +3,7 @@
 Setup:
 install nodejs, npm
 install heroku toolbelt (https://toolbelt.heroku.com)
-
+ test
 
 after cloning repository:
 npm install      (this should install all of the project dependencies like express etc)
@@ -12,7 +12,6 @@ npm install      (this should install all of the project dependencies like expre
 to start locally (from project root):
 DEBUG=myapp npm start    (mac or linux)
 set DEBUG=myapp & npm start    (windows)
-
 
 navigate to localhost:3000 in a browswer to solve a sweet puzzle
 
