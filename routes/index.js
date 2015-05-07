@@ -7,6 +7,15 @@ var path = require('path')
 });
 */
 
+router.get('/spotify', function(req, res, next) {
+ // res.render('index', { title: 'Express' });
+ //change above to send {image: 'uwblock.jp'}
+ 
+  res.sendFile(path.join(__dirname, '../views/spotify.html'))
+	
+	
+});
+
 
 router.get('/', function(req, res, next) {
  // res.render('index', { title: 'Express' });
@@ -16,6 +25,7 @@ router.get('/', function(req, res, next) {
 	
 	
 });
+
 
 
 module.exports = router;

@@ -80,7 +80,10 @@ var server = app.listen(3000, function () {
 });
 **/
 
-
+// Spotify api tokens
+var client_id = 'bc151765de3044908480197a7904fff7'; // Your client id
+var client_secret = 'f4c4a5837dc144519ec8ca8738fdc77c'; // Your client secret
+var redirect_uri = 'http://localhost:3000/callback'; // Your redirect uri
 
 
 module.exports = app;
