@@ -24,11 +24,7 @@
 
     <!-- Slick Slider JS -->
     <link rel="stylesheet" type="text/css" href="js/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css"/>
-
-
-    
-                
+    <link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css"/>          
 
 </head>
 
@@ -39,30 +35,60 @@
     <!-- Page Content -->
     <div class="container">
 
-        <!-- Go Home -->
-        <a href="home.html">
-            <img src="img/tempHome.jpg" class="home-button">
+        <!-- Go Back -->
+        <a href="f_profile.html">
+            <img src="img/backButton.png" class="back-button">
         </a>
 
         <!-- Page Header -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="text-center"> Resident's Name
-                </h1>
+        <div class="edit-titlerow">
+            <div class="col-lg-2">
+                <img class="edit-user-pic img-responsive" src="img/fakeUsers/user2.jpg" alt="">
             </div>
-            <div class="col-lg-12">
-                <a href="#">
-                    <img class="profile-image img-responsive" src="img/tempUser.jpg" alt="">
-                </a>
+            <div class="col-lg-10">
+                <div class="edit-user-title">
+                    Grace's Music
+                </div>
             </div>
         </div>
         <!-- /.row -->
 
 
+
+        <!-- Genre Row -->
+        <div class="interests-row">
+            <div class="favtitle-row">
+                <h2 class="fav-title">Select Genre
+                </h2>
+            </div>
+            <div class="favorite-pics">
+                <div class="col-md-2">
+                    <img class="interests img-responsive" src="img/fakeInterests/s_piano.jpg" alt="">
+                </div>
+                <div class="col-md-2">
+                    <img class="interests img-responsive" src="img/fakeInterests/s_farms.jpg" alt="">
+                </div>
+                <div class="col-md-2">
+                    <img class="interests img-responsive" src="img/fakeInterests/s_golf.jpg" alt="">
+                </div>
+                <div class="col-md-2">
+                    <img class="interests img-responsive" src="img/fakeInterests/s_garden.jpg" alt="">
+                </div>
+                <div class="col-md-2">
+                    <img class="interests img-responsive" src="img/fakeInterests/s_flowers.jpg" alt="">
+                </div>
+                <div class="col-md-2">
+                    <img class="interests img-responsive" src="img/fakeInterests/s_football.jpg" alt="">
+                </div>
+            </div> 
+        </div>
+
+        <!-- /.row -->
+
         <!-- Favorite Photos Row -->
         <div class="favs-row">
             <div class="favtitle-row">
-                <h2 class="fav-title">Music
+                <h2 class="fav-title">Search for Music
                 </h2>
             </div> 
 
@@ -82,14 +108,27 @@
 
 
 
-       
- 
-
     </div>
     <!-- /.container -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.favorite-pics').slick({
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 3
+          });
+        });
+    </script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
