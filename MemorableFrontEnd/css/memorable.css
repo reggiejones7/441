@@ -14,6 +14,11 @@
  	width: 300px;
  }
 
+.page-title {
+ 	font-size:45px;
+ 	margin:0px;
+ }
+
  .memorable-title {
 	padding-top:50px;
 	padding-bottom:70px;
@@ -24,9 +29,8 @@
  .search-bar {
  	display: block;
  	margin:auto;
- 	padding-top:30px;
- 	padding-bottom:60px;
- 	/*width: 500px;*/
+ 	padding-top:40px;
+ 	padding-bottom:15px;
  }
 
  .home-button {
@@ -41,9 +45,31 @@
  	position: absolute;
  	top: 30px;
  	left: 30px;
- 	width:75px;
+ 	width:55px;
  	height:55px;
  }
+
+
+
+
+/*!
+ * HOME CSS
+ */
+.resident-row {
+	margin:20px;
+}
+
+.resident-name {
+	margin-top:10px;
+}
+
+.resident-pic {
+	display: block;
+ 	margin:auto;
+	width:170px;
+	height:170px;
+}
+
 
 
 /*!
@@ -54,14 +80,8 @@
  	position: absolute;
  	top: 30px;
  	left: 30px;
- 	width:55px;
- 	height:55px;
- }
-
- .page-title {
- 	padding-top:25px;
- 	padding-bottom:20px;
- 	font-size:55px;
+ 	width:45px;
+ 	height:45px;
  }
 
 .profile-users {
@@ -79,8 +99,16 @@
  	display: block;
  	width:250px;
  	margin-left: 250px;
- 	padding-bottom:40px;
+ 	padding-bottom:30px;
  }
+
+.edit-button {
+	display:block;
+	margin:auto;
+	background-color:#B689BC;
+	width: 300px;
+	height:100px;
+}
 
 .edit-photos {
 	margin:auto;
@@ -95,14 +123,15 @@
 }
 
 .edit-row {
-	padding:20px;
+	padding-top:20px;
+	padding-bottom:10px;
 	display:inline-block;
 }
 
 .favs-row {
-	padding-top:30px;
-	padding-bottom:30px;
-	height:300px;
+	padding-top:10px;
+	padding-bottom:10px;
+	height:250px;
 }
 
 .fav-title {
@@ -117,23 +146,97 @@
 	margin: auto;
 }
 
-.interests-row {
-	height: 400px;
-}
 
 
 
 /*!
  * PUZZLES CSS
  */
-.slide-show {
-	display:block;
-	margin:auto;
-	padding-top:30px;
-	padding-bottom:50px;
-	width:500px;
+ .user-icon {
+ 	position: absolute;
+ 	top: 30px;
+ 	right: 30px;
+ 	width:75px;
+ 	height:75px;
+    border: 1px solid #000000;
+ }
+
+ .user-name {
+ 	position: absolute;
+ 	font-size:30px;
+ 	top: 30px;
+ 	right: 130px;
+ }
+
+.user-edit {
+	position: absolute;
+	font-size:15px;
+	top: 60px;
+ 	right: 130px;
+ 	width:80px;
+	height:100px;
+	margin-top:30px;
 }
 
+.user-edit-div {
+	position: absolute;
+	width:100px;
+	height:50px;
+	top: 60px;
+ 	right: 130px;
+ 	/*background-color:#000000;*/
+}
+
+.slideshow-button {
+	display:block;
+	margin:auto;
+	padding-top:20px;
+	padding-bottom:40px;
+	width:300px;
+	/*height: 65px;*/
+}
+
+.puzzle-image {
+	display: block;
+ 	margin:auto;
+ 	width:200px;
+ 	height:200px;
+}
+
+
+/*!
+ * EDIT PICS CSS
+ */
+.edit-titlerow {
+	padding-top:10px;
+	height:150px;
+	padding-bottom:10px;
+}
+
+.edit-user-pic {
+	padding-left:0px;
+	padding-right:0px;
+	width:100px;
+	height:100px;
+}
+
+.edit-user-title {
+	font-size:45px;
+	margin-top:25px;
+}
+
+.interests-row {
+	height: 300px;
+}
+
+.interests{
+	width:200px;
+}
+
+.upload-button {
+	margin-bottom:10px;
+	margin-left:20px;
+}
 
 
 
