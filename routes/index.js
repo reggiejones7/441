@@ -13,7 +13,7 @@ router.get('/spotify', function(req, res, next) {
  // res.render('index', { title: 'Express' });
  //change above to send {image: 'uwblock.jp'}
  
-  res.sendFile(path.join(__dirname, '../views/spotify.html'))
+  res.sendFile(path.join(__dirname, '../views/spotify_playlist.html'))
 	
 	
 });
