@@ -131,17 +131,20 @@
 
                     // Changescrollbar images in a set delay sequence to give a pseudo-animated effect
                     currentIndex = imageIndexLast;
-                    changeImage('scrollThumb4', imageData[currentIndex][0]);
-                    changeImageOnMouseOver('scrollThumb4', currentIndex);
-                    currentIndex = imageIndexLast - 1;
-                    setTimeout("changeImage('scrollThumb3',imageData[" + currentIndex + "][0])", 25);
-                    setTimeout("changeImageOnMouseOver('scrollThumb3'," + currentIndex + ")", 25);
+                    changeImage('scrollThumb5', imageData[currentIndex][0]);
+                    changeImageOnMouseOver('scrollThumb5', currentIndex);
+					currentIndex = imageIndexLast - 1;
+                    setTimeout("changeImage('scrollThumb4',imageData[" + currentIndex + "][0])", 20);
+                    setTimeout("changeImageOnMouseOver('scrollThumb4'," + currentIndex + ")", 20);
                     currentIndex = imageIndexLast - 2;
-                    setTimeout("changeImage('scrollThumb2',imageData[" + currentIndex + "][0])", 50);
-                    setTimeout("changeImageOnMouseOver('scrollThumb2'," + currentIndex + ")", 50);
+                    setTimeout("changeImage('scrollThumb3',imageData[" + currentIndex + "][0])", 40);
+                    setTimeout("changeImageOnMouseOver('scrollThumb3'," + currentIndex + ")", 40);
                     currentIndex = imageIndexLast - 3;
-                    setTimeout("changeImage('scrollThumb1',imageData[" + currentIndex + "][0])", 75);
-                    setTimeout("changeImageOnMouseOver('scrollThumb1'," + currentIndex + ")", 75);
+                    setTimeout("changeImage('scrollThumb2',imageData[" + currentIndex + "][0])", 60);
+                    setTimeout("changeImageOnMouseOver('scrollThumb2'," + currentIndex + ")", 60);
+                    currentIndex = imageIndexLast - 4;
+                    setTimeout("changeImage('scrollThumb1',imageData[" + currentIndex + "][0])", 80);
+                    setTimeout("changeImageOnMouseOver('scrollThumb1'," + currentIndex + ")", 80);
 
                     // Wait and check to see if user is still hovering over button
 
@@ -170,14 +173,17 @@
                     changeImage('scrollThumb1', imageData[currentIndex][0]);
                     changeImageOnMouseOver('scrollThumb1', currentIndex);
                     currentIndex = imageIndexFirst + 1;
-                    setTimeout("changeImage('scrollThumb2',imageData[" + currentIndex + "][0])", 25);
-                    setTimeout("changeImageOnMouseOver('scrollThumb2'," + currentIndex + ")", 25);
+                    setTimeout("changeImage('scrollThumb2',imageData[" + currentIndex + "][0])", 20);
+                    setTimeout("changeImageOnMouseOver('scrollThumb2'," + currentIndex + ")", 20);
                     currentIndex = imageIndexFirst + 2;
-                    setTimeout("changeImage('scrollThumb3',imageData[" + currentIndex + "][0])", 50);
-                    setTimeout("changeImageOnMouseOver('scrollThumb3'," + currentIndex + ")", 50);
+                    setTimeout("changeImage('scrollThumb3',imageData[" + currentIndex + "][0])", 40);
+                    setTimeout("changeImageOnMouseOver('scrollThumb3'," + currentIndex + ")", 40);
                     currentIndex = imageIndexFirst + 3;
-                    setTimeout("changeImage('scrollThumb4',imageData[" + currentIndex + "][0])", 75);
-                    setTimeout("changeImageOnMouseOver('scrollThumb4'," + currentIndex + ")", 75);
+                    setTimeout("changeImage('scrollThumb4',imageData[" + currentIndex + "][0])", 60);
+                    setTimeout("changeImageOnMouseOver('scrollThumb4'," + currentIndex + ")", 60);
+					currentIndex = imageIndexFirst + 4;
+                    setTimeout("changeImage('scrollThumb5',imageData[" + currentIndex + "][0])", 80);
+                    setTimeout("changeImageOnMouseOver('scrollThumb5'," + currentIndex + ")", 80);
 
                     // Wait and check to see if user is still hovering over button
 
@@ -212,35 +218,38 @@
         }
     </script>
 
-    <table border="0" cellpadding="5" cellspacing="0" width=80%>
+    <table border="0" cellpadding="5" cellspacing="0" width=100%>
         <tr>
-            <td align="center" colspan="6" style="font-weight: bold; font-size: 18pt; font-family: 'Lato', sans-serif; color: white;
-background-color: #4acaa8" id="imageTitleCell">
+            <td align="center" colspan="7" style="font-weight: bold; font-size: 18pt; font-family: 'Helvetica', sans-serif; color: black; id="imageTitleCell">
                 Grasslands</td>
         </tr>
         <tr>
-            <td align="center" colspan="6" style="background-color: #4acaa8">
-                <img height="400" src="images/cover.jpg" style="border-right: 1px solid; border-top: 1px solid; border-left: 1px solid;
-border-bottom: 1px solid" width="400" id="imageLarge" alt="default" /></td>
-        </tr>
-        <tr>
-            <td align="left" colspan="6" style="padding-right: 100px; padding-left: 100px; font-family: 'Lato', sans-serif; color: white;
-background-color: #4acaa8" id="imageDescriptionCell"> 
-                This is the description for the first image. Here will be where we give details on the image that is currently being viewed.</td>
-        </tr>
-        <tr>
-            <td id="scrollPreviousCell" style="font-family: 'Lato', sans-serif; color: Silver" onclick="scrollPrevious();" onmouseout="scrollStop();">
+		    <td width="10%" rowspan="3" colspan="1" id="PreviousCell" style="font-size: 16pt; font-family: 'Helvetica', sans-serif; color: Silver" onclick="scrollPrevious();" onmouseout="scrollStop();">
                 &lt;&lt; Previous</td>
-            <td>
-                <img id="scrollThumb1" height="100" src="images/cover.jpg" width="100" onmouseover="handleThumbOnMouseOver(0);" /></td>
-            <td>
-                <img id="scrollThumb2" height="100" src="images/cover3.jpg" width="100" onmouseover="handleThumbOnMouseOver(1);" /></td>
-            <td>
-                <img id="scrollThumb3" height="100" src="images/cover4.jpg" width="100" onmouseover="handleThumbOnMouseOver(2);" /></td>
-            <td>
-                <img id="scrollThumb4" height="100" src="images/reggie.jpg" width="100" onmouseover="handleThumbOnMouseOver(3);" /></td>
-            <td id="scrollNextCell" style="font-family: 'Lato', sans-serif; color: Black" onclick="scrollNext();" onmouseout="scrollStop();">
+            <td align="center" colspan="5" style="background-color: #4acaa8">
+                <img height="400" src="images/cover.jpg" style="border-right: 1px solid; border-top: 1px solid; border-left: 1px solid; 
+				border-bottom: 1px solid" width="400" id="imageLarge" alt="default" /></td>
+			<td width="10%" rowspan="3" colspan="1" id="scrollNextCell" style="font-size: 16pt; font-family: 'Helvetica', sans-serif; color: black" onclick="scrollNext();" onmouseout="scrollStop();">
                 Next &gt;&gt;</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="5" style="padding-right: 100px; padding-left: 100px; font-size: 14pt; font-family: 'Helvetica', sans-serif; color: white;
+background-color: #4acaa8" id="imageDescriptionCell"> 
+                This is the description for the first image. Here will be where we give details on the image that is currently being viewed.
+			</td>
+        </tr>
+        <tr>
+
+            <td align="center">
+                <img id="scrollThumb1" height="100" src="images/cover.jpg" width="100" onmouseover="handleThumbOnMouseOver(0);" /></td>
+            <td align="center">
+                <img id="scrollThumb2" height="100" src="images/cover3.jpg" width="100" onmouseover="handleThumbOnMouseOver(1);" /></td>
+            <td align="center">
+                <img id="scrollThumb3" height="100" src="images/cover4.jpg" width="100" onmouseover="handleThumbOnMouseOver(2);" /></td>
+            <td align="center">
+                <img id="scrollThumb4" height="100" src="images/reggie.jpg" width="100" onmouseover="handleThumbOnMouseOver(3);" /></td>
+			<td align="center">
+                <img id="scrollThumb5" height="100" src="images/reggie2.jpg" width="100" onmouseover="handleThumbOnMouseOver(4);" /></td>
         </tr>
     </table>
 
