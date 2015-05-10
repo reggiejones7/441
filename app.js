@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer = require('multer')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -21,6 +22,32 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+
+
+
+/**
+ * starting app here. all above was auto generated
+ *
+**/
+
+app.use(express.static("public"));
+app.locals.homeDir = __dirname 
+/**
+ * everything below this was also auto generated
+*/
+
+
+
+
+
+
+
+
+
+
 
 app.use('/', routes);
 app.use('/users', users);
@@ -50,7 +77,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  oes.render('error', {
     message: err.message,
     error: {}
   });
@@ -59,26 +86,6 @@ app.use(function(err, req, res, next) {
 
 
 
-/**
- * starting app here. all above was auto generated
- *
-**/
-/*
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-*/
-app.use(express.static("public"));
-/**
-var server = app.listen(3000, function () {
-
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Example app listening at http://%s:%s', host, port);
-
-});
-**/
 
 // Spotify api tokens
 var client_id = 'bc151765de3044908480197a7904fff7'; // Your client id

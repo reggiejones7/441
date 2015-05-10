@@ -2,7 +2,6 @@
 -- Last modification date: 2015-05-05 00:13:46.332
 
 
-PRAGMA foreign_keys=ON;
 
 -- tables
 -- Table: admin_user
