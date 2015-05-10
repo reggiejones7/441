@@ -49,7 +49,7 @@ router.get('/', function(req, res, next) {
 var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/postgres';
 var getClient = function() {
-	return new pg.Client(connectionString)
+//	return new pg.Client(connectionString)
 	return new pg.Client({user: 'reggiej7',
 									database: 'reggiej7',
 									//the host is going to be diff for cindy so we'll need to figure that out.
