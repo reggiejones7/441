@@ -11,14 +11,18 @@ var fs = require('fs')
 
 router.get('/spotify', function(req, res, next) {
  // res.render('index', { title: 'Express' });
- //change above to send {image: 'uwblock.jp'}
  
-  res.sendFile(path.join(__dirname, '../views/spotify_playlist.html'))
-	
+ // res.sendFile(path.join(__dirname, '../views/spotify_playlist.html'))
+  res.sendFile(path.join(__dirname, '../views/spotify.html'))
 	
 });
 
-//reggie trying something
+
+
+
+//reggie note to self since this is starting to get really messy: everything below this
+//is pretty much demo/poc stuff. Leaving it in for reference in the near future.
+
 var multer = require('multer')
 var uploadDestination = 'uploads/'
 router.use(multer({dest: './' + uploadDestination,
@@ -35,12 +39,8 @@ router.use(multer({dest: './' + uploadDestination,
 
 
 router.get('/', function(req, res, next) {
- // res.render('index', { title: 'Express' });
- //change above to send {image: 'uwblock.jp'}
- 
-  res.sendFile(path.join(__dirname, '../views/index.html'))
-	
-	
+  //res.sendFile(path.join(__dirname, '../views/index.html'))
+  res.redirect('/home.html')
 });
 
 
@@ -48,6 +48,8 @@ router.get('/', function(req, res, next) {
 //Testing connecting to database
 var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/postgres';
+
+
 var getClient = function() {
 //	return new pg.Client(connectionString)
 	return new pg.Client({user: 'reggiej7',
@@ -58,17 +60,15 @@ var getClient = function() {
 									port: 5432});
 }
 
+
+
+var query = function(query, data, callback) {
+	var client = getClient()
+	client.connect()
+	client.query(query, data, callback)
+}
+
 router.get('/database', function(req, res) {
-	/*
-	var client = new pg.Client(connectionString);
-	client.connect();
-	var query = client.query('SELECT * FROM admin')
-	console.log(query);	
-	
-	res.render('index', { title: query });
-	client.end();	
-	*/
-//	console.log(pg);
 	var results = [];
 
 	// Get a Postgres client from the connection pool
@@ -93,13 +93,10 @@ router.get('/database', function(req, res) {
 		  }
 	});
 	*/
-	//var client = new pg.Client(connectionString);
-	console.log("first")
 	var client = new pg.Client({user: 'reggiej7',
 									database: 'reggiej7',
 									host: '/var/run/postgresql',
 									port: 5432});
-	console.log("second")
 
 	client.connect()
 	var query = client.query({text: 'SELECT * FROM admin'});
@@ -247,5 +244,23 @@ router.get('/upload', function(req, res) {
 //choosing a profile (home.html)
 //router.get('/home', 
 
+
+
+
+router.get('/profile', function(req, res) {
+	res.sendFile(path.join(__dirname, "../MemorableFrontEnd/f_profile.html"))
+})
+
+//update a puzzle difficulty from the user profile page
+router.put('/puzzle_difficulty', function(req, res) {
+	//will need to pass in user id, and puzzle difficulty
+	var user_id = req.body.user_id
+	var puzzle_difficulty = req.body.puzzle_difficulty
+	var q = "update resident_user set puzzle_level=$1 where user_id=$2"
+	var data = [puzzle_difficulty, user_id]
+	var callback = function(err, data) {console.log(err) }
+	query(q, data, callback)	
+	res.end()
+})
 
 module.exports = router;
