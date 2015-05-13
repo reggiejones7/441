@@ -84,13 +84,17 @@ app.use(function(err, req, res, next) {
 });
 
 
-
-
-
 // Spotify api tokens
 var client_id = 'bc151765de3044908480197a7904fff7'; // Your client id
 var client_secret = 'f4c4a5837dc144519ec8ca8738fdc77c'; // Your client secret
 var redirect_uri = 'http://localhost:3000/callback'; // Your redirect uri
-
+app.get('/login', function(req, res) {
+var scopes = 'user-read-private user-read-email';
+res.redirect('https://accounts.spotify.com/authorize' + 
+  '?response_type=code' +
+  '&client_id=' + client_id +
+  (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+  '&redirect_uri=' + encodeURIComponent(redirect_uri));
+});
 
 module.exports = app;

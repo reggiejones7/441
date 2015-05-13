@@ -1,3 +1,58 @@
-<script type="text/javascript" src="javascripts/access_token.js"></script>
+<script type="text/javascript" src="javascripts/spotify-web-api.js"></script>
+<script type="text/javascript" src="javascripts/jquery-1.10.1.min.js"></script>
 
-<div><p>Hello World</p></div>
+<script>
+
+	jQuery.ajaxSettings.traditional = true; 
+	var spotifyApi = new SpotifyWebApi();
+	var host = 'http://developer.echonest.com/api/v4/';
+	var apiKey =  'Q02TB0UTUYB9F4CKX';
+
+	// TODO: front-end - display categories
+	// TODO: event handler - if selected, load top songs
+	loadTopSongs('jazz', 'in_rotation-best');
+
+	// Loads top 10 songs for the given genre
+	function loadTopSongs(genreName, preset) {
+	    curStyle = preset.replace(/_/g, ' ');
+	    curStyle = curStyle.replace('-best', '');
+	    var url = host + 'playlist/static';
+	    $.getJSON(url, {api_key:apiKey, bucket:['tracks', 'id:spotify-WW'],    
+	                    limit:true, type:"genre-radio", 
+	                    results:10, 
+	                    genre_preset:preset,
+	                    genre:genreName },
+	        function(data) {
+	            var songs = data.response.songs;
+	            for (i = 0; i < songs.length; i++) {
+	            	var sid = getSpotifyID(songs[i]);
+	            }
+	        });
+	}
+
+	// Returns spotify id for a given song
+	function getSpotifyID(song) {
+        var id = song.tracks[0].foreign_id;
+        var rawID = id.split(':')[2];
+        return rawID;
+    }
+
+	// TODO: create search bar that calls search function with given query
+	function search(query) {
+		spotifyApi.searchTracks(query, {limit: 10})
+		.then(function(data) {
+		// TODO: display results
+		console.log(data);
+		}, function(err) {
+		console.error(err);
+		});
+	}
+
+	// TODO: add song to list of songs
+
+
+	// play widget - play songs in list
+
+
+</script>
+
