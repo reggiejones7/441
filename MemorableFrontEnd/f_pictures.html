@@ -51,53 +51,55 @@
         </div>
         <!-- /.row -->
 
-        <!-- Back & Next Buttons -->
-        <img src="img/interests_back.png" class="fake-back-button">
-        <img src="img/interests_next.png" class="fake-next-button">
+        
 
 
 
         <!-- Interests Row -->
         <div class="interests-row">
             <div class="favtitle-row">
-                <h2 class="fav-title">Select Interests
+                <h2 class="fav-title" onclick="slideNext()">Select Interests
                 </h2>
             </div>
-            <div class="favorite-pics">
+            <div class="interests">
                 <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_piano.jpg" alt="" id="interest1" onclick="highlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_piano.jpg" alt="" id="interest1" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_farms.jpg" alt="" id="interest2" onclick="highlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_farms.jpg" alt="" id="interest2" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_golf.jpg" alt="" id="interest3" onclick="highlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_golf.jpg" alt="" id="interest3" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_beach.jpg" alt="" id="interest4" onclick="highlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_beach.jpg" alt="" id="interest4" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_dog.jpg" alt="" id="interest5" onclick="highlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_dog.jpg" alt="" id="interest5" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_football.jpg" alt="" id="interest6" onclick="highlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_football.jpg" alt="" id="interest6" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_flowers.jpg" alt="" id="interest7" onclick="highlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_flowers.jpg" alt="" id="interest7" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_horse.jpg" alt="" id="interest8" onclick="highlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_horse.jpg" alt="" id="interest8" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_garden.jpg" alt="" id="interest9" onclick="highlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_garden.jpg" alt="" id="interest9" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_tennis.jpg" alt="" id="interest10" onclick="highlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_tennis.jpg" alt="" id="interest10" onclick="interestHighlight(this.id)">
                 </div>
             </div> 
         </div>
         <!-- /.row -->
 
+
+        <!-- Fake Back & Next Buttons -->
+        <img src="img/interests_back.png" class="fake-back-button-int" onclick="slideBack()">
+        <img src="img/interests_next.png" class="fake-next-button-int" onclick="slideNext()">
 
 
         <!-- Favorite Music Row-->
@@ -132,7 +134,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-          $('.favorite-pics').slick({
+          $('.interests').slick({
             infinite: true,
             slidesToShow: 5,
             slidesToScroll: 5
@@ -145,10 +147,18 @@
     </script>
 
     <script>
-        function highlight(id) {
-            // alert(id + " was clicked.");
+        function interestHighlight(id) {
             document.getElementById(id).style.border = "solid #FFE86B";
         }
+    </script>
+    <script>
+        function slideNext() {
+            $('.interests').slick('slickNext');
+        }
+        function slideBack() {
+            $('.interests').slick('slickPrev');
+        }
+
     </script>
 
 
