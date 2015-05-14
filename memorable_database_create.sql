@@ -22,11 +22,10 @@ CREATE TABLE resident_user (
 
 -- Table: image
 CREATE TABLE image (
-    id int  PRIMARY KEY,
     file_name varchar(100)  NOT NULL,
     user_id varchar(50)  REFERENCES resident_user,
     caption text  NOT NULL,
-    play_count int  NOT NULL
+	 img bytea
 );
 
 
@@ -52,5 +51,7 @@ INSERT INTO admin_user VALUES('admin', 'admin');
 -- resident user
 INSERT INTO resident_user VALUES('jappleseed', 'test', 'Johnny Appleseed', 'admin', 2);
 
+INSERT INTO song values('fake_song_id_1', 'jappleseed');
+INSERT INTO song values('fake_song_id_2', 'jappleseed');
 
 

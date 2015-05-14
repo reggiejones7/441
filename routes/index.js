@@ -42,12 +42,16 @@ router.get('/puzzle.html', function(req, res){
 
 //Testing connecting to database
 var pg = require('pg');
-var connectionString = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/postgres';
-
+var connectionString = process.env.DATABASE_URL
 
 var getClient = function() {
-	return new pg.Client({user: 'reggiej7',
-									database: 'reggiej7',
+	if(connectionString) {
+		//heroku connection
+		return new pg.Client(connectionString)
+	}	 
+	//localhost
+	return new pg.Client({
+									database: 'memorable',
 									//the host is going to be diff for cindy so we'll need to figure that out.
 									//https://github.com/brianc/node-postgres/issues/613
 									host: '/var/run/postgresql',
@@ -103,17 +107,7 @@ router.get('/database', function(req, res) {
 	client.end()
 });
 
-/*
-router.get('/upload', function(req, res) {
-	
-	var client = new pg.Client({user: 'reggiej7',
-									database: 'reggiej7',
-									host: '/var/run/postgresql',
-									port: 5432});
-	client.connect();
-	var query = client.query({text: "abc"})
-});
-*/
+
 
 var fs = require('fs')
 router.get('/location', function(req, res) {
@@ -169,13 +163,13 @@ router.post('/upload/:file_name', function(req, res) {
         imgData = '\\x' + imgData;
 		  var client = getClient()
 		  client.connect()
-        client.query('insert into temp values ($1, $2)', [fileName, imgData],
+        client.query('insert into image values ($1, $2, $3, $4)', [fileName, 'jappleseed', 'picture caption yay!', imgData],
            function(err, writeResult) {
 				 	if (err) {
           			console.log('err',err,'pg writeResult',writeResult);
 					} else {
 						//after query ends, retrieve file from db
-				 		client.query('select img from temp where imgname = \'' + fileName + '\' ', function(err, readResult) {
+				 		client.query('select img from image where file_name = \'' + fileName + '\' ', function(err, readResult) {
 					 	console.log('err',err,'pg readResult',readResult);
 						var img = fs.readFileSync(filePath)
 						var img = readResult.rows[0].img
@@ -198,7 +192,15 @@ router.get('/upload/:file_name', function(req, res) {
 
 router.get('/caption/:file_name', function(req, res){
 	//return the caption associated with a given photo file_name
+	
+	var file_name = req.params.file_name
+	var q = "select caption from image where file_name = $1;"
+	var data = [file_name]
+	var callback = function(err, data) {console.log(data) }
+	query(q, data, callback)	
+	res.end()
 	res.send("I made it")
+
 })
 
 
@@ -268,12 +270,26 @@ router.post('/tracks/:song_id/:user_id', function(req, res) {
 })
 
 router.get('/tracks/:user_id', function(req, res) {
+	//saloni- to get this to work do the following.
+	//psql
+	//then enter the command 'create database memorable'
+	//then \q. (if it says permission denied, quit psql and run 'sudo -i -u postgres'
+	// 	and follow the two steps above.
+	// then run 'psql -f memorable_database_create.sql memorable'
+	// lastly, hit localhost:3000/tracks/jappleseed in your browser and you should
+	// see the fake song ids returned to the page
 	var user_id = req.params.user_id;
-	var q = 'select * from song where user_id=$1';
+	var q = 'select id from song where user_id=$1';
 	var data = [user_id];
-	var callback = function(err, data) { console.log(err) }
+	var callback = function(err, data) { 
+		console.log(err, data)
+		var song_ids = []
+		for (var i = 0; i < data.rows.length; i++) {
+			song_ids.push(data.rows[i].id)
+		}
+		res.end(song_ids.toString())
+	}
 	query(q, data, callback)
-	res.end();
 })
 
 module.exports = router;
