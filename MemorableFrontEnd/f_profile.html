@@ -54,13 +54,13 @@
                 <div class="row">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-info active" style="width:100px; height:50px">
-                        <input style="font-size:70%" type="radio" name="options" id="option1" autocomplete="off" checked><h4>2 x 2</h4>
+                        <input style="font-size:70%" type="radio" name="puzzle_difficulty" id="puzzle_difficulty_2" value="2" autocomplete="off" checked><h4>2 x 2</h4>
                       </label>
                       <label class="btn btn-info" style="width:100px; height:50px">
-                        <input type="radio" name="options" id="option2" autocomplete="off"><h4>3 x 3</h4>
+                        <input type="radio" name="puzzle_difficulty" id="puzzle_difficulty_3" value="3" autocomplete="off"><h4>3 x 3</h4>
                       </label>
                       <label class="btn btn-info" style="width:100px; height:50px">
-                        <input type="radio" name="options" id="option3" autocomplete="off"><h4>4 x 4</h4>
+                        <input type="radio" name="puzzle_difficulty" id="puzzle_difficulty_4" value="4" autocomplete="off"><h4>4 x 4</h4>
                       </label>
                     </div>
                 </div>
@@ -171,6 +171,26 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
+	<script>
+	//change the puzzle difficulty ajax
+		$(document).ready(function() {
+			$('label').each(function() {
+				$(this).click(function() {
+					console.log($(this).children().first().attr('value'))
+					var userID = 1; //hardcoded, will probably need to change this
+					var input = $(this).children().first()
+					$.ajax({
+						url: '/puzzle_difficulty',
+						type: 'PUT',
+						data: "user_id=jappleseed&puzzle_difficulty=3",
+						success: function(data) {
+							console.log("yay it worked")
+					   }
+					})
+				})
+			})		
+		});
+	</script>
 </body>
 
 </html>
