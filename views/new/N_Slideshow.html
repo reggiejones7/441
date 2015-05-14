@@ -342,7 +342,7 @@
 			var control = document.getElementById('music-play');
  
             var curSongIndex = 0;
-            var curSongs = {};
+            var curSongs = [];
             var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '5JunxkcjfCYcY7xJ29tLai'];
             addSongs(sids);
             var curSong = startPlayingSongs();
@@ -354,7 +354,7 @@
                 control.innerHTML = '<img style="height:80px;" src="../images/pause.png">';
             });
 
-			control.onclick = function () {
+			control.onclick = function (curSongs) {
 			 pausei='<img style="height:80px;" src="../images/pause.png">';
 			 playi='<img style="height:80px;" src="../images/play.png">';
      
@@ -391,18 +391,18 @@
                 }
             }
 
-            function fetchSpotifyTracks(sids) {
+            function fetchSpotifyTracks(sids, callback) {
                 var sidString = sids.join();
                 var url = 'https://api.spotify.com/v1/tracks?ids=' + sidString;
-                var j = $.getJSON(url, function(data) {
+                $.getJSON(url, function(data) {
                     var tracks = data.tracks;
                     for(var i = 0; i < tracks.length; i++) {
                         curSongs[i] = tracks[i];
                     }
+						  callback(curSongs)
                     console.log(curSongs);
-                    return curSongs;
                 });
-                console.log(j['responseText']);
+                console.log(curSongs);
             }
 
             // function fetchSpotifyTracks (sids, callback) {
@@ -443,7 +443,11 @@
 
             function addSongs(sids) {
                 curSongIndex = 0;
-                fetchSpotifyTracks(sids);
+					 curSong = curSongs[0]
+                fetchSpotifyTracks(sids, function(curSongs) {
+						//saloni-do what you want with cursongs here
+						console.log(curSongs)
+					 })
                 console.log(curSongs);
             }
 		</script>
