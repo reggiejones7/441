@@ -271,13 +271,13 @@ router.post('/tracks/:song_id/:user_id', function(req, res) {
 
 router.get('/tracks/:user_id', function(req, res) {
 	//saloni- to get this to work do the following.
+	//sudo -i -u postgres
 	//psql
-	//then enter the command 'create database memorable'
-	//then \q. (if it says permission denied, quit psql and run 'sudo -i -u postgres'
-	// 	and follow the two steps above.
+	//then enter the command 'create database memorable' (if we already created this for you than you're going to need to delete that database because I changed the sql script. do delete the already existing memorable db 'drop database memorable;' before creating it again.
+	//then \q. (also, you can exit from your sudo bash shell to just the normal shell)
 	// then run 'psql -f memorable_database_create.sql memorable'
 	// lastly, hit localhost:3000/tracks/jappleseed in your browser and you should
-	// see the fake song ids returned to the page
+	// see the word fake_id_1 displayed to the page
 	var user_id = req.params.user_id;
 	var q = 'select id from song where user_id=$1';
 	var data = [user_id];
