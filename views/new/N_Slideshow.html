@@ -3,7 +3,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery Theme - Jssor Slider, Carousel, Slideshow with Javascript Source Code</title>
+	<title>Memorable</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.scrollzer.min.js"></script>
+	<script src="js/jquery.scrolly.min.js"></script>
+	<script src="js/skel.min.js"></script>
+	<script src="js/skel-layers.min.js"></script>
+	<script src="js/init.js"></script>
+	<noscript>
+		<link rel="stylesheet" href="css/skel.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/style-xlarge.css" />
+		<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	</noscript>
+	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <body style="padding: 0; margin: 0; font-family:Arial, Verdana;background-color:#fff;">
     <!-- it works the same with all jquery version from 1.x to 2.x -->
@@ -70,6 +87,7 @@
     </script>
     <!-- Jssor Slider Begin -->
     <!-- To move inline styles to css file/block, please specify a class name for each element. --> 
+	<div style="text-align:center;">
     <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 800px; height: 456px; background: #191919; overflow: hidden;">
 
         <!-- Loading Screen -->
@@ -83,9 +101,10 @@
         </div>
 
         <!-- Slides Container -->
-        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 800px; height: 356px; overflow: hidden;">
+        <div u="slides" style="cursor: move; position: relative; left: 0px; top: 0px; width: 800px; height: 356px; overflow: hidden;">
             <div>
                 <img u="image" src="../img/alila/01.jpg" />
+                <img u="thumb" src="../img/alila/thumb-01.jpg" />
 				<div align="center"
 						style="background: #EB5100; background-color: white; 
 						color: black; font-size: 20px; line-height: 30px; text-align: center; filter: inherit;
@@ -93,11 +112,16 @@
 						transform: rotate(0deg) scale(1); opacity: 0.80;"> 
                     "Image caption"
 				</div>
-                <img u="thumb" src="../img/alila/thumb-01.jpg" />
-            </div>
+				</div>
             <div>
-                <img u="image" src="../img/alila/02.jpg" />
-                <img u="thumb" src="../img/alila/01.jpg" />
+                <img u="image" style="max-width:100%; max-height:100%; margin:auto; display:block;" src="../img/alila/02.jpg" />
+                <img u="thumb" style="
+								text-align: center;
+								overflow: hidden;
+								position; relative;
+								left: 100%;
+								margin-left: -200%;"
+								src="../img/alila/thumb-02.jpg" />
                 <div align="center"
 						style="background: #EB5100; background-color: white; 
 						color: black; font-size: 20px; line-height: 30px; text-align: center; filter: inherit;
@@ -287,7 +311,52 @@
         </div>
         <!--#endregion Thumbnail Navigator Skin End -->
         <a style="display: none" href="http://www.jssor.com">slider in html</a>
+		
     </div>
+	</div>
+	<div style="text-align:center;">
+		<hr style="height:3px; border:none; color:black; background-color:black;" />
+		<div>
+			<p> Song name - artist </p>
+		</div>
+		
+		<div style="position:center;">
+			<audio class="Audio" preload='none'>
+				<source src="../Love Is All I Got.mp3" type='audio/mpeg' />
+			</audio>
+			
+			<img style="height:80px;" src="../images/backward.png" role="button">
+			<a class="music-button">
+				<img style="height:80px;" src="../images/play.png">
+			</a>
+			<img style="height:80px;" src="../images/forward.png">
+		</div>
+		
+		<script type="text/javascript">
+			var Audio = document.getElementsByClassName('Audio'),
+			control = document.getElementsByClassName('music-button')[0];
+ 
+			control.onclick = function () {
+     
+			pausei='<img style="height:80px;" src="../images/pause.png">';
+			playi='<img style="height:80px;" src="../images/play.png">';
+     
+			// Update the Button
+			var pause = control.innerHTML === pausei;
+			control.innerHTML = pause ? playi : pausei;
+
+			// Update the Audio
+			var method = pause ? 'pause' : 'play';
+			Audio[method]();
+						
+			// Prevent Default Action
+			return false;
+			
+			};
+		</script>
+		
+	</div>
+
     <!-- Jssor Slider End -->
 </body>
 </html>
