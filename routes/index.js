@@ -5,7 +5,7 @@ var fs = require('fs')
 
 
 router.get('/spotify', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '../views/spotify.html'))
+  res.sendFile(path.join(__dirname, '../views/spotify_playlist.html'))
 	
 });
 
@@ -258,4 +258,23 @@ router.put('/puzzle_difficulty', function(req, res) {
 	res.end()
 })
 
+router.post('/tracks/:song_id/:user_id', function(req, res) {
+	var song_id = req.params.song_id;
+	var q = 'insert into song values ($1, $2)';
+	var data = [song_id, user_id];
+	var callback = function(err, data) { console.log(err) }
+	query(q, data, callback)
+	res.end();
+})
+
+router.get('/tracks/:user_id', function(req, res) {
+	var user_id = req.params.user_id;
+	var q = 'select * from song where user_id=$1';
+	var data = [user_id];
+	var callback = function(err, data) { console.log(err) }
+	query(q, data, callback)
+	res.end();
+})
+
 module.exports = router;
+
