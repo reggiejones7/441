@@ -12,6 +12,8 @@
 	<script src="js/jquery.scrollzer.min.js"></script>
 	<script src="js/jquery.scrolly.min.js"></script>
 	<script src="js/skel.min.js"></script>
+    <script type="text/javascript" src="javascripts/spotify-web-api.js"></script>
+    <script type="text/javascript" src="javascripts/jquery-1.10.1.min.js"></script>
 	<script src="js/skel-layers.min.js"></script>
 	<script src="js/init.js"></script>
 	<noscript>
@@ -321,38 +323,129 @@
 		</div>
 		
 		<div style="position:center;">
-			<audio class="Audio" preload='none'>
-				<source src="../Love Is All I Got.mp3" type='audio/mpeg' />
-			</audio>
-			
-			<img style="height:80px;" src="../images/backward.png" role="button">
-			<a class="music-button">
+<!-- 			<audio id="audio" preload='none'>
+				<source type='audio/mpeg' />
+			</audio> -->
+			<a id="music-back">
+			     <img style="height:80px;" src="../images/backward.png" role="button">
+            </a>
+			<a id="music-play">
 				<img style="height:80px;" src="../images/play.png">
 			</a>
-			<img style="height:80px;" src="../images/forward.png">
+            <a id="music-next">
+			     <img style="height:80px;" src="../images/forward.png">
+            </a>
 		</div>
 		
 		<script type="text/javascript">
-			var Audio = document.getElementsByClassName('Audio'),
-			control = document.getElementsByClassName('music-button')[0];
+			var audio = new Audio();
+			var control = document.getElementById('music-play');
  
+            var curSongIndex = 0;
+            var curSongs = {};
+            var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '5JunxkcjfCYcY7xJ29tLai'];
+            addSongs(sids);
+            var curSong = startPlayingSongs();
+            console.log(curSong);
+            
+
+            audio.addEventListener('ended', function() {
+                playNextSong();
+                control.innerHTML = '<img style="height:80px;" src="../images/pause.png">';
+            });
+
 			control.onclick = function () {
-     
-			pausei='<img style="height:80px;" src="../images/pause.png">';
-			playi='<img style="height:80px;" src="../images/play.png">';
+			 pausei='<img style="height:80px;" src="../images/pause.png">';
+			 playi='<img style="height:80px;" src="../images/play.png">';
      
 			// Update the Button
-			var pause = control.innerHTML === pausei;
-			control.innerHTML = pause ? playi : pausei;
+			 var pause = control.innerHTML === pausei;
+			 control.innerHTML = pause ? playi : pausei;
 
-			// Update the Audio
-			var method = pause ? 'pause' : 'play';
-			Audio[method]();
+			 // Update the Audio
+			 if(pause) {
+                audio.pause();
+             } else {
+                if(curSong) {
+                    console.log("here");
+                    playTrack(curSong);
+                }
+             }
 						
-			// Prevent Default Action
-			return false;
+			 // Prevent Default Action
+			 return false;
 			
 			};
+
+            function playTrack(track) {
+                console.log(track.preview_url);
+                audio.setAttribute('src', track.preview_url);
+                audio.play();
+                // adjust index
+                for(var i = 0; i < curSongs.length; i++) {
+                    var csong = curSongs[i];
+                    if(csong.id == track.id) {
+                        curSongIndex = i+1;
+                        break;
+                    }
+                }
+            }
+
+            function fetchSpotifyTracks(sids) {
+                var sidString = sids.join();
+                var url = 'https://api.spotify.com/v1/tracks?ids=' + sidString;
+                var j = $.getJSON(url, function(data) {
+                    var tracks = data.tracks;
+                    for(var i = 0; i < tracks.length; i++) {
+                        curSongs[i] = tracks[i];
+                    }
+                    console.log(curSongs);
+                    return curSongs;
+                });
+                console.log(j['responseText']);
+            }
+
+            // function fetchSpotifyTracks (sids, callback) {
+            //     var sidString = sids.join()
+            //     $.ajax({
+            //         url: 'https://api.spotify.com/v1/tracks?ids=' + sidString,
+            //         success: function(response) {
+            //             callback(response);
+            //         }
+            //     });
+            // }
+
+            // function fetchTrackInfo(sids) {
+            //     fetchSpotifyTracks(sids, function(tracks) {
+            //         for(i = 0; i < tracks.length; i++) {
+            //             console.log("here");
+            //             songs[i] = tracks.items[i];
+            //             console.log(songs[i]);
+            //         }
+            //     });
+            // }
+
+            function startPlayingSongs() {
+                curSongIndex = 0;
+                return curSongs[curSongIndex];
+            }
+
+            function playNextSong() {
+                while (curSongIndex < curSongs.length) {
+                    curSongIndex++;
+                    var song = curSongs[curSongIndex];
+                    if (song) {
+                        playTrack(song);
+                        break;
+                    }
+                }
+            }
+
+            function addSongs(sids) {
+                curSongIndex = 0;
+                fetchSpotifyTracks(sids);
+                console.log(curSongs);
+            }
 		</script>
 		
 	</div>
