@@ -53,63 +53,135 @@
         </div>
         <!-- /.row -->
 
-        <!-- Back & Next Buttons -->
-        <img src="img/interests_back.png" class="fake-back-button">
-        <img src="img/interests_next.png" class="fake-next-button">
 
 
+        <!-- Tabs -->
+        <div class="tabbable"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a href="#add-songs-tab" data-toggle="tab">
+                        Add Songs</a>
+                </li>
+                <li>
+                    <a href="#playlist-tab" data-toggle="tab">
+                        Grace's Playlist</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="add-songs-tab">
+                <!-- /.Add Songs Tab -->
+                    <!-- Genre Row -->
+                    <div class="interests-row">
+                        <div class="favtitle-row">
+                            <h2 class="fav-title">Select Genre
+                            </h2>
+                        </div>
+                        <div class="genres">
+                            <div class="col-md-2">
+                                <img class="genre img-responsive" src="img/fakeMusic/soul.jpg" alt="" id="music1" onclick="genreHighlight(this.id)">
+                            </div>
+                            <div class="col-md-2">
+                                <img class="genre img-responsive" src="img/fakeMusic/opera.jpg" alt="" id="music2" onclick="genreHighlight(this.id)">
+                            </div>
+                            <div class="col-md-2">
+                                <img class="genre img-responsive" src="img/fakeMusic/rock.jpg" alt="" id="music3" onclick="genreHighlight(this.id)">
+                            </div>
+                            <div class="col-md-2">
+                                <img class="genre img-responsive" src="img/fakeMusic/jazz.jpg" alt="" id="music4" onclick="genreHighlight(this.id)">
+                            </div>
+                            <div class="col-md-2">
+                                <img class="genre img-responsive" src="img/fakeMusic/hiphop.jpg" alt="" id="music5" onclick="genreHighlight(this.id)">
+                            </div>
+                            <div class="col-md-2">
+                                <img class="genre img-responsive" src="img/fakeMusic/bluegrass.jpg" alt="" id="music6" onclick="genreHighlight(this.id)">
+                            </div>
+                            <div class="col-md-2">
+                                <img class="genre img-responsive" src="img/fakeMusic/classic_rock.jpg" alt="" id="music7" onclick="genreHighlight(this.id)">
+                            </div>
+                            <div class="col-md-2">
+                                <img class="genre img-responsive" src="img/fakeMusic/piano.jpg" alt="" id="music8" onclick="genreHighlight(this.id)">
+                            </div>
+                            <div class="col-md-2">
+                                <img class="genre img-responsive" src="img/fakeMusic/guitar.jpg" alt="" id="music9" onclick="genreHighlight(this.id)">
+                            </div>
+                            <div class="col-md-2">
+                                <img class="genre img-responsive" src="img/fakeMusic/blues.jpg" alt="" id="music10" onclick="genreHighlight(this.id)">
+                            </div>
+                        </div> 
+                    </div>
+                     <!-- /.row -->
 
-        <!-- Genre Row -->
-        <div class="interests-row">
-            <div class="favtitle-row">
-                <h2 class="fav-title">Select Genre
-                </h2>
+                     <!-- Back & Next Buttons -->
+                    <img src="img/interests_back.png" class="fake-back-button-gen" onclick="slideBack()">
+                    <img src="img/interests_next.png" class="fake-next-button-gen" onclick="slideNext()">
+
+                    <!-- Search for Music Row -->
+                    <div class="favs-row">
+                        <div class="favtitle-row">
+                            <h2 class="fav-title">Search for Music</h2>
+                        </div> 
+                        <div class="row">
+                            <div class="search-bar-music">
+                                <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h3 class="search-results-title text-center">Search Results</h3>
+                            <div class="search-music-table">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Song</th>
+                                            <th>Artist</th>
+                                            <th>Time</th>
+                                        </tr>
+                                        <!-- For every song result, create a row
+                                        Use ADD button to add to playlist. -->
+                                        <tr>
+                                            <td>
+                                                <img src="img/add.png" id="" class="add-song-button" onclick="">
+                                            </td>
+                                            <td>Song</td>
+                                            <td>Title</td>
+                                            <td>Time</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                <!-- /.End Add Songs Tab -->
+                </div>
+                <div class="tab-pane" id="playlist-tab">
+                 <!-- /.Start Playlist Tab -->
+
+                    <div class="playlist-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Song</th>
+                                    <th>Artist</th>
+                                    <th>Time</th>
+                                </tr>
+                                <tr>
+                                    <td>Song</td>
+                                    <td>Title</td>
+                                    <td>Time</td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                 <!-- /.End Playlist Tab -->
+                </div>
             </div>
-            <div class="favorite-pics">
-                <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_piano.jpg" alt="">
-                </div>
-                <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_farms.jpg" alt="">
-                </div>
-                <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_golf.jpg" alt="">
-                </div>
-                <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_garden.jpg" alt="">
-                </div>
-                <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_flowers.jpg" alt="">
-                </div>
-                <div class="col-md-2">
-                    <img class="interests img-responsive" src="img/fakeInterests/s_football.jpg" alt="">
-                </div>
-            </div> 
         </div>
-
-        <!-- /.row -->
-
-        <!-- Favorite Photos Row -->
-        <div class="favs-row">
-            <div class="favtitle-row">
-                <h2 class="fav-title">Search for Music
-                </h2>
-            </div> 
-
-            <div class="row">
-            <div class="search-bar col-lg-4">
-                <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                </span>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <!-- /.row -->
-
 
 
     </div>
@@ -140,20 +212,33 @@
   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="js/slick/slick.min.js"></script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('.favorite-pics').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 3
-      });
-      $('.slick-next').css({"width":"40px", "height":"90px", 
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.genres').slick({
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 5
+          });
+          $('.slick-next').css({"width":"40px", "height":"90px", 
                                 "margin-top":"-10px", "top":"35%", "position":"none"});
           $('.slick-prev').css({"width":"40px", "height":"90px", 
                                 "margin-top":"-10px", "top":"35%", "right":"10px"});
-    });
-  </script>
+        });
+    </script>
 
+    <script>
+        function genreHighlight(id) {
+            document.getElementById(id).style.border = "solid #FFE86B";
+        }
+    </script>
+    <script>
+        function slideNext() {
+            $('.genres').slick('slickNext');
+        }
+        function slideBack() {
+            $('.genres').slick('slickPrev');
+        }
+    </script>
 
 </body>
 

@@ -198,7 +198,6 @@
 	margin:auto;
 	width:300px;
 	height:50px;
-	
 }
 
 .seperate-puzzles {
@@ -239,6 +238,12 @@
 }
 
 .interests{
+	display:block;
+	margin:auto;
+	width:1000px;
+}
+
+.interest{
 	width:200px;
 }
 
@@ -247,25 +252,84 @@
 	margin-left:20px;
 }
 
-
-
-/*!
- * PICTURES CSS
- */
- .fake-back-button {
+ .fake-back-button-int {
  	position:absolute;
- 	top:360px;
- 	left:20px;
+ 	top:350px;
+ 	left:55px;
  	width:50px;
  	height:50px;
  }
 
-.fake-next-button {
+.fake-next-button-int {
  	position:absolute;
- 	top:360px;
- 	right:20px;
+ 	top:350px;
+ 	right:55px;
  	width:50px;
  	height:50px;
+}
+
+
+
+/*!
+ * MUSIC CSS
+ */
+
+.genres {
+	display:block;
+	margin:auto;
+	width:1000px;
+}
+
+.genre{
+	width:200px;
+}
+
+.fake-back-button-gen {
+ 	position:absolute;
+ 	top:375px;
+ 	left:55px;
+ 	width:50px;
+ 	height:50px;
+ }
+
+.fake-next-button-gen {
+ 	position:absolute;
+ 	top:375px;
+ 	right:55px;
+ 	width:50px;
+ 	height:50px;
+}
+
+.search-bar-music {
+	padding-top:30px;
+	padding-bottom:30px;
+	display:block;
+	margin:auto;
+	width:700px;
+}
+
+.search-results-title {
+	display:block;
+	margin:auto;
+	padding:10px;
+}
+
+.search-music-table {
+	display:block;
+	height:500px;
+	width:800px;
+	margin:auto;
+}
+
+.add-song-button {
+	height:20px;
+}
+
+.playlist-table {
+	display:block;
+	width:800px;
+	margin:auto;
+	padding-top:30px;
 }
 
 /*!
