@@ -10,14 +10,19 @@
  	background-color: blue;
  }*/
 
+
+.memorable-screensize {
+	height:500px;
+	width:700px;
+}
+
  .spacing {
  	width: 300px;
  }
 
 .page-title {
- 	font-size:45px;
- 	margin:0px;
-
+ 	font-size:30px;
+ 	margin-top: -15px;
  }
 
  .memorable-title {
@@ -30,7 +35,7 @@
  .search-bar {
  	display: block;
  	margin:auto;
- 	padding-top:40px;
+ 	padding-top:20px;
  	padding-bottom:15px;
  }
 
@@ -44,10 +49,10 @@
 
  .back-button {
  	position: absolute;
- 	top: 30px;
- 	left: 30px;
- 	width:55px;
- 	height:55px;
+ 	top: 20px;
+ 	left: 20px;
+ 	width:40px;
+ 	height:40px;
  }
 
 
@@ -67,8 +72,8 @@
 .resident-pic {
 	display: block;
  	margin:auto;
-	width:170px;
-	height:170px;
+	width:130px;
+	height:130px;
 }
 
 
@@ -79,10 +84,10 @@
 
  .add-resident-button {
  	position: absolute;
- 	top: 30px;
- 	left: 30px;
- 	width:45px;
- 	height:45px;
+ 	top: 20px;
+ 	left: 20px;
+ 	width:35px;
+ 	height:35px;
  }
 
 .profile-users {
@@ -92,14 +97,20 @@
 }
 
  .profile-name {
- 	padding:20px;
- 	font-size:50px;
+ 	font-size: 30px;
+ 	margin-top:-10px;
+ 	padding-bottom:16px;
+ }
+
+ .profile-puzzle-diff {
+ 	font-size: 17px;
+ 	padding-bottom:3px;
  }
 
  .profile-image {
  	display: block;
- 	width:250px;
- 	margin-left: 250px;
+ 	width:130px;
+ 	margin-left: 150px;
  	padding-bottom:30px;
  }
 
@@ -113,18 +124,18 @@
 
 .edit-photos {
 	margin:auto;
-	margin-left:130px;
-	width:50%;
+	margin-left:50px;
+	width:70%;
 }
 
 .edit-music {
 	margin:auto;
-	margin-right:130px;
-	width:50%;
+	margin-right:50px;
+	width:70%;
 }
 
 .edit-row {
-	padding-top:20px;
+	padding-top:15px;
 	padding-bottom:10px;
 	display:inline-block;
 }
@@ -132,11 +143,19 @@
 .favs-row {
 	padding-top:10px;
 	padding-bottom:10px;
-	height:250px;
+	height:215px;
 }
 
 .fav-title {
 	display:inline-block;
+}
+
+.favorite-pics {
+	/*width: 100px;*/
+}
+
+.fav-pics {
+	width:180px;
 }
 
 .music {
@@ -164,16 +183,16 @@
 
  .user-name {
  	position: absolute;
- 	font-size:30px;
- 	top: 30px;
- 	right: 130px;
+ 	font-size:22px;
+ 	top: 37px;
+ 	right: 120px;
  }
 
 .user-edit {
 	position: absolute;
 	font-size:15px;
-	top: 60px;
- 	right: 125px;
+	top: 55px;
+ 	right: 112px;
  	width:80px;
 	height:40px;
 	padding-top:20px;
@@ -185,7 +204,7 @@
 	margin:auto;
 	padding-top:20px;
 	padding-bottom:10px;
-	width:300px;
+	width:250px;
 }
 
 .slideshow-button-row {
@@ -201,23 +220,27 @@
 }
 
 .seperate-puzzles {
-	height:50px;
+	height:20px;
 }
 
 .puzzle-image {
 	display: block;
  	margin:auto;
- 	width:200px;
- 	height:200px;
+ 	width:130px;
+ 	height:130px;
+}
+
+.puzzles-row {
+	margin:10px;
 }
 
 
 /*!
  * EDIT PICS CSS
  */
-.edit-titlerow {
+.edit-title-row {
 	padding-top:10px;
-	height:150px;
+	height:130px;
 	padding-bottom:10px;
 }
 
@@ -229,18 +252,18 @@
 }
 
 .edit-user-title {
-	font-size:45px;
+	font-size:35px;
 	margin-top:25px;
+	margin-left:-20px;
 }
 
 .interests-row {
-	height: 300px;
+	height: 190px;
 }
 
 .interests{
 	display:block;
 	margin:auto;
-	width:1000px;
 }
 
 .interest{
@@ -254,18 +277,18 @@
 
  .fake-back-button-int {
  	position:absolute;
- 	top:350px;
- 	left:55px;
- 	width:50px;
- 	height:50px;
+ 	top:290px;
+ 	left:30px;
+ 	width:30px;
+ 	height:30px;
  }
 
 .fake-next-button-int {
  	position:absolute;
- 	top:350px;
- 	right:55px;
- 	width:50px;
- 	height:50px;
+ 	top:290px;
+ 	right:30px;
+ 	width:30px;
+ 	height:30px;
 }
 
 
@@ -277,7 +300,6 @@
 .genres {
 	display:block;
 	margin:auto;
-	width:1000px;
 }
 
 .genre{
@@ -286,18 +308,18 @@
 
 .fake-back-button-gen {
  	position:absolute;
- 	top:375px;
- 	left:55px;
- 	width:50px;
- 	height:50px;
+ 	top:335px;
+ 	left:30px;
+ 	width:30px;
+ 	height:30px;
  }
 
 .fake-next-button-gen {
  	position:absolute;
- 	top:375px;
- 	right:55px;
- 	width:50px;
- 	height:50px;
+ 	top:335px;
+ 	right:30px;
+ 	width:30px;
+ 	height:30px;
 }
 
 .search-bar-music {
@@ -305,7 +327,7 @@
 	padding-bottom:30px;
 	display:block;
 	margin:auto;
-	width:700px;
+	/*width:500px;*/
 }
 
 .search-results-title {
@@ -316,8 +338,8 @@
 
 .search-music-table {
 	display:block;
-	height:500px;
-	width:800px;
+	height:200px;
+	/*width:800px;*/
 	margin:auto;
 }
 
@@ -327,7 +349,6 @@
 
 .playlist-table {
 	display:block;
-	width:800px;
 	margin:auto;
 	padding-top:30px;
 }
