@@ -34,7 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 **/
 
 app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, "MemorableFrontEnd")));
+app.use(express.static("views"));
+app.use(express.static(path.join(__dirname, 'MemorableFrontEnd')));
 app.locals.homeDir = __dirname 
 /**
  * everything below this was also auto generated
