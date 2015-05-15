@@ -31,7 +31,7 @@
 <body>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container memorable-screensize">
 
         <!-- Go Back -->
         <a href="f_profile.html">
@@ -39,11 +39,11 @@
         </a>
 
         <!-- Page Header -->
-        <div class="edit-titlerow">
-            <div class="col-lg-2">
+        <div class="edit-title-row">
+            <div class="col-sm-3">
                 <img class="edit-user-pic img-responsive" src="img/fakeUsers/user2.jpg" alt="">
             </div>
-            <div class="col-lg-10">
+            <div class="col-sm-9">
                 <div class="edit-user-title">
                     Grace's Pictures
                 </div>
@@ -51,45 +51,43 @@
         </div>
         <!-- /.row -->
 
-        
-
 
 
         <!-- Interests Row -->
         <div class="interests-row">
             <div class="favtitle-row">
-                <h2 class="fav-title" onclick="slideNext()">Select Interests
-                </h2>
+                <h3 class="fav-title" onclick="slideNext()">Select Interests
+                </h3>
             </div>
             <div class="interests">
-                <div class="col-md-2">
+                <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_piano.jpg" alt="" id="interest1" onclick="interestHighlight(this.id)">
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_farms.jpg" alt="" id="interest2" onclick="interestHighlight(this.id)">
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_golf.jpg" alt="" id="interest3" onclick="interestHighlight(this.id)">
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_beach.jpg" alt="" id="interest4" onclick="interestHighlight(this.id)">
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_dog.jpg" alt="" id="interest5" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_football.jpg" alt="" id="interest6" onclick="interestHighlight(this.id)">
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_flowers.jpg" alt="" id="interest7" onclick="interestHighlight(this.id)">
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_horse.jpg" alt="" id="interest8" onclick="interestHighlight(this.id)">
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_garden.jpg" alt="" id="interest9" onclick="interestHighlight(this.id)">
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_tennis.jpg" alt="" id="interest10" onclick="interestHighlight(this.id)">
                 </div>
             </div> 
@@ -105,11 +103,8 @@
         <!-- Favorite Music Row-->
         <div class="music-row">
             <div class="favtitle-row">
-                <h2 class="fav-title">Personal Photos
-                </h2>
-<!--
-                <button type="button" class="btn btn-default upload-button">upload</button>
--->
+                <h3 class="fav-title">Personal Photos
+                </h3>
 					 <form id="uploadForm" enctype="multipart/form-data" method="post">
 						 <input type="file" id="files" name="files[]" multiple />
 						 <input type="submit" id="go!" id="submit" ></input>
@@ -121,6 +116,7 @@
                     <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family1.jpg" alt=""></td>
                     <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family2.jpg" alt=""></td>
                     <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family3.jpg" alt=""></td>
+                    <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family4.jpg" alt=""></td>
                     <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family4.jpg" alt=""></td>
                 </tbody>
             </table>
