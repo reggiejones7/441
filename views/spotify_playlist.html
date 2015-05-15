@@ -60,20 +60,9 @@
     }
 
     // play widget - play songs in list
-    function fetchSpotifyTrack(sid, callback) {
-        var url = 'https://api.spotify.com/v1/tracks/' + sid;
-        $.getJSON(url, function(track) {
-            callback(track);
-        });
-    }
 
-    function fetchSpotifyTracks(sids, callback) {
-        var sidString = sids.join()
-        var url = 'https://api.spotify.com/v1/tracks?ids=' + sidString;
-        $.getJSON(url, function(results) {
-            callback(results.tracks);
-        });
-    }
+
+
 
 	// TODO: add song to list of songs
 
