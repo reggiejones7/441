@@ -1,7 +1,0 @@
-Client ID:
-bc151765de3044908480197a7904fff7
-Client Secret:
-f4c4a5837dc144519ec8ca8738fdc77c
-
-login: memorable441
-password: memorable441

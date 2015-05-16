@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express'); 
 var router = express.Router();
 var path = require('path')
 var fs = require('fs')
@@ -261,8 +261,9 @@ router.put('/puzzle_difficulty', function(req, res) {
 
 router.post('/tracks/:song_id/:user_id', function(req, res) {
 	var song_id = req.params.song_id;
+	var user_id = req.params.user_id;
 	var q = 'insert into song values ($1, $2)';
-	var data = [song_id, user_id];
+	var data = [song_id, 'jappleseed'];
 	var callback = function(err, data) { console.log(err) }
 	query(q, data, callback)
 	res.end();
