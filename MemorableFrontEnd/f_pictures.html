@@ -100,8 +100,8 @@
         <img src="img/interests_next.png" class="fake-next-button-int" onclick="slideNext()">
 
 
-        <!-- Favorite Music Row-->
-        <div class="music-row">
+        <!-- Personal Photos Row-->
+        <div class="personal-photos-row">
             <div class="favtitle-row">
                 <h3 class="fav-title">Personal Photos
                 </h3>
@@ -117,7 +117,7 @@
                     <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family2.jpg" alt=""></td>
                     <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family3.jpg" alt=""></td>
                     <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family4.jpg" alt=""></td>
-                    <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family4.jpg" alt=""></td>
+                    <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family5.jpg" alt=""></td>
                 </tbody>
             </table>
         </div>
@@ -151,7 +151,12 @@
 
     <script>
         function interestHighlight(id) {
-            document.getElementById(id).style.border = "solid #FFE86B";
+            if (document.getElementById(id).style.border === "solid #B689BC") {
+                console.log("here");
+                document.getElementById(id).style.border = "none";
+            } else {
+                document.getElementById(id).style.border = "solid #B689BC";
+            }
         }
     </script>
     <script>
