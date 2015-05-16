@@ -134,7 +134,7 @@
                         </div>
                         <div class="row">
                             <div class="search-music-table">
-                                <table class="table" id="results">
+                                <table class="table">
                                     <thead>
                                         <tr>
                                             <th></th>
@@ -145,6 +145,8 @@
                                         <!-- For every song result, create a row
                                         Use ADD button to add to playlist. -->
                                     </thead>
+                                    <tbody  id="results">
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -287,6 +289,7 @@
         });
 
         function search(query) {
+            $("#results").empty();
             spotifyApi.searchTracks(query, {limit: 10})
             .then(function(data) {
                 var tracks = data.tracks.items;
