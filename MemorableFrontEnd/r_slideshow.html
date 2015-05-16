@@ -12,8 +12,6 @@
 	<script src="js/jquery.scrollzer.min.js"></script>
 	<script src="js/jquery.scrolly.min.js"></script>
 	<script src="js/skel.min.js"></script>
-    <script type="text/javascript" src="javascripts/spotify-web-api.js"></script>
-    <script type="text/javascript" src="javascripts/jquery-1.10.1.min.js"></script>
 	<script src="js/skel-layers.min.js"></script>
 	<script src="js/init.js"></script>
 	<noscript>
@@ -319,128 +317,10 @@
 	<div style="text-align:center;">
 		<hr style="height:3px; border:none; color:black; background-color:black;" />
 		<div>
-			<p id="song-info"></p>
+			<p> Song name - artist </p>
 		</div>
 		
 		<div style="position:center;">
-<<<<<<< Updated upstream
-			<a id="music-back">
-			     <img style="height:80px;" src="../images/backward.png" role="button">
-            </a>
-			<a id="music-play">
-				<img style="height:80px;" src="../images/play.png">
-			</a>
-            <a id="music-next">
-			     <img style="height:80px;" src="../images/forward.png">
-            </a>
-		</div>
-		
-		<script type="text/javascript">
-        (function() {
-            var SERVICE = "https://api.spotify.com/v1/tracks?ids=";
-            var curSongIndex = 0;
-            var curSongs = [];
-            var audio = new Audio();
-
-            $(document).ready(function() {
-
-                audio.addEventListener('ended', function() {
-                    // play next track if current song ends
-                    playNextSong();
-                    $("#music-play").html('<img style="height:80px;" src="../images/pause.png">');
-                });
-                // TODO: query track ids from database
-                var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '0eGsygTp906u18L0Oimnem'];
-                var sidString = sids.join();
-                fetchData(sidString, addSongs);
-                $("#music-play").click(function() {
-                    playSongs();
-                });
-                $("#music-next").click(function() {
-                    playNextSong();
-                    $("#music-play").html('<img style="height:80px;" src="../images/pause.png">');
-                });
-                $("#music-back").click(function() {
-                    playPrevSong();
-                    $("#music-play").html('<img style="height:80px;" src="../images/pause.png">');
-                });
-
-            });
-            
-            // ajax request to get tracks given params (track ids)
-            function fetchData(params, functionName) { 
-                $.ajax({
-                    url: 'https://api.spotify.com/v1/tracks?ids=' + params,
-                    success: function(response) {
-                        addSongs(response);
-                    }
-                });
-            }
-
-            // initialize list of current songs
-            function addSongs(songs) {
-                curSongIndex = 0;
-                curSongs = songs.tracks;
-            }
-
-            // called when play or pause is clicked
-			function playSongs() {
-    			 pausei='<img style="height:80px;" src="../images/pause.png">';
-    			 playi='<img style="height:80px;" src="../images/play.png">';
-         
-    			// Update the Button
-    			 var pause = $("#music-play").html() === pausei;
-                 if(pause) {
-                    $("#music-play").html(playi);
-                 } else {
-                    $("#music-play").html(pausei);
-                 }
-    			 // Update the Audio
-    			 if(pause) {
-                    audio.pause();
-                 } else {
-                    if(curSongs[curSongIndex]) {
-                        playTrack(curSongs[curSongIndex]);
-                    }
-                 }
-    			 // Prevent Default Action
-    			 return false;
-			}
-
-            // plays given track and populates track title and artist data
-            function playTrack(track) {
-                audio.setAttribute('src', track.preview_url);
-                var title = track.name;
-                var artist = track.artists[0].name;
-                $("#song-info").html(title + " by " + artist);
-                audio.play();
-            }
-
-            // plays next song in list of current songs
-            function playNextSong() {
-                while (curSongIndex < curSongs.length) {
-                    curSongIndex++;
-                    var song = curSongs[curSongIndex];
-                    if (song) {
-                        playTrack(song);
-                        break;
-                    }
-                }
-            }
-
-            // plays previous song in list of current songs
-            function playPrevSong() {
-                while (curSongIndex > 0) {
-                    var song = curSongs[--curSongIndex];
-                    if (song) {
-                        playTrack(song);
-                        break;
-                    }
-                }
-            }
-        })();
-
-=======
 			<audio class="Audio" preload='none'>
 				<source src="Love Is All I Got.mp3" type='audio/mpeg' />
 			</audio>
@@ -473,7 +353,6 @@
 			return false;
 			
 			};
->>>>>>> Stashed changes
 		</script>
 		
 	</div>

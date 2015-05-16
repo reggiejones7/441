@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var path = require('path')
 var fs = require('fs')
+var multer = require('multer')
+var pg = require('pg');
 
 
 router.get('/spotify', function(req, res, next) {
@@ -10,11 +12,6 @@ router.get('/spotify', function(req, res, next) {
 
 
 
-
-//reggie note to self since this is starting to get really messy: everything below this
-//is pretty much demo/poc stuff. Leaving it in for reference in the near future.
-
-var multer = require('multer')
 var uploadDestination = 'uploads/'
 router.use(multer({dest: './' + uploadDestination,
                onFileUploadStart: function(file) {
@@ -39,11 +36,8 @@ router.get('/puzzle.html', function(req, res){
 
 
 
-//Testing connecting to database
-var pg = require('pg');
-var connectionString = process.env.DATABASE_URL
-
 var getClient = function() {
+	var connectionString = process.env.DATABASE_URL
 	if(connectionString) {
 		//heroku connection
 		return new pg.Client(connectionString)
@@ -65,6 +59,8 @@ var query = function(query, data, callback) {
 	client.query(query, data, callback)
 }
 
+
+//first demo
 router.get('/database', function(req, res) {
 	var results = [];
 
@@ -108,49 +104,39 @@ router.get('/database', function(req, res) {
 
 
 
-var fs = require('fs')
-router.get('/location', function(req, res) {
-	fs.readFile('/tmp/james.png', function(err, imgData) {
-		if (!err) { console.log("worked") } 
-	})
-});
-
-router.get('/create', function(req,res) {
-fs.readFile('/tmp/james.png', 'hex', function(err, imgData) {
-        console.log('imgData',imgData);
-        imgData = '\\x' + imgData;
-		  var client = getClient()
-		  client.connect()
-        client.query('insert into temp values (\'reggie\', $1)',
-                           [imgData],
-                           function(err, writeResult) {
-          console.log('err',err,'pg writeResult',writeResult);
-    });
-});
-});
-
-
-router.get('/image', function(req, res, next) {
-	query('select img from temp where imgname=\'lion.jpg\'  limit 1', [], 
-      function(err, readResult) {
-				console.log('err',err,'pg readResult',readResult);
-				var img = readResult.rows[0].img
-				fs.writeFile('/tmp/foo.jpg', readResult.rows[0].img);
-				res.contentType = 'image/jpg'
-				res.end(img, 'binary')
- 		 });
-});
 
 
 router.get('/image.html', function(req,res) {
   res.sendFile(path.join(__dirname, '../views/image.html'))
 })
 
+var insertImage = function(fileName, userID, caption, binaryImgData, callback) {
+	var client = getClient()
+	client.connect()
+   client.query('insert into image values ($1, $2, $3, $4)', [fileName, 'jappleseed', 'picture caption yay!', binaryImgData], function(err, writeResult) { 
+		//our man in the middle 
+		//do ...
+		callback(err, writeResult);
+	 })
+}
 
-//refacto both /upload s 
+//callback are getting fun :)
+var getImage = function(fileName, callback) {
+	var client = getClient()
+	client.connect()
+   client.query('select img from image where file_name = $1', [fileName], function(err, readResult) { 
+		//our man in the middle 
+		//do ...
+		callback(err, readResult);
+	 })
+}
+
+//done
 router.post('/upload/:file_name', function(req, res) {
 	//file is being uploaded in form in image.html
 	//req.files['files[]'].name
+	var userID = 'fake'
+	var caption = 'fake caption'
 	var fileName = req.params.file_name
 	console.log(fileName)
 	var filePath = '../' + uploadDestination + fileName
@@ -160,25 +146,27 @@ router.post('/upload/:file_name', function(req, res) {
 	fs.readFile(filePath, 'hex', function(err, imgData) {
 		  if (err) { console.log(err)}
         imgData = '\\x' + imgData;
-		  var client = getClient()
-		  client.connect()
-        client.query('insert into image values ($1, $2, $3, $4)', [fileName, 'jappleseed', 'picture caption yay!', imgData],
-           function(err, writeResult) {
+
+		  var callback = function(err, writeResult) {
 				 	if (err) {
           			console.log('err',err,'pg writeResult',writeResult);
 					} else {
 						//after query ends, retrieve file from db
-				 		client.query('select img from image where file_name = \'' + fileName + '\' ', function(err, readResult) {
-					 	console.log('err',err,'pg readResult',readResult);
-						var img = fs.readFileSync(filePath)
-						var img = readResult.rows[0].img
-						res.contentType = 'image/jpg'
-						res.end(img, 'binary')	
-					})
-				}
-			});
+						var callback = function(err, readResults) {
+								  console.log('err',err,'pg readResult',readResults);
+								  var img = fs.readFileSync(filePath)
+								  var img = readResults.rows[0].img
+								  res.contentType = 'image/jpg'
+								  res.end(img, 'binary')	
+
+						} 
+						getImage(fileName, callback)
+					}
+		  }
+		  insertImage(fileName, userID, caption, imgData, callback)
 	})
 })
+
 
 
 router.get('/upload/:file_name', function(req, res) {
@@ -189,56 +177,25 @@ router.get('/upload/:file_name', function(req, res) {
 	 res.end(img, 'binary')	
 });
 
+//done
 router.get('/caption/:file_name', function(req, res){
 	//return the caption associated with a given photo file_name
 	
 	var file_name = req.params.file_name
 	var q = "select caption from image where file_name = $1;"
 	var data = [file_name]
-	var callback = function(err, data) {console.log(data) }
+	var callback = function(err, data) {
+		var send = "oopsie no workie"
+		if (data.rows.length > 0)
+			send = data.rows[0].caption		
+		res.end(send.toString())			
+	}
 	query(q, data, callback)	
-	res.end()
-	res.send("I made it")
-
 })
 
 
 
 
-//reggie:todo
-//upload a photo (/image.html (post)), store it in db(/create), retrieve in db(/image), send back to browser ajaxy(/image.html)
-
-
-
-//create
-//read
-//update
-//delete
-
-//choose profile
-//add new res(redirect to new_resident.html)
-//get resident profile:password and login
-
-//add new res
-//post new info
-	//add a picture
-	//add a song
-	//add an interest
-//go to edit pictures
-//go to edit music
-
-//choose views
-//get home (go back)
-//get family view
-//get resident view
-
-//choose puzzle
-//log out back to view chooser
-//select puzzle
-//view slideshow
-
-//choosing a profile (home.html)
-//router.get('/home', 
 
 
 
@@ -247,6 +204,7 @@ router.get('/profile', function(req, res) {
 	res.sendFile(path.join(__dirname, "../MemorableFrontEnd/f_profile.html"))
 })
 
+//not done
 //update a puzzle difficulty from the user profile page
 router.put('/puzzle_difficulty', function(req, res) {
 	//will need to pass in user id, and puzzle difficulty
@@ -263,8 +221,13 @@ router.post('/tracks/:song_id/:user_id', function(req, res) {
 	var song_id = req.params.song_id;
 	var user_id = req.params.user_id;
 	var q = 'insert into song values ($1, $2)';
+<<<<<<< HEAD
 	var data = [song_id, 'jappleseed'];
 	var callback = function(err, data) { console.log(err) }
+=======
+	var data = [song_id, user_id];
+	var callback = function(err, data) { console.log("worked");console.log(err) }
+>>>>>>> 375a4421110bc488d44f92f0234a22b34b090836
 	query(q, data, callback)
 	res.end();
 })
