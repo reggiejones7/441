@@ -221,13 +221,10 @@ router.post('/tracks/:song_id/:user_id', function(req, res) {
 	var song_id = req.params.song_id;
 	var user_id = req.params.user_id;
 	var q = 'insert into song values ($1, $2)';
-<<<<<<< HEAD
 	var data = [song_id, 'jappleseed'];
 	var callback = function(err, data) { console.log(err) }
-=======
 	var data = [song_id, user_id];
 	var callback = function(err, data) { console.log("worked");console.log(err) }
->>>>>>> 375a4421110bc488d44f92f0234a22b34b090836
 	query(q, data, callback)
 	res.end();
 })
