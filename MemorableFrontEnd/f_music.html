@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-
+    <script type="text/javascript" src="../javascripts/spotify-web-api.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery-1.10.1.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,9 +30,6 @@
 </head>
 
 <body>
-
-    
-
     <!-- Page Content -->
     <div class="container memorable-screensize">
 
@@ -77,34 +75,34 @@
                         </div>
                         <div class="genres">
                             <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/soul.jpg" alt="" id="music1" onclick="genreHighlight(this.id)">
+                                <img class="genre img-responsive" src="img/fakeMusic/soul.jpg" alt="" id="soul" onclick="genreHighlight(this.id)">
                             </div>
                             <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/opera.jpg" alt="" id="music2" onclick="genreHighlight(this.id)">
+                                <img class="genre img-responsive" src="img/fakeMusic/opera.jpg" alt="" id="opera" onclick="genreHighlight(this.id)">
                             </div>
                             <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/rock.jpg" alt="" id="music3" onclick="genreHighlight(this.id)">
+                                <img class="genre img-responsive" src="img/fakeMusic/rock.jpg" alt="" id="rock" onclick="genreHighlight(this.id)">
                             </div>
                             <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/jazz.jpg" alt="" id="music4" onclick="genreHighlight(this.id)">
+                                <img class="genre img-responsive" src="img/fakeMusic/jazz.jpg" alt="" id="jazz" onclick="genreHighlight(this.id)">
                             </div>
                             <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/hiphop.jpg" alt="" id="music5" onclick="genreHighlight(this.id)">
+                                <img class="genre img-responsive" src="img/fakeMusic/hiphop.jpg" alt="" id="hip hop" onclick="genreHighlight(this.id)">
                             </div>
                             <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/bluegrass.jpg" alt="" id="music6" onclick="genreHighlight(this.id)">
+                                <img class="genre img-responsive" src="img/fakeMusic/bluegrass.jpg" alt="" id="bluegrass" onclick="genreHighlight(this.id)">
                             </div>
                             <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/classic_rock.jpg" alt="" id="music7" onclick="genreHighlight(this.id)">
+                                <img class="genre img-responsive" src="img/fakeMusic/classic_rock.jpg" alt="" id="classic rock" onclick="genreHighlight(this.id)">
                             </div>
                             <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/piano.jpg" alt="" id="music8" onclick="genreHighlight(this.id)">
+                                <img class="genre img-responsive" src="img/fakeMusic/piano.jpg" alt="" id="piano" onclick="genreHighlight(this.id)">
                             </div>
                             <div class="col-md-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/guitar.jpg" alt="" id="music9" onclick="genreHighlight(this.id)">
+                                <img class="genre img-responsive" src="img/fakeMusic/guitar.jpg" alt="" id="guitar" onclick="genreHighlight(this.id)">
                             </div>
                             <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/blues.jpg" alt="" id="music10" onclick="genreHighlight(this.id)">
+                                <img class="genre img-responsive" src="img/fakeMusic/blues.jpg" alt="" id="blues" onclick="genreHighlight(this.id)">
                             </div>
                         </div> 
                     </div>
@@ -122,11 +120,14 @@
                         <div class="row">
                             <div class="col-sm-2"></div>
                             <div class="search-bar-music col-sm-8">
+                                <form id="search-form">
                                 <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                </span>
+                                    <input type="text" id="query" value="" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" id="search" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                </form>
                                 </div>
                             </div>
                             <div class="col-sm-2"></div>
@@ -143,15 +144,9 @@
                                         </tr>
                                         <!-- For every song result, create a row
                                         Use ADD button to add to playlist. -->
-                                        <tr>
-                                            <td>
-                                                <img src="img/add.png" id="" class="add-song-button" onclick="">
-                                            </td>
-                                            <td>Song</td>
-                                            <td>Title</td>
-                                            <td>Time</td>
-                                        </tr>
                                     </thead>
+                                    <tbody  id="results">
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -186,6 +181,13 @@
 
     </div>
     <!-- /.container -->
+
+    <style>
+        .selectedGenre {
+            border: solid #B689BC;
+        }
+
+    </style>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -224,14 +226,16 @@
           $('.slick-prev').css({"width":"40px", "height":"90px", 
                                 "margin-top":"-10px", "top":"35%", "right":"10px"});
         });
-    </script>
 
-    <script>
         function genreHighlight(id) {
-            document.getElementById(id).style.border = "solid #FFE86B";
+            var docID = "#" + id;
+            if($(docID).hasClass("selectedGenre")) {
+                $(docID).removeClass("selectedGenre");
+            } else {
+                $(docID).addClass("selectedGenre");
+                loadTopSongs(id, 'in_rotation-best');
+            }
         }
-    </script>
-    <script>
         function slideNext() {
             $('.genres').slick('slickNext');
         }
@@ -240,6 +244,85 @@
         }
     </script>
 
+    <script>
+
+        jQuery.ajaxSettings.traditional = true; 
+        var spotifyApi = new SpotifyWebApi();
+        var host = 'http://developer.echonest.com/api/v4/';
+        var apiKey =  'Q02TB0UTUYB9F4CKX';
+
+        // Loads top 10 songs for the given genre
+        function loadTopSongs(genreName, preset) {
+            curStyle = preset.replace(/_/g, ' ');
+            curStyle = curStyle.replace('-best', '');
+            var url = host + 'playlist/static';
+            $.getJSON(url, {api_key:apiKey, bucket:['tracks', 'id:spotify-WW'],    
+                            limit:true, type:"genre-radio", 
+                            results:10, 
+                            genre_preset:preset,
+                            genre:genreName },
+                function(data) {
+                    var songs = data.response.songs;
+                    for (i = 0; i < songs.length; i++) {
+                        if (hasTrack(songs[i])) {   // check if song exists
+                            var sid = getSpotifyID(songs[i]);
+                            var uid = '1';
+                            $.post('/tracks/' + sid + '/' + uid, function(data) {
+                                console.log(data);
+                            });
+                        }
+                    }
+                });
+        }
+
+        // Returns spotify id for a given song
+        function getSpotifyID(song) {
+            var id = song.tracks[0].foreign_id;
+            var rawID = id.split(':')[2];
+            return rawID;
+        }
+
+        // search bar that calls search function with given query
+        document.getElementById('search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            search(document.getElementById('query').value);
+        });
+
+        function search(query) {
+            $("#results").empty();
+            spotifyApi.searchTracks(query, {limit: 10})
+            .then(function(data) {
+                var tracks = data.tracks.items;
+                for (var i = 0; i < tracks.length; i++) {
+                    var title = tracks[i].name; 
+                    var artist = tracks[i].artists[0].name;
+                    var ms = tracks[i].duration_ms;
+                    var time = convertTime(ms);
+                    $("#results").append("<tr><td><img src=img/add.png class=add-song-button></td><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+                }
+            }, function(err) {
+            console.error(err);
+            });
+        }
+
+        // convert milliseconds to min:sec
+        function convertTime(time) {
+            var num = Number(time);
+            var seconds = Math.floor(num / 1000);
+            var minutes = Math.floor(seconds / 60);
+            var seconds = seconds - (minutes * 60);
+            var format = minutes + ':' + seconds
+            return format;
+        }
+        // TODO: add song to list of songs
+
+        // TODO: display playlist
+        
+        // checks if song exists
+        function hasTrack(song) {
+            return song.tracks.length > 0;
+        }
+    </script>
 </body>
 
 </html>
