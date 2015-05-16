@@ -150,9 +150,6 @@
 	display:inline-block;
 }
 
-.favorite-pics {
-	/*width: 100px;*/
-}
 
 .fav-pics {
 	width:180px;
@@ -273,6 +270,10 @@
 .upload-button {
 	margin-bottom:10px;
 	margin-left:20px;
+}
+
+.personal-photos-row {
+	height:200px;
 }
 
  .fake-back-button-int {
