@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express'); 
 var router = express.Router();
 var path = require('path')
 var fs = require('fs')
@@ -8,7 +8,6 @@ var pg = require('pg');
 
 router.get('/spotify', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../views/spotify_playlist.html'))
-	
 });
 
 
@@ -48,7 +47,7 @@ var getClient = function() {
 									database: 'memorable',
 									//the host is going to be diff for cindy so we'll need to figure that out.
 									//https://github.com/brianc/node-postgres/issues/613
-									host: '/var/run/postgresql',
+									//host: '/var/run/postgresql',
 									port: 5432});
 }
 
@@ -222,8 +221,13 @@ router.post('/tracks/:song_id/:user_id', function(req, res) {
 	var song_id = req.params.song_id;
 	var user_id = req.params.user_id;
 	var q = 'insert into song values ($1, $2)';
+<<<<<<< HEAD
+	var data = [song_id, 'jappleseed'];
+	var callback = function(err, data) { console.log(err) }
+=======
 	var data = [song_id, user_id];
 	var callback = function(err, data) { console.log("worked");console.log(err) }
+>>>>>>> 375a4421110bc488d44f92f0234a22b34b090836
 	query(q, data, callback)
 	res.end();
 })
@@ -238,10 +242,12 @@ router.get('/tracks/:user_id', function(req, res) {
 	// lastly, hit localhost:3000/tracks/jappleseed in your browser and you should
 	// see the word fake_id_1 displayed to the page
 	var user_id = req.params.user_id;
+	console.log("died here")
 	var q = 'select id from song where user_id=$1';
 	var data = [user_id];
 	var callback = function(err, data) { 
 		console.log(err, data)
+		console.log('inside')
 		var song_ids = []
 		for (var i = 0; i < data.rows.length; i++) {
 			song_ids.push(data.rows[i].id)
@@ -250,6 +256,7 @@ router.get('/tracks/:user_id', function(req, res) {
 	}
 	query(q, data, callback)
 })
+
 
 module.exports = router;
 
