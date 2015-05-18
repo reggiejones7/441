@@ -8,12 +8,12 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-	<script src="js/jquery.min.js"></script>
+	<script src="/js/jquery.min.js"></script>
 	<script src="js/jquery.scrollzer.min.js"></script>
 	<script src="js/jquery.scrolly.min.js"></script>
 	<script src="js/skel.min.js"></script>
-    <script type="text/javascript" src="javascripts/spotify-web-api.js"></script>
-    <script type="text/javascript" src="javascripts/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/spotify-web-api.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 	<script src="js/skel-layers.min.js"></script>
 	<script src="js/init.js"></script>
 	<noscript>
@@ -323,15 +323,14 @@
 		</div>
 		
 		<div style="position:center;">
-<<<<<<< Updated upstream
 			<a id="music-back">
-			     <img style="height:80px;" src="../images/backward.png" role="button">
+			     <img style="height:80px;" src="img/backward.png" role="button">
             </a>
 			<a id="music-play">
-				<img style="height:80px;" src="../images/play.png">
+				<img style="height:80px;" src="img/play.png">
 			</a>
             <a id="music-next">
-			     <img style="height:80px;" src="../images/forward.png">
+			     <img style="height:80px;" src="img/forward.png">
             </a>
 		</div>
 		
@@ -347,7 +346,7 @@
                 audio.addEventListener('ended', function() {
                     // play next track if current song ends
                     playNextSong();
-                    $("#music-play").html('<img style="height:80px;" src="../images/pause.png">');
+                    $("#music-play").html('<img style="height:80px;" src="img/pause.png">');
                 });
                 // TODO: query track ids from database
                 var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '0eGsygTp906u18L0Oimnem'];
@@ -358,11 +357,11 @@
                 });
                 $("#music-next").click(function() {
                     playNextSong();
-                    $("#music-play").html('<img style="height:80px;" src="../images/pause.png">');
+                    $("#music-play").html('<img style="height:80px;" src="img/pause.png">');
                 });
                 $("#music-back").click(function() {
                     playPrevSong();
-                    $("#music-play").html('<img style="height:80px;" src="../images/pause.png">');
+                    $("#music-play").html('<img style="height:80px;" src="img/pause.png">');
                 });
 
             });
@@ -385,8 +384,8 @@
 
             // called when play or pause is clicked
 			function playSongs() {
-    			 pausei='<img style="height:80px;" src="../images/pause.png">';
-    			 playi='<img style="height:80px;" src="../images/play.png">';
+    			 pausei='<img style="height:80px;" src="img/pause.png">';
+    			 playi='<img style="height:80px;" src="img/play.png">';
          
     			// Update the Button
     			 var pause = $("#music-play").html() === pausei;
@@ -439,41 +438,6 @@
                 }
             }
         })();
-
-=======
-			<audio class="Audio" preload='none'>
-				<source src="Love Is All I Got.mp3" type='audio/mpeg' />
-			</audio>
-			
-			<img style="height:80px;" src="images/backward.png" role="button">
-			<a class="music-button">
-				<img style="height:80px;" src="images/play.png">
-			</a>
-			<img style="height:80px;" src="images/forward.png">
-		</div>
-		
-		<script type="text/javascript">
-			var Audio = document.getElementsByClassName('Audio'),
-			control = document.getElementsByClassName('music-button')[0];
- 
-			control.onclick = function () {
-     
-			pausei='<img style="height:80px;" src="images/pause.png">';
-			playi='<img style="height:80px;" src="images/play.png">';
-     
-			// Update the Button
-			var pause = control.innerHTML === pausei;
-			control.innerHTML = pause ? playi : pausei;
-
-			// Update the Audio
-			var method = pause ? 'pause' : 'play';
-			Audio[method]();
-						
-			// Prevent Default Action
-			return false;
-			
-			};
->>>>>>> Stashed changes
 		</script>
 		
 	</div>
