@@ -148,14 +148,19 @@
                                 "margin-top":"-10px", "top":"35%", "right":"10px"});
         });
     </script>
+    <style>
+        .selectedInterest {
+            border: solid #B689BC;
+        }
 
+    </style>
     <script>
         function interestHighlight(id) {
-            if (document.getElementById(id).style.border === "solid #B689BC") {
-                console.log("here");
-                document.getElementById(id).style.border = "none";
+            var docID = "#" + id;
+            if($(docID).hasClass("selectedInterest")) {
+                $(docID).removeClass("selectedInterest");
             } else {
-                document.getElementById(id).style.border = "solid #B689BC";
+                $(docID).addClass("selectedInterest");
             }
         }
     </script>
@@ -185,7 +190,8 @@
 </script>
 
  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-
+</body>
+</html>
 <!---submit files ajax--->
 <script>
 	$(document).ready(function() {
@@ -207,6 +213,3 @@
 	});
 </script>
 
-</body>
-
-</html>
