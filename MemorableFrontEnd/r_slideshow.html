@@ -3,24 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Memorable</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery.scrollzer.min.js"></script>
-	<script src="js/jquery.scrolly.min.js"></script>
-	<script src="js/skel.min.js"></script>
-	<script src="js/skel-layers.min.js"></script>
-	<script src="js/init.js"></script>
-	<noscript>
-		<link rel="stylesheet" href="css/skel.css" />
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/style-xlarge.css" />
-		<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-	</noscript>
-	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    <title>Memorable</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="js/jquery.scrollzer.min.js"></script>
+    <script type="text/javascript" src="js/jquery.scrolly.min.js"></script>
+    <script type="text/javascript" src="js/skel.min.js"></script>
+    <script type="text/javascript" src="js/spotify-web-api.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="css/skel.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style-xlarge.css" />
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    </noscript>
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 </head>
 <body style="padding: 0; margin: 0; font-family:Arial, Verdana;background-color:#fff;">
     <!-- it works the same with all jquery version from 1.x to 2.x -->
@@ -41,7 +42,7 @@
                 $PauseOnHover: 3,                                //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
 
                 $DragOrientation: 1,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
-                $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+                $ArrowKeyNavigation: true,                          //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
                 $SlideDuration: 800,                                //Specifies default duration (swipe) for slide in milliseconds
 
                 $SlideshowOptions: {                                //[Optional] Options to specify and enable slideshow or not
@@ -87,7 +88,7 @@
     </script>
     <!-- Jssor Slider Begin -->
     <!-- To move inline styles to css file/block, please specify a class name for each element. --> 
-	<div style="text-align:center;">
+    <div style="text-align:center;">
     <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 800px; height: 456px; background: #191919; overflow: hidden;">
 
         <!-- Loading Screen -->
@@ -105,35 +106,35 @@
             <div>
                 <img u="image" src="img/alila/01.jpg" />
                 <img u="thumb" src="img/alila/thumb-01.jpg" />
-				<div align="center"
-						style="background: #EB5100; background-color: white; 
-						color: black; font-size: 20px; line-height: 30px; text-align: center; filter: inherit;
-						position: absolute; top: 90%; left: 20%; width: 60%; height: 30px;
-						transform: rotate(0deg) scale(1); opacity: 0.80;"> 
+                <div align="center"
+                        style="background: #EB5100; background-color: white; 
+                        color: black; font-size: 20px; line-height: 30px; text-align: center; filter: inherit;
+                        position: absolute; top: 90%; left: 20%; width: 60%; height: 30px;
+                        transform: rotate(0deg) scale(1); opacity: 0.80;"> 
                     "Image caption"
-				</div>
-				</div>
+                </div>
+                </div>
             <div>
                 <img u="image" style="max-width:100%; max-height:100%; margin:auto; display:block;" src="img/alila/02.jpg" />
                 <img u="thumb" style="
-								text-align: center;
-								overflow: hidden;
-								position; relative;
-								left: 100%;
-								margin-left: -200%;"
-								src="img/alila/thumb-02.jpg" />
+                                text-align: center;
+                                overflow: hidden;
+                                position; relative;
+                                left: 100%;
+                                margin-left: -200%;"
+                                src="img/alila/thumb-02.jpg" />
                 <div align="center"
-						style="background: #EB5100; background-color: white; 
-						color: black; font-size: 20px; line-height: 30px; text-align: center; filter: inherit;
-						position: absolute; top: 90%; left: 20%; width: 60%; height: 30px;
-						transform: rotate(0deg) scale(1); opacity: 0.80;"> 
+                        style="background: #EB5100; background-color: white; 
+                        color: black; font-size: 20px; line-height: 30px; text-align: center; filter: inherit;
+                        position: absolute; top: 90%; left: 20%; width: 60%; height: 30px;
+                        transform: rotate(0deg) scale(1); opacity: 0.80;"> 
                     "Image caption"
-				</div>
+                </div>
             </div>
             <div>
                 <img u="image" src="img/alila/03.jpg" />
                 <img u="thumb" src="img/alila/thumb-03.jpg" />
-				</div>
+                </div>
             <div>
                 <img u="image" src="img/alila/04.jpg" />
                 <img u="thumb" src="img/alila/thumb-04.jpg" />
@@ -311,51 +312,134 @@
         </div>
         <!--#endregion Thumbnail Navigator Skin End -->
         <a style="display: none" href="http://www.jssor.com">slider in html</a>
-		
+        
     </div>
-	</div>
-	<div style="text-align:center;">
-		<hr style="height:3px; border:none; color:black; background-color:black;" />
-		<div>
-			<p> Song name - artist </p>
-		</div>
-		
-		<div style="position:center;">
-			<audio class="Audio" preload='none'>
-				<source src="Love Is All I Got.mp3" type='audio/mpeg' />
-			</audio>
-			
-			<img style="height:80px;" src="images/backward.png" role="button">
-			<a class="music-button">
-				<img style="height:80px;" src="images/play.png">
-			</a>
-			<img style="height:80px;" src="images/forward.png">
-		</div>
-		
-		<script type="text/javascript">
-			var Audio = document.getElementsByClassName('Audio'),
-			control = document.getElementsByClassName('music-button')[0];
- 
-			control.onclick = function () {
-     
-			pausei='<img style="height:80px;" src="images/pause.png">';
-			playi='<img style="height:80px;" src="images/play.png">';
-     
-			// Update the Button
-			var pause = control.innerHTML === pausei;
-			control.innerHTML = pause ? playi : pausei;
+    </div>
+    <div style="text-align:center;">
+        <hr style="height:3px; border:none; color:black; background-color:black;" />
+        <div>
+            <p id="song-info"></p>
+        </div>
+        
+        <div style="position:center;">
+            <a id="music-back">
+                 <img style="height:80px;" src="img/backward.png" role="button">
+            </a>
+            <a id="music-play">
+                <img style="height:80px;" src="img/play.png">
+            </a>
+            <a id="music-next">
+                 <img style="height:80px;" src="img/forward.png">
+            </a>
+        </div>
+        
+        <script type="text/javascript">
+        (function() {
+            var SERVICE = "https://api.spotify.com/v1/tracks?ids=";
+            var curSongIndex = 0;
+            var curSongs = [];
+            var audio = new Audio();
 
-			// Update the Audio
-			var method = pause ? 'pause' : 'play';
-			Audio[method]();
-						
-			// Prevent Default Action
-			return false;
-			
-			};
-		</script>
-		
-	</div>
+            $(document).ready(function() {
+
+                audio.addEventListener('ended', function() {
+                    // play next track if current song ends
+                    playNextSong();
+                    $("#music-play").html('<img style="height:80px;" src="img/pause.png">');
+                });
+                // TODO: query track ids from database
+                var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '0eGsygTp906u18L0Oimnem'];
+                var sidString = sids.join();
+                fetchData(sidString, addSongs);
+                $("#music-play").click(function() {
+                    playSongs();
+                });
+                $("#music-next").click(function() {
+                    playNextSong();
+                    $("#music-play").html('<img style="height:80px;" src="img/pause.png">');
+                });
+                $("#music-back").click(function() {
+                    playPrevSong();
+                    $("#music-play").html('<img style="height:80px;" src="img/pause.png">');
+                });
+
+            });
+            
+            // ajax request to get tracks given params (track ids)
+            function fetchData(params, functionName) { 
+                $.ajax({
+                    url: 'https://api.spotify.com/v1/tracks?ids=' + params,
+                    success: function(response) {
+                        addSongs(response);
+                    }
+                });
+            }
+
+            // initialize list of current songs
+            function addSongs(songs) {
+                curSongIndex = 0;
+                curSongs = songs.tracks;
+            }
+
+            // called when play or pause is clicked
+            function playSongs() {
+                 pausei='<img style="height:80px;" src="img/pause.png">';
+                 playi='<img style="height:80px;" src="img/play.png">';
+         
+                // Update the Button
+                 var pause = $("#music-play").html() === pausei;
+                 if(pause) {
+                    $("#music-play").html(playi);
+                 } else {
+                    $("#music-play").html(pausei);
+                 }
+                 // Update the Audio
+                 if(pause) {
+                    audio.pause();
+                 } else {
+                    if(curSongs[curSongIndex]) {
+                        playTrack(curSongs[curSongIndex]);
+                    }
+                 }
+                 // Prevent Default Action
+                 return false;
+            }
+
+            // plays given track and populates track title and artist data
+            function playTrack(track) {
+                audio.setAttribute('src', track.preview_url);
+                var title = track.name;
+                var artist = track.artists[0].name;
+                $("#song-info").html(title + " by " + artist);
+                audio.play();
+            }
+
+            // plays next song in list of current songs
+            function playNextSong() {
+                while (curSongIndex < curSongs.length) {
+                    curSongIndex++;
+                    var song = curSongs[curSongIndex];
+                    if (song) {
+                        playTrack(song);
+                        break;
+                    }
+                }
+            }
+
+            // plays previous song in list of current songs
+            function playPrevSong() {
+                while (curSongIndex > 0) {
+                    var song = curSongs[--curSongIndex];
+                    if (song) {
+                        playTrack(song);
+                        break;
+                    }
+                }
+            }
+        })();
+        </script>
+        
+    </div>
 
     <!-- Jssor Slider End -->
 </body>
