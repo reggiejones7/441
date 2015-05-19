@@ -165,12 +165,9 @@
                                     <th>Artist</th>
                                     <th>Time</th>
                                 </tr>
-                                <tr>
-                                    <td>Song</td>
-                                    <td>Title</td>
-                                    <td>Time</td>
-                                </tr>
                             </thead>
+                            <tbody id="playlist">
+                            </tbody>
                         </table>
                     </div>
                  <!-- /.End Playlist Tab -->
@@ -225,6 +222,12 @@
                                 "margin-top":"-10px", "top":"35%", "position":"none"});
           $('.slick-prev').css({"width":"40px", "height":"90px", 
                                 "margin-top":"-10px", "top":"35%", "right":"10px"});
+        
+          // load playlist
+          var uid = '1';
+        $.get('/tracks/' + uid, function(data) {
+            console.log(data);
+        }); 
         });
 
         function genreHighlight(id) {
@@ -299,14 +302,15 @@
                     var artist = tracks[i].artists[0].name;
                     var ms = tracks[i].duration_ms;
                     var time = convertTime(ms);
-                    $("#results").append("<tr><td><a class='addSong' id=" + trackId + "><img class=add-song-button src=img/add.png></a></td><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+                    $("#results").append("<tr><td><img class='addSong add-song-button' id=" + trackId  + " src=img/add.png></td><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
                 }
-                $(".addSong").each(function() {
+                // Add song to list of songs when clicked
+                $(".addSong").each( function() {
                     $(this).click(function() {
                         var uid = '1';
                         var trackId = this.id;
+                        $(this).attr('src', 'img/delete.png');
                         $.post('/tracks/' + trackId + '/' + uid, function(data) {
-                            console.log("here");
                             console.log(data);
                         }); 
                     });
@@ -325,7 +329,6 @@
             var format = minutes + ':' + seconds
             return format;
         }
-        // TODO: add song to list of songs
 
         // TODO: display playlist
         
