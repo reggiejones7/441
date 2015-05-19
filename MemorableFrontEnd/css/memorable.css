@@ -11,9 +11,32 @@
  }*/
 
 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+.memorable-header {
+	top:0px;
+	left:0px;
+	height:80px;
+	background-color:#4ACAA8;
+}
+
+.header-logo {
+	display: block;
+	height:80px;
+	margin:auto ;
+}
+
 .memorable-screensize {
-	height:500px;
-	width:700px;
+	/*height:500px;*/
+	/*width:700px;*/
 }
 
  .spacing {
@@ -22,7 +45,7 @@
 
 .page-title {
  	font-size:30px;
- 	margin-top: -15px;
+ 	margin-top: 45px;
  }
 
  .memorable-title {
@@ -35,8 +58,8 @@
  .search-bar {
  	display: block;
  	margin:auto;
- 	padding-top:20px;
- 	padding-bottom:15px;
+ 	padding-top:35px;
+ 	padding-bottom:5px;
  }
 
  .home-button {
@@ -62,7 +85,7 @@
  * HOME CSS
  */
 .resident-row {
-	margin:20px;
+	margin-top:30px;
 }
 
 .resident-name {
@@ -72,8 +95,9 @@
 .resident-pic {
 	display: block;
  	margin:auto;
-	width:130px;
-	height:130px;
+	width:140px;
+	height:140px;
+	border-radius:20px;
 }
 
 
@@ -85,7 +109,7 @@
  .add-resident-button {
  	position: absolute;
  	top: 20px;
- 	left: 20px;
+ 	right: 20px;
  	width:35px;
  	height:35px;
  }
@@ -171,25 +195,26 @@
  */
  .user-icon {
  	position: absolute;
- 	top: 30px;
+ 	top: 8px;
  	right: 30px;
- 	width:75px;
- 	height:75px;
+ 	width:65px;
+ 	height:65px;
     border: 1px solid #000000;
+    border-radius:20px;
  }
 
  .user-name {
  	position: absolute;
- 	font-size:22px;
- 	top: 37px;
- 	right: 120px;
+ 	font-size:20px;
+ 	top: 12px;
+ 	right: 110px;
  }
 
 .user-edit {
 	position: absolute;
 	font-size:15px;
-	top: 55px;
- 	right: 112px;
+	top: 27px;
+ 	right: 104px;
  	width:80px;
 	height:40px;
 	padding-top:20px;
@@ -223,12 +248,13 @@
 .puzzle-image {
 	display: block;
  	margin:auto;
- 	width:130px;
- 	height:130px;
+ 	width:155px;
+ 	height:155px;
+ 	border-radius:20px;
 }
 
 .puzzles-row {
-	margin:10px;
+	margin-top: 20px;
 }
 
 
