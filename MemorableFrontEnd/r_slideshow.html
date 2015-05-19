@@ -317,8 +317,8 @@
     </div>
     <div style="text-align:center;">
         <hr style="height:3px; border:none; color:black; background-color:black;" />
-        <div>
-            <p id="song-info"></p>
+        <div id="song-info">
+            <br/>
         </div>
         
         <div style="position:center;">
@@ -341,7 +341,7 @@
             var audio = new Audio();
 
             $(document).ready(function() {
-
+                $("#song-info").attr("visibility", "hidden");
                 audio.addEventListener('ended', function() {
                     // play next track if current song ends
                     playNextSong();
@@ -410,6 +410,7 @@
                 audio.setAttribute('src', track.preview_url);
                 var title = track.name;
                 var artist = track.artists[0].name;
+                $("#song-info").attr("visibility", "visible");
                 $("#song-info").html(title + " by " + artist);
                 audio.play();
             }

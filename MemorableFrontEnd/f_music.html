@@ -294,14 +294,25 @@
             .then(function(data) {
                 var tracks = data.tracks.items;
                 for (var i = 0; i < tracks.length; i++) {
+                    var trackId = tracks[i].id;
                     var title = tracks[i].name; 
                     var artist = tracks[i].artists[0].name;
                     var ms = tracks[i].duration_ms;
                     var time = convertTime(ms);
-                    $("#results").append("<tr><td><img src=img/add.png class=add-song-button></td><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+                    $("#results").append("<tr><td><a class='addSong' id=" + trackId + "><img class=add-song-button src=img/add.png></a></td><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
                 }
+                $(".addSong").each(function() {
+                    $(this).click(function() {
+                        var uid = '1';
+                        var trackId = this.id;
+                        $.post('/tracks/' + trackId + '/' + uid, function(data) {
+                            console.log("here");
+                            console.log(data);
+                        }); 
+                    });
+                });
             }, function(err) {
-            console.error(err);
+                console.error(err);
             });
         }
 
