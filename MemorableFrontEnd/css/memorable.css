@@ -33,6 +33,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     background: transparent;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	/*font-weight: lighter;*/
+	/*font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;*/
+}
+
+
 .memorable-header {
 	top:0px;
 	left:0px;
@@ -149,8 +156,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
  	display: block;
  	width:130px;
  	float: right;
- 	/*margin-right: 30px;*/
- 	padding-bottom:30px;
+ 	border-radius: 20px;
  }
 
 .edit-button {
@@ -200,6 +206,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	width:180px;
 }
 
+.fav-pic {
+	border-radius:20px;
+}
+
 .music {
 	width: 500px;
 	height:300px;
@@ -210,6 +220,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .info-row {
 	padding-top:30px;
+	height:190px;
+}
+
+.radio-color {
+	background-color: #8AD2BF;
+	color:#FFFFFF;
 }
 
 
@@ -279,8 +295,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
  	border-radius:20px;
 }
 
+.puzzles-table {
+	padding-top:50px;
+	padding-bottom:30px;
+}
+
 .puzzles-row {
-	margin-top: 20px;
+
 }
 
 
