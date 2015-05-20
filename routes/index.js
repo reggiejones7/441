@@ -26,7 +26,7 @@ router.use(multer({dest: './' + uploadDestination,
 }))
 
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.redirect('/home.html')
 });
 
@@ -47,6 +47,7 @@ var getClient = function() {
 									database: 'memorable',
 									//the host is going to be diff for cindy so we'll need to figure that out.
 									//https://github.com/brianc/node-postgres/issues/613
+									//fedora = uncomment out next line
 									//host: '/var/run/postgresql',
 									port: 5432});
 }
@@ -60,49 +61,6 @@ var query = function(query, data, callback) {
 }
 
 
-//first demo
-router.get('/database', function(req, res) {
-	var results = [];
-
-	// Get a Postgres client from the connection pool
-	/*
-	pg.connect(connectionString, function(err, client, done) {
-
-		  // SQL Query > Select Data
-		  var query = client.query("SELECT * FROM admin");
-		  // Stream results back one row at a time
-		  query.on('row', function(row) {
-		  	results.push(row);
-		  });
-		  // After all data is returned, close connection and return results
-		  query.on('end', function() {
-		 	 client.end();
-		 	 return res.json(results);
-		  });
-
-		  // Handle Errors
-		  if(err) {
-		 	 console.log(err);
-		  }
-	});
-	*/
-	var client = new pg.Client({user: 'reggiej7',
-									database: 'reggiej7',
-									host: '/var/run/postgresql',
-									port: 5432});
-
-	client.connect()
-	var query = client.query({text: 'SELECT * FROM admin'});
-	console.log(query)
-	query.on('row', function(row) {
-		console.log("zzzzzzzzzzzzz")
-		res.render('index', { title: JSON.stringify(row) });
-	});
-	query
-	client.end()
-});
-
-
 
 
 
@@ -113,7 +71,7 @@ router.get('/image.html', function(req,res) {
 var insertImage = function(fileName, userID, caption, binaryImgData, callback) {
 	var client = getClient()
 	client.connect()
-   client.query('insert into image values ($1, $2, $3, $4)', [fileName, 'jappleseed', 'picture caption yay!', binaryImgData], function(err, writeResult) { 
+   client.query('insert into image values ($1, $2, $3, $4)', [fileName, 'jappleseed', caption, binaryImgData], function(err, writeResult) { 
 		//our man in the middle 
 		//do ...
 		callback(err, writeResult);
@@ -131,16 +89,18 @@ var getImage = function(fileName, callback) {
 	 })
 }
 
+
+
 //done
-router.post('/upload/:file_name', function(req, res) {
+router.post('/upload/:file_name/:caption', function(req, res) {
 	//file is being uploaded in form in image.html
 	//req.files['files[]'].name
 	var userID = 'fake'
-	var caption = 'fake caption'
+	var caption = req.params.caption
 	var fileName = req.params.file_name
-	console.log(fileName)
 	var filePath = '../' + uploadDestination + fileName
 	filePath = path.join(__dirname, filePath)
+	
 
 	//put file in db
 	fs.readFile(filePath, 'hex', function(err, imgData) {
@@ -170,29 +130,34 @@ router.post('/upload/:file_name', function(req, res) {
 
 
 router.get('/upload/:file_name', function(req, res) {
-	var app = require('../app')
-	console.log(app.locals.homeDir)	
-	 var img = fs.readFileSync(path.join(__dirname, '../uploads/' + req.params.file_name))
-	 res.contentType = 'image/jpg'
-	 res.end(img, 'binary')	
+	 //var img = fs.readFileSync(path.join(__dirname, '../uploads/' + req.params.file_name))
+	var callback = function(err, readResults) { 
+		if (readResults.rows.length > 0) {
+			var img = readResults.rows[0].img	
+			console.log('iinside')
+			res.contentType = 'image'
+			res.end(img, 'binary')
+		} else {
+			res.end("Sorry that picture doesn't exist")
+		}
+	}
+	 getImage(req.params.file_name, callback)
 });
 
 //done
 router.get('/caption/:file_name', function(req, res){
 	//return the caption associated with a given photo file_name
-	
 	var file_name = req.params.file_name
 	var q = "select caption from image where file_name = $1;"
 	var data = [file_name]
 	var callback = function(err, data) {
-		var send = "oopsie no workie"
+		var send = "congrats on finishing the puzzle!!!"
 		if (data.rows.length > 0)
 			send = data.rows[0].caption		
 		res.end(send.toString())			
 	}
 	query(q, data, callback)	
 })
-
 
 
 
@@ -252,6 +217,38 @@ router.get('/tracks/:user_id', function(req, res) {
 		res.end(song_ids.toString())
 	}
 	query(q, data, callback)
+})
+
+
+var uploadFolderPath = function(fileName) {
+	var filePath = '../' + uploadDestination + fileName
+	filePath = path.join(__dirname, filePath)
+	return filePath
+}
+
+router.get('/play/:fileName', function(req, res) {
+	//first rewrite file under the uploads/ folder ie hacky
+	//	this is so we dont have to send binary image
+	console.log('inside')	
+	var fileName = req.params.fileName
+	var filePath = '../' + uploadDestination + fileName
+	filePath = path.join(__dirname, filePath)
+	var img = fs.readFileSync(filePath)
+	fs.writeFileSync('uploads/picture.jpg', fs.readFileSync('uploads/' + fileName))		
+
+	//explanation of hackiness between this and /uploads/:filename
+	// when you click on a puzzle, you get sent to /play/puzzlename
+	// then this route copies the puzzlename image into uploads/picture.jpg
+	// so that the image src in r_play can call uploads/picture.jpg
+	// (a way around part ofthis would be to apend and image with that src before snappuzzle_
+  res.sendFile(path.join(__dirname, '../MemorableFrontEnd/r_play.html'))
+})
+
+
+router.get('/uploads/:fileName', function(req, res) {
+	var fileName = req.params.fileName
+
+  res.sendFile(path.join(__dirname, '../uploads/'+fileName))
 })
 
 

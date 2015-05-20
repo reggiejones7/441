@@ -114,6 +114,7 @@
 					 <form id="uploadForm" enctype="multipart/form-data" method="post">
 						 <input type="file" id="files" name="files[]" multiple />
 						 <input type="submit" id="go!" id="submit" ></input>
+						 <input type="text" id="caption" />
 					 </form>
 					 <output id="list"></output>
             </div>
@@ -271,16 +272,22 @@
 <script>
 	$(document).ready(function() {
 		$('#uploadForm').submit(function() {
+			var fileName = $('li').text() //hacky...
+			var caption = $('#caption').val()
+			var urll = '/upload/' + fileName + '/' + caption;
+			console.log(urll)
 			$(this).ajaxSubmit({
-				url: '/upload/' + $('li').text(), //will need to change this for multiple files. 
+				url: urll, 
 				error: function(xhr) {
 					status('Error: ' + xhr.status)
 				},
 				success: function(response) {
 					console.log("suuuuuccccessssss")
-					//on success, now fetch the image to display it (as opposed to sending in the response?)		
-					$('output').append("<img src='/upload/" + $('li').text() + "' />")		
-
+					//Cindy/Tiffany-you can display the newly uploaded photo however you want...
+					$('.table').append("<img src='/upload/" + $('li').text() + "' />")		
+					
+					document.getElementById('uploadForm').reset()
+					$('output').val('')
 				}
 			});
 			return false;
