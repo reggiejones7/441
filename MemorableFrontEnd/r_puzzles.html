@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="shortcut icon" href="img/icon.jpg">
     <title>Memorable</title>
 
     <!-- Bootstrap Core CSS -->
@@ -30,7 +31,7 @@
     </div>
 
     <!-- Page Content -->
-    <div class="container memorable-screensize">
+    <div class="container restrict-screensize">
 
 
         <!-- Go Back -->
@@ -46,7 +47,7 @@
         <div class="user-name">Grace</div>
 
         <a href="f_profile.html">
-            <div class="user-edit">Edit Profile</div>
+            <div class="user-edit text-center">Edit Profile</div>
         </a>
 
 
@@ -64,62 +65,79 @@
         <!-- /.row -->
 
 
-
-<!--         <div class="row">
-            <div class="seperate-puzzles"></div>
-        </div>
- -->
-
-
         <!-- Puzzles Row -->
-        <div class="puzzles-row row">
-            <div class="col-sm-3">
-                <a href="/play/family1.jpg">
-                    <img class="puzzle-image img-responsive" src="img/fakePuzzles/family1.jpg" alt="">
-                </a>
+        <div class="puzzles-table row" style="height: 370px; overflow-y: scroll; overflow-x:hidden">
+            <div class="puzzles-row row">
+                <div class="col-sm-3">
+                    <a href="r_play.html">
+                        <img class="puzzle-image img-responsive" src="img/fakePuzzles/family1.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="#">
+                        <img class="puzzle-image img-responsive" src="img/fakePuzzles/family4.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="#">
+                        <img class="puzzle-image img-responsive" src="img/fakeInterests/farm2.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="#">
+                        <img class="puzzle-image img-responsive" src="img/fakeInterests/piano.jpg" alt="">
+                    </a>
+                </div>
             </div>
-            <div class="col-sm-3">
-                <a href="/play/family4.jpg">
-                    <img class="puzzle-image img-responsive" src="img/fakePuzzles/family4.jpg" alt="">
-                </a>
+            <br>
+            <div class="puzzles-row row">
+                <div class="col-sm-3">
+                    <a href="#">
+                        <img class="puzzle-image img-responsive" src="img/fakeInterests/farm1.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="#">
+                        <img class="puzzle-image img-responsive" src="img/fakePuzzles/family2.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="#">
+                        <img class="puzzle-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="#">
+                        <img class="puzzle-image img-responsive" src="img/fakeInterests/garden.jpg" alt="">
+                    </a>
+                </div>
             </div>
-            <div class="col-sm-3">
-                <a href="/play/farm2.jpg">
-                    <img class="puzzle-image img-responsive" src="img/fakeInterests/farm2.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-3">
-                <a href="/play/piano.jpg">
-                    <img class="puzzle-image img-responsive" src="img/fakeInterests/piano.jpg" alt="">
-                </a>
-            </div>
-        </div>
-        <br>
-        <div class="puzzles-row row">
-            <div class="col-sm-3">
-                <a href="/play/farm1.jpg">
-                    <img class="puzzle-image img-responsive" src="img/fakeInterests/farm1.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-3">
-                <a href="/play/family2.jpg">
-                    <img class="puzzle-image img-responsive" src="img/fakePuzzles/family2.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-sm-3">
-                <a href="/play/family3.jpg">
-                    <img class="puzzle-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
-                </a>
+            <br>
+            <div class="puzzles-row row">
+                <div class="col-sm-3">
+                    <a href="#">
+                        <img class="puzzle-image img-responsive" src="img/fakeInterests/golf.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="#">
+                        <img class="puzzle-image img-responsive" src="img/fakeInterests/beach.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="#">
+                        <img class="puzzle-image img-responsive" src="img/fakeInterests/dog.jpg" alt="">
+                    </a>
+                </div>
             </div>
         </div>
         <!-- /.row -->
 
        
-                <!-- View Slideshow -->
+        <!-- View Slideshow -->
         <div class="slideshow-button-row">
-            <a href="r_slideshow.html">
-                <img src="img/tempSlide.jpg" class="slideshow-button">
-            </a>
+            <div class="slideshow-button text-center" onclick=gotoSlideshow()>View Slideshow
+            </div>
         </div>
         <!-- /.row -->
         
@@ -133,6 +151,12 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        function gotoSlideshow() {
+            window.location = "r_slideshow.html"; 
+        }
+    </script>
 
 </body>
 
