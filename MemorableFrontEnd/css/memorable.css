@@ -11,9 +11,51 @@
  }*/
 
 
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 20%;
+    float: left;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	/*font-weight: lighter;*/
+	/*font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;*/
+}
+
+
+.memorable-header {
+	top:0px;
+	left:0px;
+	height:90px;
+	background-color:#4ACAA8;
+}
+
+.header-logo {
+	display: block;
+	height:80px;
+	margin:auto ;
+}
+
 .memorable-screensize {
-	height:500px;
-	width:700px;
+	/*height:500px;*/
+	/*width:700px;*/
 }
 
  .spacing {
@@ -22,7 +64,7 @@
 
 .page-title {
  	font-size:30px;
- 	margin-top: -15px;
+ 	margin-top:30px;
  }
 
  .memorable-title {
@@ -35,8 +77,8 @@
  .search-bar {
  	display: block;
  	margin:auto;
- 	padding-top:20px;
- 	padding-bottom:15px;
+ 	padding-top:35px;
+ 	padding-bottom:5px;
  }
 
  .home-button {
@@ -62,7 +104,7 @@
  * HOME CSS
  */
 .resident-row {
-	margin:20px;
+	margin-top:30px;
 }
 
 .resident-name {
@@ -72,8 +114,9 @@
 .resident-pic {
 	display: block;
  	margin:auto;
-	width:130px;
-	height:130px;
+	width:140px;
+	height:140px;
+	border-radius:20px;
 }
 
 
@@ -85,7 +128,7 @@
  .add-resident-button {
  	position: absolute;
  	top: 20px;
- 	left: 20px;
+ 	right: 20px;
  	width:35px;
  	height:35px;
  }
@@ -100,18 +143,20 @@
  	font-size: 30px;
  	margin-top:-10px;
  	padding-bottom:16px;
+ 	padding-left:15px;
  }
 
  .profile-puzzle-diff {
  	font-size: 17px;
  	padding-bottom:3px;
+ 	padding-left:15px;
  }
 
  .profile-image {
  	display: block;
  	width:130px;
- 	margin-left: 150px;
- 	padding-bottom:30px;
+ 	float: right;
+ 	border-radius: 20px;
  }
 
 .edit-button {
@@ -125,13 +170,13 @@
 .edit-photos {
 	margin:auto;
 	margin-left:50px;
-	width:70%;
+	width:80%;
 }
 
 .edit-music {
 	margin:auto;
 	margin-right:50px;
-	width:70%;
+	width:80%;
 }
 
 .edit-row {
@@ -146,13 +191,23 @@
 	height:215px;
 }
 
+.favorite-pics {
+	padding-top:5px;
+}
+
 .fav-title {
 	display:inline-block;
+	margin-top:10px;
+	margin-bottom:10px;
 }
 
 
 .fav-pics {
 	width:180px;
+}
+
+.fav-pic {
+	border-radius:20px;
 }
 
 .music {
@@ -163,6 +218,16 @@
 	margin: auto;
 }
 
+.info-row {
+	padding-top:30px;
+	height:190px;
+}
+
+.radio-color {
+	background-color: #8AD2BF;
+	color:#FFFFFF;
+}
+
 
 
 
@@ -171,25 +236,27 @@
  */
  .user-icon {
  	position: absolute;
- 	top: 30px;
+ 	top: 8px;
  	right: 30px;
- 	width:75px;
- 	height:75px;
-    border: 1px solid #000000;
+ 	width:65px;
+ 	height:65px;
+    border: 1px solid #FFFFFF;
+    border-radius:20px;
  }
 
  .user-name {
  	position: absolute;
- 	font-size:22px;
- 	top: 37px;
- 	right: 120px;
+ 	font-size:20px;
+ 	top: 12px;
+ 	right: 110px;
+ 	color:#FFFFFF;
  }
 
 .user-edit {
 	position: absolute;
 	font-size:15px;
-	top: 55px;
- 	right: 112px;
+	top: 27px;
+ 	right: 104px;
  	width:80px;
 	height:40px;
 	padding-top:20px;
@@ -223,12 +290,18 @@
 .puzzle-image {
 	display: block;
  	margin:auto;
- 	width:130px;
- 	height:130px;
+ 	width:155px;
+ 	height:155px;
+ 	border-radius:20px;
+}
+
+.puzzles-table {
+	padding-top:50px;
+	padding-bottom:30px;
 }
 
 .puzzles-row {
-	margin:10px;
+
 }
 
 
@@ -371,4 +444,13 @@
 .make-profile {
 	padding-top:30px;
 	height:100px;
+}
+
+
+/*!
+ * PUZZLE CSS
+ */
+.puzzle-title {
+	font-size: 25px;
+	margin-bottom:10px;
 }

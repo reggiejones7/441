@@ -26,7 +26,7 @@ router.use(multer({dest: './' + uploadDestination,
 }))
 
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.redirect('/home.html')
 });
 
@@ -47,6 +47,7 @@ var getClient = function() {
 									database: 'memorable',
 									//the host is going to be diff for cindy so we'll need to figure that out.
 									//https://github.com/brianc/node-postgres/issues/613
+									//fedora = uncomment out next line
 									//host: '/var/run/postgresql',
 									port: 5432});
 }
@@ -60,54 +61,10 @@ var query = function(query, data, callback) {
 }
 
 
-//first demo==remove all of this
-router.get('/database', function(req, res) {
-	var results = [];
-
-	// Get a Postgres client from the connection pool
-	/*
-	pg.connect(connectionString, function(err, client, done) {
-
-		  // SQL Query > Select Data
-		  var query = client.query("SELECT * FROM admin");
-		  // Stream results back one row at a time
-		  query.on('row', function(row) {
-		  	results.push(row);
-		  });
-		  // After all data is returned, close connection and return results
-		  query.on('end', function() {
-		 	 client.end();
-		 	 return res.json(results);
-		  });
-
-		  // Handle Errors
-		  if(err) {
-		 	 console.log(err);
-		  }
-	});
-	*/
-	var client = new pg.Client({user: 'reggiej7',
-									database: 'reggiej7',
-									host: '/var/run/postgresql',
-									port: 5432});
-
-	client.connect()
-	var query = client.query({text: 'SELECT * FROM admin'});
-	console.log(query)
-	query.on('row', function(row) {
-		console.log("zzzzzzzzzzzzz")
-		res.render('index', { title: JSON.stringify(row) });
-	});
-	query
-	client.end()
-});
-
-
 
 
 
 router.get('/image.html', function(req,res) {
-console.log("inside")
   res.sendFile(path.join(__dirname, '../views/image.html'))
 })
 
@@ -131,6 +88,8 @@ var getImage = function(fileName, callback) {
 		callback(err, readResult);
 	 })
 }
+
+
 
 //done
 router.post('/upload/:file_name/:caption', function(req, res) {
@@ -188,7 +147,6 @@ router.get('/upload/:file_name', function(req, res) {
 //done
 router.get('/caption/:file_name', function(req, res){
 	//return the caption associated with a given photo file_name
-	console.log("no")	
 	var file_name = req.params.file_name
 	var q = "select caption from image where file_name = $1;"
 	var data = [file_name]
@@ -261,21 +219,6 @@ router.get('/tracks/:user_id', function(req, res) {
 	query(q, data, callback)
 })
 
-/*
-router.get('/caption/:img_name', function(req, res) {
-	var img_name = req.params.img_name;
-	var q = 'select caption from image where file_name=$1 limit 1';
-	var data = [img_name]
-	var callback = function(err, result) {
-		if (err) {console.log(err)}
-		var caption = result.rows[0].caption
-		res.end(caption)
-
-	
-	}
-	query(q, data, callback)
-})
-*/
 
 var uploadFolderPath = function(fileName) {
 	var filePath = '../' + uploadDestination + fileName
