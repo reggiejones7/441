@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="shortcut icon" href="img/icon.jpg">
     <title>Memorable</title>
 
     <!-- Bootstrap Core CSS -->
@@ -46,7 +47,7 @@
         <div class="user-name">Grace</div>
 
         <a href="f_profile.html">
-            <div class="user-edit">Edit Profile</div>
+            <div class="user-edit text-center">Edit Profile</div>
         </a>
 
 
@@ -62,13 +63,6 @@
             </div>
         </div>
         <!-- /.row -->
-
-
-
-<!--         <div class="row">
-            <div class="seperate-puzzles"></div>
-        </div>
- -->
 
 
         <!-- Puzzles Row -->
@@ -117,11 +111,10 @@
         <!-- /.row -->
 
        
-                <!-- View Slideshow -->
+        <!-- View Slideshow -->
         <div class="slideshow-button-row">
-            <a href="r_slideshow.html">
-                <img src="img/tempSlide.jpg" class="slideshow-button">
-            </a>
+            <div class="slideshow-button text-center" onclick=gotoSlideshow()>View Slideshow
+            </div>
         </div>
         <!-- /.row -->
         
@@ -135,6 +128,12 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        function gotoSlideshow() {
+            window.location = "r_slideshow.html"; 
+        }
+    </script>
 
 </body>
 

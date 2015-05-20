@@ -254,21 +254,28 @@ h1, h2, h3, h4, h5, h6, p {
 
 .user-edit {
 	position: absolute;
-	font-size:15px;
+	font-size:14px;
 	top: 27px;
  	right: 104px;
  	width:80px;
-	height:40px;
-	padding-top:20px;
-	padding-bottom:20px;
+	height:27px;
+	margin-top:20px;
+	margin-bottom:20px;
+	padding-top:3px;
+	background-color:#FFFFFF;
+	color:#4ACAA8;
+	border-radius:10px;
 }
 
 .slideshow-button {
+	width:200px;
+	height:50px;
+	background-color:#B689BC;
+	color:#FFFFFF;
 	display:block;
 	margin:auto;
-	padding-top:20px;
-	padding-bottom:10px;
-	width:250px;
+	margin-top:5px;
+	padding-top:10px;
 }
 
 .slideshow-button-row {
