@@ -129,6 +129,10 @@
                 $('#pile').height($('#source_image').height());
                 $('#source_image').snapPuzzle('refresh');
             });
+				
+				setTimeout(function() {
+					$(window).scrollTop(1000);
+				}, 100)
         });
     </script>
 
@@ -140,7 +144,7 @@
             <br/>
         </div>
         
-        <div style="position:center;">
+        <div id="scrollBottom" style="position:center;">
             <a id="music-back">
                  <img style="height:80px;" src="../img/backward.png" role="button">
             </a>
