@@ -224,7 +224,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
  	right: 30px;
  	width:65px;
  	height:65px;
-    border: 1px solid #000000;
+    border: 1px solid #FFFFFF;
     border-radius:20px;
  }
 
@@ -233,6 +233,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
  	font-size:20px;
  	top: 12px;
  	right: 110px;
+ 	color:#FFFFFF;
  }
 
 .user-edit {
