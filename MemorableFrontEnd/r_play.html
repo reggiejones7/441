@@ -62,14 +62,14 @@
         <!-- Page Header -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="profile-title text-center">Drag a piece on to the puzzle
+                <h1 class="puzzle-title text-center">Drag a piece on to the puzzle
                 </h1>
             </div>
         </div>
         <!-- /.row -->
 
 	<!-- Start of puzzle -->
-    <div id="puzzle-containment" style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#fafafa;margin:30px 0;padding:10px;text-align:center">
+    <div id="puzzle-containment" style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#fafafa;margin:15px 0;padding:10px;text-align:center">
         <div class="pure-g" style="max-width:1280px;margin:auto">
             <div class="pure-u-1 pure-u-md-1-2"><div style="margin:10px">
                 <img id="source_image" class="pure-img" src="img/fakePuzzles/family1.jpg">
@@ -78,7 +78,7 @@
                 <div id="pile" style="margin:10px">
                     <div id="puzzle_solved" style="display:none;text-align:center;position:relative;top:25%">
                         <h2 style="margin:0 0 20px">Well done!</h2>
-                        <a class="pure-button button-lg restart-puzzle" data-grid="2">Restart Puzzle</a>
+                        <a class="pure-button button-lg restart-puzzle" data-grid="2" style="background-color:#B689BC; color:#FFFFFF">Restart Puzzle</a>
                         <br><br>
                     </div>
                 </div>
@@ -119,6 +119,135 @@
             });
         });
     </script>
+
+
+    <!-- Song Stuff -->
+    <div style="text-align:center;">
+    <!--         <hr style="height:2px; border:none; color:black; background-color:gray;" /> -->
+        <div id="song-info">
+            <br/>
+        </div>
+        
+        <div style="position:center;">
+            <a id="music-back">
+                 <img style="height:80px;" src="img/backward.png" role="button">
+            </a>
+            <a id="music-play">
+                <img style="height:80px;" src="img/play.png">
+            </a>
+            <a id="music-next">
+                 <img style="height:80px;" src="img/forward.png">
+            </a>
+        </div>
+        
+        <script type="text/javascript">
+        (function() {
+            var SERVICE = "https://api.spotify.com/v1/tracks?ids=";
+            var curSongIndex = 0;
+            var curSongs = [];
+            var audio = new Audio();
+
+            $(document).ready(function() {
+                $("#song-info").attr("visibility", "hidden");
+                audio.addEventListener('ended', function() {
+                    // play next track if current song ends
+                    playNextSong();
+                    $("#music-play").html('<img style="height:80px;" src="img/pause.png">');
+                });
+                // TODO: query track ids from database
+                var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '0eGsygTp906u18L0Oimnem'];
+                var sidString = sids.join();
+                fetchData(sidString, addSongs);
+                $("#music-play").click(function() {
+                    playSongs();
+                });
+                $("#music-next").click(function() {
+                    playNextSong();
+                    $("#music-play").html('<img style="height:80px;" src="img/pause.png">');
+                });
+                $("#music-back").click(function() {
+                    playPrevSong();
+                    $("#music-play").html('<img style="height:80px;" src="img/pause.png">');
+                });
+
+            });
+            
+            // ajax request to get tracks given params (track ids)
+            function fetchData(params, functionName) { 
+                $.ajax({
+                    url: 'https://api.spotify.com/v1/tracks?ids=' + params,
+                    success: function(response) {
+                        addSongs(response);
+                    }
+                });
+            }
+
+            // initialize list of current songs
+            function addSongs(songs) {
+                curSongIndex = 0;
+                curSongs = songs.tracks;
+            }
+
+            // called when play or pause is clicked
+            function playSongs() {
+                 pausei='<img style="height:80px;" src="img/pause.png">';
+                 playi='<img style="height:80px;" src="img/play.png">';
+         
+                // Update the Button
+                 var pause = $("#music-play").html() === pausei;
+                 if(pause) {
+                    $("#music-play").html(playi);
+                 } else {
+                    $("#music-play").html(pausei);
+                 }
+                 // Update the Audio
+                 if(pause) {
+                    audio.pause();
+                 } else {
+                    if(curSongs[curSongIndex]) {
+                        playTrack(curSongs[curSongIndex]);
+                    }
+                 }
+                 // Prevent Default Action
+                 return false;
+            }
+
+            // plays given track and populates track title and artist data
+            function playTrack(track) {
+                audio.setAttribute('src', track.preview_url);
+                var title = track.name;
+                var artist = track.artists[0].name;
+                $("#song-info").attr("visibility", "visible");
+                $("#song-info").html(title + " by " + artist);
+                audio.play();
+            }
+
+            // plays next song in list of current songs
+            function playNextSong() {
+                while (curSongIndex < curSongs.length) {
+                    curSongIndex++;
+                    var song = curSongs[curSongIndex];
+                    if (song) {
+                        playTrack(song);
+                        break;
+                    }
+                }
+            }
+
+            // plays previous song in list of current songs
+            function playPrevSong() {
+                while (curSongIndex > 0) {
+                    var song = curSongs[--curSongIndex];
+                    if (song) {
+                        playTrack(song);
+                        break;
+                    }
+                }
+            }
+        })();
+        </script>
+        
+    </div>
 
 
         
