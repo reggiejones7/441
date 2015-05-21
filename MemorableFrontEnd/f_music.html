@@ -71,6 +71,8 @@
                         Grace's Playlist</a>
                 </li>
             </ul>
+            <div id="hi">
+            </div>
             <div class="tab-content">
                 <div class="tab-pane active" id="add-songs-tab">
                 <!-- /.Add Songs Tab -->
@@ -153,12 +155,6 @@
                                         Use ADD button to add to playlist. -->
                                     </thead>
                                     <tbody  id="results">
-                                        <tr>
-                                            <th>Test</th>
-                                            <th>Test</th>
-                                            <th>Test</th>
-                                            <th>Test</th>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -326,6 +322,7 @@
                     var artist = tracks[i].artists[0].name;
                     var ms = tracks[i].duration_ms;
                     var time = convertTime(ms);
+                    $("#hi").html(trackId);
                     $("#results").append("<tr><td><img class='addSong add-song-button' id=" + trackId  + " src=img/add.png></td><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
                 }
                 // Add song to list of songs when clicked
