@@ -153,6 +153,12 @@
                                         Use ADD button to add to playlist. -->
                                     </thead>
                                     <tbody  id="results">
+                                        <tr>
+                                            <th>Test</th>
+                                            <th>Test</th>
+                                            <th>Test</th>
+                                            <th>Test</th>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -235,7 +241,7 @@
         var spotify = new SpotifyWebApi();
           var uid = '1';
             $.get('/tracks/' + uid, function(data) {
-                var sids = data.split(',');
+                var sids = data.songIds;
                 for (var i = 0; i < sids.length; i++) {
                     var track = spotify.getTrack(sids[i])
                     .then(function(data) {
