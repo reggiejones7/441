@@ -1,256 +1,269 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <script type="text/javascript" src="js/spotify-web-api.js"></script>
-    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
+        <script type="text/javascript" src="js/spotify-web-api.js"></script>
+        <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <link rel="shortcut icon" href="img/icon.jpg">
-    <title>Memorable</title>
+        <link rel="shortcut icon" href="img/icon.jpg">
+        <title>Memorable</title>
 
-    
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="css/3-col-portfolio.css" rel="stylesheet">
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Memorable CSS -->
-    <link href="css/memorable.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="css/3-col-portfolio.css" rel="stylesheet">
 
-    <!-- Slick Slider JS -->
-    <link rel="stylesheet" type="text/css" href="js/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css"/>          
+        <!-- Memorable CSS -->
+        <link href="css/memorable.css" rel="stylesheet">
 
-</head>
+        <!-- Slick Slider JS -->
+        <link rel="stylesheet" type="text/css" href="js/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css"/>          
 
-<body>
+    </head>
 
-    <!-- Header -->
-    <div class="memorable-header">
-        <img src="img/logo.png" class="header-logo">
-    </div>
-    
-    <!-- Page Content -->
-    <div class="container family-screensize">
+    <body>
 
-        <!-- Go Back -->
-        <a href="f_profile.html">
-            <img src="img/backButton.png" class="back-button">
-        </a>
+        <!-- Header -->
+        <div class="memorable-header">
+            <img src="img/logo.png" class="header-logo">
+        </div>
 
-        <!-- Page Header -->
-        <div class="edit-title-row">
-            <div class="col-sm-3">
-                <img class="edit-user-pic img-responsive" src="img/fakeUsers/user2.jpg" alt="">
-            </div>
-            <div class="col-sm-9">
-                <div class="edit-user-title">
-                    Grace's Music
+        <!-- Page Content -->
+        <div class="container family-screensize">
+
+            <!-- Go Back -->
+            <a href="f_profile.html">
+                <img src="img/backButton.png" class="back-button">
+            </a>
+
+            <!-- Page Header -->
+            <div class="edit-title-row">
+                <div class="col-sm-3">
+                    <img class="edit-user-pic img-responsive" src="img/fakeUsers/user2.jpg" alt="">
+                </div>
+                <div class="col-sm-9">
+                    <div class="edit-user-title">
+                        Grace's Music
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- /.row -->
+            <!-- /.row -->
 
 
-        <!-- Tabs -->
-        <div class="tabbable music-tabs">
-            <ul class="nav nav-tabs nav-justified">
-                <li class="active">
-                    <a href="#add-songs-tab" data-toggle="tab">
-                        Add Songs</a>
-                </li>
-                <li>
-                    <a href="#playlist-tab" data-toggle="tab">
-                        Grace's Playlist</a>
-                </li>
-            </ul>
-            <div id="hi">
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane active" id="add-songs-tab">
-                <!-- /.Add Songs Tab -->
-                    <!-- Genre Row -->
-                    <div class="interests-row">
-                        <div class="favtitle-row">
-                            <h3 class="fav-title">Select Genre
-                            </h3>
+            <!-- Tabs -->
+            <div class="tabbable music-tabs">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="active">
+                        <a href="#add-songs-tab" data-toggle="tab">
+                            Add Songs</a>
+                        </li>
+                        <li>
+                            <a href="#playlist-tab" data-toggle="tab">
+                                Grace's Playlist</a>
+                            </li>
+                        </ul>
+                        <div id="hi">
                         </div>
-                        <div class="genres">
-                            <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/soul.jpg" alt="" id="soul" onclick="genreHighlight(this.id)">
-                            </div>
-                            <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/opera.jpg" alt="" id="opera" onclick="genreHighlight(this.id)">
-                            </div>
-                            <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/rock.jpg" alt="" id="rock" onclick="genreHighlight(this.id)">
-                            </div>
-                            <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/jazz.jpg" alt="" id="jazz" onclick="genreHighlight(this.id)">
-                            </div>
-                            <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/hiphop.jpg" alt="" id="hip hop" onclick="genreHighlight(this.id)">
-                            </div>
-                            <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/bluegrass.jpg" alt="" id="bluegrass" onclick="genreHighlight(this.id)">
-                            </div>
-                            <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/classic_rock.jpg" alt="" id="classic rock" onclick="genreHighlight(this.id)">
-                            </div>
-                            <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/piano.jpg" alt="" id="piano" onclick="genreHighlight(this.id)">
-                            </div>
-                            <div class="col-md-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/guitar.jpg" alt="" id="guitar" onclick="genreHighlight(this.id)">
-                            </div>
-                            <div class="col-sm-2">
-                                <img class="genre img-responsive" src="img/fakeMusic/blues.jpg" alt="" id="blues" onclick="genreHighlight(this.id)">
-                            </div>
-                        </div> 
-                    </div>
-                     <!-- /.row -->
-
-                     <!-- Back & Next Buttons -->
-                    <img src="img/interests_back.png" class="fake-back-button-gen" onclick="slideBack()">
-                    <img src="img/interests_next.png" class="fake-next-button-gen" onclick="slideNext()">
-
-                    <!-- Search for Music Row -->
-                    <div class="favs-row">
-                        <div class="favtitle-row">
-                            <h3 class="fav-title">Search for Music</h3>
-                        </div> 
-                        <div class="row">
-                            <div class="col-sm-2"></div>
-                            <div class="search-bar-music col-sm-8">
-                                <form id="search-form">
-                                <div class="input-group">
-                                    <input type="text" id="query" value="" class="form-control" placeholder="Search">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" id="search" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                        </button>
-                                    </span>
-                                </form>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="add-songs-tab">
+                                <!-- /.Add Songs Tab -->
+                                <!-- Genre Row -->
+                                <div class="interests-row">
+                                    <div class="favtitle-row">
+                                        <h3 class="fav-title">Select Genre
+                                        </h3>
+                                    </div>
+                                    <div class="genres">
+                                        <div class="col-sm-2">
+                                            <img class="genre img-responsive" src="img/fakeMusic/soul.jpg" alt="" id="soul" onclick="genreHighlight(this.id)">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <img class="genre img-responsive" src="img/fakeMusic/opera.jpg" alt="" id="opera" onclick="genreHighlight(this.id)">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <img class="genre img-responsive" src="img/fakeMusic/rock.jpg" alt="" id="rock" onclick="genreHighlight(this.id)">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <img class="genre img-responsive" src="img/fakeMusic/jazz.jpg" alt="" id="jazz" onclick="genreHighlight(this.id)">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <img class="genre img-responsive" src="img/fakeMusic/hiphop.jpg" alt="" id="hip hop" onclick="genreHighlight(this.id)">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <img class="genre img-responsive" src="img/fakeMusic/bluegrass.jpg" alt="" id="bluegrass" onclick="genreHighlight(this.id)">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <img class="genre img-responsive" src="img/fakeMusic/classic_rock.jpg" alt="" id="classic rock" onclick="genreHighlight(this.id)">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <img class="genre img-responsive" src="img/fakeMusic/piano.jpg" alt="" id="piano" onclick="genreHighlight(this.id)">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <img class="genre img-responsive" src="img/fakeMusic/guitar.jpg" alt="" id="guitar" onclick="genreHighlight(this.id)">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <img class="genre img-responsive" src="img/fakeMusic/blues.jpg" alt="" id="blues" onclick="genreHighlight(this.id)">
+                                        </div>
+                                    </div> 
                                 </div>
-                            </div>
-                            <div class="col-sm-2"></div>
-                        </div>
-                        <div class="row">
-                            <div class="search-music-table">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Song</th>
-                                            <th>Artist</th>
-                                            <th>Time</th>
-                                        </tr>
-                                        <!-- For every song result, create a row
-                                        Use ADD button to add to playlist. -->
-                                    </thead>
-                                    <tbody  id="results">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                <!-- /.End Add Songs Tab -->
-                </div>
-                <div class="tab-pane" id="playlist-tab">
-                 <!-- /.Start Playlist Tab -->
+                                <!-- /.row -->
 
-                    <div class="playlist-table">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Song</th>
-                                    <th>Artist</th>
-                                    <th>Time</th>
-                                </tr>
-                            </thead>
-                            <tbody id="playlist">
-                            </tbody>
-                        </table>
-                    </div>
-                 <!-- /.End Playlist Tab -->
-                </div>
-            </div>
-        </div>
+                                <!-- Back & Next Buttons -->
+                                <img src="img/interests_back.png" class="fake-back-button-gen" onclick="slideBack()">
+                                <img src="img/interests_next.png" class="fake-next-button-gen" onclick="slideNext()">
 
+                                <!-- Search for Music Row -->
+                                <div class="favs-row">
+                                    <div class="favtitle-row">
+                                        <h3 class="fav-title">Search for Music</h3>
+                                    </div> 
+                                    <div class="row">
+                                        <div class="col-sm-2"></div>
+                                        <div class="search-bar-music col-sm-8">
+                                            <form id="search-form">
+                                                <div class="input-group">
+                                                    <input type="text" id="query" value="" class="form-control" placeholder="Search">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" id="search" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                                        </button>
+                                                    </span>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="search-music-table">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Song</th>
+                                                        <th>Artist</th>
+                                                        <th>Time</th>
+                                                    </tr>
+    <!-- For every song result, create a row
+    Use ADD button to add to playlist. -->
+</thead>
+<tbody  id="results">
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- /.row -->
+<!-- /.End Add Songs Tab -->
+</div>
+<div class="tab-pane" id="playlist-tab">
+    <!-- /.Start Playlist Tab -->
 
+    <div class="playlist-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Song</th>
+                    <th>Artist</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="playlist">
+            </tbody>
+        </table>
     </div>
-    <!-- /.container -->
+    <!-- /.End Playlist Tab -->
+</div>
+</div>
+</div>
 
-    <style>
-        .selectedGenre {
-            border: solid #B689BC;
-        }
 
-    </style>
+</div>
+<!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+<style>
+.selectedGenre {
+    border: solid #B689BC;
+}
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="js/slick/slick.min.js"></script>
+</style>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-          $('.favorite-pics').slick({
-            infinite: true,
-            slidesToShow: 5,
-            slidesToScroll: 3
-          });
-        });
-    </script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="js/slick/slick.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="js/slick/slick.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.favorite-pics').slick({
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 3
+    });
+});
+</script>
 
-          $('.genres').slick({
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="js/slick/slick.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('.genres').slick({
             infinite: true,
             slidesToShow: 5,
             slidesToScroll: 5
-          });
-          $('.slick-next').css({"width":"40px", "height":"90px", 
-                                "margin-top":"-10px", "top":"35%", "position":"none"});
-          $('.slick-prev').css({"width":"40px", "height":"90px", 
-                                "margin-top":"-10px", "top":"35%", "right":"10px"});
-        
-          // load playlist
-        var spotify = new SpotifyWebApi();
-          var uid = '1';
-            $.get('/tracks/' + uid, function(data) {
-                var sids = data.songIds;
-                for (var i = 0; i < sids.length; i++) {
-                    var track = spotify.getTrack(sids[i])
-                    .then(function(data) {
-                        var title = data.name;
-                        var artist = data.artists[0].name;
-                        var ms = data.duration_ms;
+        });
+        $('.slick-next').css({"width":"40px", "height":"90px", 
+            "margin-top":"-10px", "top":"35%", "position":"none"});
+        $('.slick-prev').css({"width":"40px", "height":"90px", 
+            "margin-top":"-10px", "top":"35%", "right":"10px"});
+
+        // load playlist
+        jQuery.ajaxSettings.traditional = true; 
+
+        var uid = '1';
+        $.get('/tracks/' + uid, function(data) {
+            var sids = data.songIds;
+            $.ajax({
+                url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
+                success: function(response) {
+                    var tracks = response.tracks;
+                    for (var i = 0; i < tracks.length; i++) {
+                        var title = tracks[i].name;
+                        var artist = tracks[i].artists[0].name;
+                        var ms = tracks[i].duration_ms;
                         var time = convertTime(ms);
-                    $("#playlist").append("<tr><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
-                    }, function(err) {
-                        console.error(err);
-                    });
+                        $("#playlist").append("<tr><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+                    }
                 }
-            }); 
+            });
+    //         var track = spotify.getTrack(sids[i])
+    //         .then(function(data) {
+    //             var title = data.name;
+    //             var artist = data.artists[0].name;
+    //             var ms = data.duration_ms;
+    //             var time = convertTime(ms);
+    //         $("#playlist").append("<tr><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+    //         }, function(err) {
+    //             console.error(err);
+    //         });
+    //     }
+    // }); 
         });
 
         function genreHighlight(id) {
@@ -262,15 +275,15 @@
                 loadTopSongs(id, 'in_rotation-best');
             }
         }
+
         function slideNext() {
             $('.genres').slick('slickNext');
         }
+
         function slideBack() {
             $('.genres').slick('slickPrev');
         }
 
-        jQuery.ajaxSettings.traditional = true; 
-        var spotifyApi = new SpotifyWebApi();
         var host = 'http://developer.echonest.com/api/v4/';
         var apiKey =  'Q02TB0UTUYB9F4CKX';
 
@@ -280,10 +293,10 @@
             curStyle = curStyle.replace('-best', '');
             var url = host + 'playlist/static';
             $.getJSON(url, {api_key:apiKey, bucket:['tracks', 'id:spotify-WW'],    
-                            limit:true, type:"genre-radio", 
-                            results:10, 
-                            genre_preset:preset,
-                            genre:genreName },
+                limit:true, type:"genre-radio", 
+                results:10, 
+                genre_preset:preset,
+                genre:genreName },
                 function(data) {
                     var songs = data.response.songs;
                     for (i = 0; i < songs.length; i++) {
@@ -311,35 +324,35 @@
             search(document.getElementById('query').value);
         });
 
-        function search(query) {
-            $("#results").empty();
-            spotifyApi.searchTracks(query, {limit: 10})
-            .then(function(data) {
-                var tracks = data.tracks.items;
-                for (var i = 0; i < tracks.length; i++) {
-                    var trackId = tracks[i].id;
-                    var title = tracks[i].name; 
-                    var artist = tracks[i].artists[0].name;
-                    var ms = tracks[i].duration_ms;
-                    var time = convertTime(ms);
-                    $("#hi").html(trackId);
-                    $("#results").append("<tr><td><img class='addSong add-song-button' id=" + trackId  + " src=img/add.png></td><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
-                }
-                // Add song to list of songs when clicked
-                $(".addSong").each( function() {
-                    $(this).click(function() {
-                        var uid = '1';
-                        var trackId = this.id;
-                        $(this).attr('src', 'img/delete.png');
-                        $.post('/tracks/' + trackId + '/' + uid, function(data) {
-                            console.log(data);
-                        }); 
-                    });
-                });
-            }, function(err) {
-                console.error(err);
-            });
-        }
+    // function search(query) {
+    //     $("#results").empty();
+    //     spotifyApi.searchTracks(query, {limit: 10})
+    //     .then(function(data) {
+    //         var tracks = data.tracks.items;
+    //         for (var i = 0; i < tracks.length; i++) {
+    //             var trackId = tracks[i].id;
+    //             var title = tracks[i].name; 
+    //             var artist = tracks[i].artists[0].name;
+    //             var ms = tracks[i].duration_ms;
+    //             var time = convertTime(ms);
+    //             $("#hi").html(trackId);
+    //             $("#results").append("<tr><td><img class='addSong add-song-button' id=" + trackId  + " src=img/add.png></td><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+    //         }
+    //         // Add song to list of songs when clicked
+    //         $(".addSong").each( function() {
+    //             $(this).click(function() {
+    //                 var uid = '1';
+    //                 var trackId = this.id;
+    //                 $(this).attr('src', 'img/delete.png');
+    //                 $.post('/tracks/' + trackId + '/' + uid, function(data) {
+    //                     console.log(data);
+    //                 }); 
+    //             });
+    //         });
+    //     }, function(err) {
+    //         console.error(err);
+    //     });
+    // }
 
         // convert milliseconds to min:sec
         function convertTime(time) {
@@ -350,12 +363,12 @@
             var format = minutes + ':' + seconds;
             return format;
         }
-        
+
         // checks if song exists
         function hasTrack(song) {
             return song.tracks.length > 0;
         }
-    </script>
+    });
+</script>
 </body>
-
 </html>
