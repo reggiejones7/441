@@ -134,34 +134,14 @@
             <div class="col-sm-10">
                 <div class="music-table">
                     <table class="table">
-                        <thead>
-                            
+                        <thead>      
                             <tr>
                                 <th>Song</th>
                                 <th>Artist</th>
                             </tr>
-                            <tr>
-                                <td>Sweet Pea</td>
-                                <td>Tommy Roe</td>
-                            </tr>
-                            <tr>
-                                <td>Every Little Thing She Does Is Magic</td>
-                                <td>Police</td>
-                            </tr>
-                            <tr>
-                                <td>I Was Made To Love You</td>
-                                <td>Stevie Wonder</td>
-                            </tr>
-                            <tr>
-                                <td>I Will Always Love You</td>
-                                <td>Whitney Houston</td>
-                            </tr>
-                            <tr>
-                                <td>Born To Be Wild</td>
-                                <td>Steppenwolf</td>
-                            </tr>
-
                         </thead>
+                        <tbody id="topSongs">
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -198,8 +178,27 @@
 					   }
 					})
 				})
-			})		
-		});
+			})
+
+            var uid = '1';
+            $.get('/tracks/' + uid, function(data) {
+                var sids = data.songIds;
+                $.ajax({
+                    url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
+                    success: function(response) {
+                        var tracks = response.tracks;
+                        for (var i = 0; i < tracks.length; i++) {
+                            if(i > 4) {
+                                break;
+                            }
+                            var title = tracks[i].name;
+                            var artist = tracks[i].artists[0].name;
+                            $("#topSongs").append("<tr><td>" + title + "</td><td>" + artist + "</td></tr>");
+                        }
+                    }
+                });
+            });		
+		  });
 	</script>
 </body>
 
