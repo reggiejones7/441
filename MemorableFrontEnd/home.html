@@ -69,17 +69,69 @@
         <!-- Users Row -->
         <div class="resident-row row">
             <div class="resident-image col-sm-3">
-                <a href="#">
-                    <img class="resident-pic img-responsive" src="img/fakeUsers/user1.jpg" alt="">
-                </a>
-                <h4 class="text-center resident-name">Alfredo</h4>
+				<input type="image" src="img/fakeUsers/user1.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
+					data-toggle="modal" data-target="#myModal" />
+				<h4 class="text-center resident-name">Alfredo</h4>
+				
+				<div class="modal fade" id="myModal" tabindex="-1" style="top:20%" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+					<div class="modal-dialog" style="width: 300px"> <div class="modal-content"> 
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Please enter Alfredo's PIN</h4>
+						</div>
+						<form name="pass1" id="pass1" class="form-inline" role="form" 
+							action=" javascript: 
+								if (window.document.pass1.page.value == '1111') {
+									location.href = 'r_puzzles.html';
+								} else {
+									document.getElementById('pass1').reset();
+								}							
+							">
+							<div class="modal-body">
+							    <div class="form-group">
+								    <label for="pwd">PIN:</label>
+								    <input type="text" class="form-control" id="pwd" name="page" placeholder="####">
+							    </div>
+							</div>
+							<div class="modal-footer" style="text-align:center;">
+							    <input type="submit" value="Enter" class="btn btn-default"></input>						
+							</div>
+						</form>
+					</div> </div>
+				</div>
 
             </div>
             <div class="resident-image col-sm-3">
-                <a href="r_puzzles.html">
-                    <img class="resident-pic img-responsive" src="img/fakeUsers/user2.jpg" alt="">
-                </a>
-                <h4 class="text-center resident-name">Grace</h4>
+                <input type="image" src="img/fakeUsers/user2.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
+					data-toggle="modal" data-target="#myModal2" />
+				<h4 class="text-center resident-name">Grace</h4>
+				
+				<div class="modal fade" id="myModal2" tabindex="-1" style="top:20%" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+					<div class="modal-dialog" style="width: 300px"> <div class="modal-content"> 
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Please enter Grace's PIN</h4>
+						</div>
+						<form name="pass2" id="pass2" class="form-inline" role="form" 
+							action=" javascript: 
+								if (window.document.pass2.page.value == '1234') {
+									location.href = 'r_puzzles.html';
+								} else {
+									document.getElementById('pass2').reset();
+								}							
+							">
+							<div class="modal-body">
+							    <div class="form-group">
+								    <label for="pwd">PIN:</label>
+								    <input type="text" class="form-control" id="pwd" name="page" placeholder="####">
+							    </div>
+							</div>
+							<div class="modal-footer" style="text-align:center;">
+							    <input type="submit" value="Enter" class="btn btn-default"></input>						
+							</div>
+						</form>
+					</div> </div>
+				</div>
             </div>
             <div class="resident-image col-sm-3">
                 <a href="#">
