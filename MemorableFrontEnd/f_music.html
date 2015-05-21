@@ -220,6 +220,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
+
           $('.genres').slick({
             infinite: true,
             slidesToShow: 5,
@@ -231,10 +232,23 @@
                                 "margin-top":"-10px", "top":"35%", "right":"10px"});
         
           // load playlist
+        var spotify = new SpotifyWebApi();
           var uid = '1';
-        $.get('/tracks/' + uid, function(data) {
-            console.log(data);
-        }); 
+            $.get('/tracks/' + uid, function(data) {
+                var sids = data.split(',');
+                for (var i = 0; i < sids.length; i++) {
+                    var track = spotify.getTrack(sids[i])
+                    .then(function(data) {
+                        var title = data.name;
+                        var artist = data.artists[0].name;
+                        var ms = data.duration_ms;
+                        var time = convertTime(ms);
+                    $("#playlist").append("<tr><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+                    }, function(err) {
+                        console.error(err);
+                    });
+                }
+            }); 
         });
 
         function genreHighlight(id) {
@@ -252,9 +266,6 @@
         function slideBack() {
             $('.genres').slick('slickPrev');
         }
-    </script>
-
-    <script>
 
         jQuery.ajaxSettings.traditional = true; 
         var spotifyApi = new SpotifyWebApi();
@@ -329,15 +340,13 @@
 
         // convert milliseconds to min:sec
         function convertTime(time) {
-            var num = Number(time);
-            var seconds = Math.floor(num / 1000);
-            var minutes = Math.floor(seconds / 60);
-            var seconds = seconds - (minutes * 60);
-            var format = minutes + ':' + seconds
+            var num = parseInt(time);
+            var seconds = parseInt((num / 1000)%60);
+            var minutes = parseInt((num / (1000*60))%60);
+            seconds = (seconds < 10) ? "0" + seconds : seconds;
+            var format = minutes + ':' + seconds;
             return format;
         }
-
-        // TODO: display playlist
         
         // checks if song exists
         function hasTrack(song) {

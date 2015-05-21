@@ -184,14 +184,15 @@ router.put('/puzzle_difficulty', function(req, res) {
 
 router.post('/tracks/:song_id/:user_id', function(req, res) {
 	var song_id = req.params.song_id;
-	var user_id = req.params.user_id;
+	//var user_id = req.params.user_id;
+	var user_id = 'jappleseed';
 	var q = 'insert into song values ($1, $2)';
-	var data = [song_id, 'jappleseed'];
-	var callback = function(err, data) { console.log(err) }
 	var data = [song_id, user_id];
-	var callback = function(err, data) { console.log("worked");console.log(err) }
-	query(q, data, callback)
-	res.end();
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
 })
 
 router.get('/tracks/:user_id', function(req, res) {
@@ -203,20 +204,21 @@ router.get('/tracks/:user_id', function(req, res) {
 	// then run 'psql -f memorable_database_create.sql memorable'
 	// lastly, hit localhost:3000/tracks/jappleseed in your browser and you should
 	// see the word fake_id_1 displayed to the page
-	var user_id = req.params.user_id;
+	//var user_id = req.params.user_id;
+	var user_id = 'jappleseed';
 	console.log("died here")
 	var q = 'select id from song where user_id=$1';
 	var data = [user_id];
 	var callback = function(err, data) { 
-		console.log(err, data)
+		console.log(err);
 		console.log('inside')
 		var song_ids = []
 		for (var i = 0; i < data.rows.length; i++) {
 			song_ids.push(data.rows[i].id)
 		}
-		res.end(song_ids.toString())
+		res.json({songIds:song_ids});
 	}
-	query(q, data, callback)
+	query(q, data, callback);
 })
 
 
