@@ -172,9 +172,7 @@
                     $("#music-play").html('<img style="height:80px;" src="../img/pause.png">');
                 });
                 // TODO: query track ids from database
-                var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '0eGsygTp906u18L0Oimnem'];
-                var sidString = sids.join();
-                fetchData(sidString, addSongs);
+                fetchData(addSongs);
                 $("#music-play").click(function() {
                     playSongs();
                 });
@@ -190,9 +188,10 @@
             });
             
             // ajax request to get tracks given params (track ids)
-            function fetchData(params, functionName) { 
+            function fetchData(functionName) { 
+                var sids = "2lS9HDs8slGZnu4vny2pWT,2g9kOw3klip4tdhpmDELI8,2Z22JutFajqTVKRwHNQqPT,1PoJanvces1oPEL2cWfu32,12wC2RYrCdKA7NOQujvQBi,0UdRGHCSRvn85nN0IfHFmq,3Bk4kjeoGmhfO8RRY87AzS,60rhBTUmtubm0OnLv9Mlim,1MwJMB0GyO9gY7GwfqcXYq,39JOQuh3W50pdnzxEx0URV,1byIZa6CFerX5WXShwqAvf";    
                 $.ajax({
-                    url: 'https://api.spotify.com/v1/tracks?ids=' + params,
+                    url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
                     success: function(response) {
                         addSongs(response);
                     }
