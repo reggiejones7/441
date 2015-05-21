@@ -243,7 +243,6 @@ $(document).ready(function(){
 
         // load playlist
         jQuery.ajaxSettings.traditional = true; 
-
         var uid = '1';
         $.get('/tracks/' + uid, function(data) {
             var sids = data.songIds;
