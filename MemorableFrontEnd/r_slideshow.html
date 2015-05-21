@@ -388,7 +388,10 @@
             var curSongs = [];
             var audio = new Audio();
 
+
             $(document).ready(function() {
+                // var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '0eGsygTp906u18L0Oimnem'];
+                // var sidString = sids.join();
                 $("#song-info").attr("visibility", "hidden");
                 audio.addEventListener('ended', function() {
                     // play next track if current song ends
@@ -396,8 +399,6 @@
                     $("#music-play").html('<img style="height:80px;" src="img/pause.png">');
                 });
                 // TODO: query track ids from database
-                var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '0eGsygTp906u18L0Oimnem'];
-                var sidString = sids.join();
                 fetchData(sidString, addSongs);
                 $("#music-play").click(function() {
                     playSongs();
