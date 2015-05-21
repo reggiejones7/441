@@ -81,8 +81,6 @@
                                 Grace's Playlist</a>
                             </li>
                         </ul>
-                        <div id="hi">
-                        </div>
                         <div class="tab-content">
                             <div class="tab-pane active" id="add-songs-tab">
                                 <!-- /.Add Songs Tab -->
@@ -262,18 +260,6 @@ $(document).ready(function(){
                     }
                 }
             });
-    //         var track = spotify.getTrack(sids[i])
-    //         .then(function(data) {
-    //             var title = data.name;
-    //             var artist = data.artists[0].name;
-    //             var ms = data.duration_ms;
-    //             var time = convertTime(ms);
-    //         $("#playlist").append("<tr><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
-    //         }, function(err) {
-    //             console.error(err);
-    //         });
-    //     }
-    // }); 
         });
 
         function genreHighlight(id) {
@@ -334,35 +320,34 @@ $(document).ready(function(){
             search(document.getElementById('query').value);
         });
 
-    // function search(query) {
-    //     $("#results").empty();
-    //     spotifyApi.searchTracks(query, {limit: 10})
-    //     .then(function(data) {
-    //         var tracks = data.tracks.items;
-    //         for (var i = 0; i < tracks.length; i++) {
-    //             var trackId = tracks[i].id;
-    //             var title = tracks[i].name; 
-    //             var artist = tracks[i].artists[0].name;
-    //             var ms = tracks[i].duration_ms;
-    //             var time = convertTime(ms);
-    //             $("#hi").html(trackId);
-    //             $("#results").append("<tr><td><img class='addSong add-song-button' id=" + trackId  + " src=img/add.png></td><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
-    //         }
-    //         // Add song to list of songs when clicked
-    //         $(".addSong").each( function() {
-    //             $(this).click(function() {
-    //                 var uid = '1';
-    //                 var trackId = this.id;
-    //                 $(this).attr('src', 'img/delete.png');
-    //                 $.post('/tracks/' + trackId + '/' + uid, function(data) {
-    //                     console.log(data);
-    //                 }); 
-    //             });
-    //         });
-    //     }, function(err) {
-    //         console.error(err);
-    //     });
-    // }
+        function search(query) {
+            $("#results").empty();
+            $.ajax({
+                url: 'https://api.spotify.com/v1/search?q=' + query + '&limit=10&type=track',
+                success: function(response) {
+                    var tracks = response.tracks.items;
+                    for (var i = 0; i < tracks.length; i++) {
+                        var trackId = tracks[i].id;
+                        var title = tracks[i].name; 
+                        var artist = tracks[i].artists[0].name;
+                        var ms = tracks[i].duration_ms;
+                        var time = convertTime(ms);
+                        $("#results").append("<tr><td><img class='addSong add-song-button' id=" + trackId  + " src=img/add.png></td><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+                    }
+                    // Add song to list of songs when clicked
+                    $(".addSong").each( function() {
+                        $(this).click(function() {
+                            var uid = '1';
+                            var trackId = this.id;
+                            $(this).attr('src', 'img/delete.png');
+                            $.post('/tracks/' + trackId + '/' + uid, function(data) {
+                                console.log(data);
+                            });
+                        });
+                    });            
+                }
+            });
+        }
 
         // convert milliseconds to min:sec
         function convertTime(time) {
