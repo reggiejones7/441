@@ -112,37 +112,12 @@
                 <h3 class="fav-title">Personal Photos
                 </h3>
 					 <form id="uploadForm" enctype="multipart/form-data" method="post">
-						 <input type="file" id="files" name="files[]" multiple />
-						 <input type="submit" id="go!" id="submit" ></input>
+						 <input class="choose-pic" type="file" id="files" name="files[]" multiple />
+						 <input class="save-pic" type="submit" id="go!" id="submit" ></input>
 						 <input type="text" id="caption" />
 					 </form>
 					 <output id="list"></output>
             </div>
-            <!-- <table class="table" style="height: 370px; overflow: scroll">
-                <tbody>
-                    <tr>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family1.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family2.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family3.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family4.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family5.jpg" alt=""></td>
-                    </tr>
-                    <tr>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family1.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family2.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family3.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family4.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family5.jpg" alt=""></td>
-                    </tr>
-                    <tr>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family1.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family2.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family3.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family4.jpg" alt=""></td>
-                        <td><img class="fav-pics img-responsive" src="img/fakePuzzles/family5.jpg" alt=""></td>
-                    </tr>
-                </tbody>
-            </table> -->
             <div class="personal-table row" style="height: 450px; overflow-y: scroll; overflow-x:hidden">
                 <div class="personal-row col-sm-12">
                     <div class="col-sm-15">
@@ -188,12 +163,7 @@
                 <div class="col-sm-15">
                     <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
                 </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family4.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family5.jpg" alt="">
-                </div>
+                
             </div>
         </div>
         </div>
@@ -268,23 +238,33 @@
  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 </body>
 </html>
-<!---submit files ajax--->
+
 <script>
 	$(document).ready(function() {
 		$('#uploadForm').submit(function() {
 			var fileName = $('li').text() //hacky...
 			var caption = $('#caption').val()
-			var urll = '/upload/' + fileName + '/' + caption;
+			var urll = '../uploads/' + fileName + '/' + caption;
 			console.log(urll)
+
 			$(this).ajaxSubmit({
 				url: urll, 
 				error: function(xhr) {
 					status('Error: ' + xhr.status)
+                    console.log("ERROR uploading file")
 				},
 				success: function(response) {
 					console.log("suuuuuccccessssss")
 					//Cindy/Tiffany-you can display the newly uploaded photo however you want...
-					$('.table').append("<img src='/upload/" + $('li').text() + "' />")		
+					// $('.table').append("<img src='/upload/" + $('li').text() + "' />")		
+
+                    $('.table').append("<div class='col-sm-15'>
+                    <img class='personal-image img-responsive' src='/upload/" + $('li').text() + "' /></div>")  
+
+                //     <div class="col-sm-15">
+                //     <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
+                // </div>
+
 					
 					document.getElementById('uploadForm').reset()
 					$('output').val('')
