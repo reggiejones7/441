@@ -23,6 +23,10 @@
     <!-- Memorable CSS -->
     <link href="css/memorable.css" rel="stylesheet">
 
+    <!-- Slick Slider JS -->
+    <link rel="stylesheet" type="text/css" href="js/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css"/>   
+
 </head>
 
 <body>
@@ -45,7 +49,7 @@
 
         <div class="user-name">Grace</div>
 
-		<input type="submit" value="Edit Profile" class="btTxt submit user-edit text-center" id="saveForm" 
+		<input type="submit" value="Settings" class="btTxt submit user-edit text-center" id="saveForm" 
 				style="padding: 0; border: none; background: white;"
 					data-toggle="modal" data-target="#myModal2"/>
 		
@@ -98,50 +102,62 @@
 
 
         <!-- Puzzles Row -->
-        <div class="puzzles-table row" style="height: 370px; overflow-y: scroll; overflow-x:hidden">
-            <div class="puzzles-row row">
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakePuzzles/family1.jpg" onclick="playPuzzle()">
-                </div>
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakePuzzles/family4.jpg" onclick="playPuzzle()">
-                </div>
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakeInterests/farm2.jpg" onclick="playPuzzle()">
-                </div>
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakeInterests/piano1.jpg" onclick="playPuzzle()">
-                </div>
+        <div class="puzzles-table">
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakePuzzles/family1.jpg" onclick="playPuzzle()">
             </div>
-            <br>
-            <div class="puzzles-row row">
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakeInterests/farm1.jpg" onclick="playPuzzle()">
-                </div>
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakePuzzles/family2.jpg" onclick="playPuzzle()">
-                </div>
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakePuzzles/family3.jpg" onclick="playPuzzle()">
-                </div>
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakeInterests/garden1.jpg" onclick="playPuzzle()">
-                </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakePuzzles/family4.jpg" onclick="playPuzzle()">
             </div>
-            <br>
-            <div class="puzzles-row row">
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakeInterests/golf1.jpg" onclick="playPuzzle()">
-                </div>
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakeInterests/beach1.jpg" onclick="playPuzzle()">
-                </div>
-                <div class="col-sm-3">
-                    <img class="puzzle-image img-responsive" src="img/fakeInterests/dog1.jpg" onclick="playPuzzle()">
-                </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/farm2.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/piano1.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/farm1.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakePuzzles/family2.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakePuzzles/family3.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/garden1.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/golf1.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/beach1.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/dog1.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/dog2.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/dog3.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/piano1.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/horse1.jpg" onclick="playPuzzle()">
+            </div>
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/golf2.jpg" onclick="playPuzzle()">
             </div>
         </div>
         <!-- /.row -->
+
+
+        <!-- Fake Back & Next Buttons -->
+        <img src="img/interests_back.png" class="fake-back-button-puzz" onclick="slideBack()">
+        <img src="img/interests_next.png" class="fake-next-button-puzz" onclick="slideNext()">
 
        
         <!-- View Slideshow -->
@@ -161,7 +177,22 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/slick/slick.min.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.puzzles-table').slick({
+            infinite: true,
+            rows: 2,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            speed:1000,
+            arrows:false
+          });
+        });
+    </script>
     <script>
         function gotoSlideshow() {
             window.location = "r_slideshow.html"; 
@@ -173,6 +204,13 @@
 
         function playPuzzle() {
             window.location = "r_play.html"; 
+        }
+
+        function slideNext() {
+            $('.puzzles-table').slick('slickNext');
+        }
+        function slideBack() {
+            $('.puzzles-table').slick('slickPrev');
         }
     </script>
 
