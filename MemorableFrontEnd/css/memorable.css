@@ -316,15 +316,35 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .puzzle-image {
-	display: block;
- 	margin:auto;
- 	width:155px;
- 	height:155px;
+	margin-left:-10px;
+ 	width:195px;
+ 	height:195px;
+ 	margin-top:20px;
+ 	margin-bottom:20px;
 }
 
 .puzzles-table {
+	display:block;
+	margin:auto;
 	margin-top:30px;
 	margin-bottom:30px;
+	width:800px;
+}
+
+.fake-back-button-puzz {
+ 	position:absolute;
+ 	top:385px;
+ 	left:60px;
+ 	width:65px;
+ 	height:65px;
+}
+
+.fake-next-button-puzz {
+	position:absolute;
+ 	top:385px;
+ 	right:60px;
+ 	width:65px;
+ 	height:65px;
 }
 
 
@@ -499,5 +519,5 @@ h1, h2, h3, h4, h5, h6, p {
  */
 .puzzle-title {
 	font-size: 25px;
-	margin-bottom:10px;
+	margin-bottom:0px;
 }

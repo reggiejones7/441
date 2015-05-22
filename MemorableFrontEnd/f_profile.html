@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <meta name="apple-touch-fullscreen" content="yes" />
 
     <link rel="shortcut icon" href="img/icon.jpg">
     <title>Memorable</title>
@@ -35,9 +37,7 @@
     <div class="container family-screensize">
 
         <!-- Go Back -->
-        <a href="r_puzzles.html">
-            <img src="img/backButton.png" class="back-button">
-        </a>
+        <img src="img/backButton.png" class="back-button" onclick="backButton()">
 
         <!-- Page Header -->
         <div class="info-row">
@@ -78,14 +78,10 @@
             <div class="col-sm-2">
             </div>
             <div class="col-sm-4">
-                <a href="f_pictures.html">
-                    <img class="edit-photos img-responsive" src="img/editPicsBtn.jpg" alt="">
-                </a>
+                <img class="edit-photos img-responsive" src="img/editPicsBtn.jpg" onclick="goToPictures()">
             </div>
             <div class="col-sm-4">
-                <a href="f_music.html">
-                    <img class="edit-music img-responsive" src="img/editMusicBtn.jpg" alt="">
-                </a>
+                <img class="edit-music img-responsive" src="img/editMusicBtn.jpg" onclick="goToMusic()">
             </div>
             <div class="col-sm-2">
             </div>
@@ -110,10 +106,10 @@
                     <img class="fav-pic img-responsive" src="img/fakeInterests/farm2.jpg" alt="">
                 </div>
                 <div class="col-sm-15">
-                    <img class="fav-pic img-responsive" src="img/fakeInterests/dog.jpg" alt="">
+                    <img class="fav-pic img-responsive" src="img/fakeInterests/dog3.jpg" alt="">
                 </div>
                 <div class="col-sm-15">
-                    <img class="fav-pic img-responsive" src="img/fakeInterests/golf.jpg" alt="">
+                    <img class="fav-pic img-responsive" src="img/fakeInterests/golf1.jpg" alt="">
                 </div>
             </div>  
         </div>
@@ -132,34 +128,14 @@
             <div class="col-sm-10">
                 <div class="music-table">
                     <table class="table">
-                        <thead>
-                            
+                        <thead>      
                             <tr>
                                 <th>Song</th>
                                 <th>Artist</th>
                             </tr>
-                            <tr>
-                                <td>Sweet Pea</td>
-                                <td>Tommy Roe</td>
-                            </tr>
-                            <tr>
-                                <td>Every Little Thing She Does Is Magic</td>
-                                <td>Police</td>
-                            </tr>
-                            <tr>
-                                <td>I Was Made To Love You</td>
-                                <td>Stevie Wonder</td>
-                            </tr>
-                            <tr>
-                                <td>I Will Always Love You</td>
-                                <td>Whitney Houston</td>
-                            </tr>
-                            <tr>
-                                <td>Born To Be Wild</td>
-                                <td>Steppenwolf</td>
-                            </tr>
-
                         </thead>
+                        <tbody id="topSongs">
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -196,8 +172,39 @@
 					   }
 					})
 				})
-			})		
-		});
+			})
+
+            var uid = '1';
+            $.get('/tracks/' + uid, function(data) {
+                var sids = data.songIds;
+                $.ajax({
+                    url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
+                    success: function(response) {
+                        var tracks = response.tracks;
+                        for (var i = 0; i < tracks.length; i++) {
+                            if(i > 4) {
+                                break;
+                            }
+                            var title = tracks[i].name;
+                            var artist = tracks[i].artists[0].name;
+                            $("#topSongs").append("<tr><td>" + title + "</td><td>" + artist + "</td></tr>");
+                        }
+                    }
+                });
+            });		
+		  });
+
+        function backButton() {
+            window.location = "r_puzzles.html"; 
+        }
+
+        function goToPictures() {
+            window.location = "f_pictures.html"; 
+        }
+
+        function goToMusic() {
+            window.location = "f_music.html"; 
+        }
 	</script>
 </body>
 

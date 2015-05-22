@@ -254,5 +254,95 @@ router.get('/uploads/:fileName', function(req, res) {
 })
 
 
+router.get('/selectInterests/:user_id', function(req, res) {
+	var user_id = 'gracejohnson';
+	// var q = 'select p.file_name from interest_pictures p, interests i where i.interest_type = p.interest_type and i.interest_type in (select interest_type from user_interests where user_id=$1)';
+	var q = 'select interest_type from user_interests where user_id=$1';
+
+	var data = [user_id];
+	var callback = function(err, data) { 
+		console.log(err);
+		var interestType = []
+		for (var i = 0; i < data.rows.length; i++) {
+			interestType.push(data.rows[i].interest_type)
+		}
+		res.send(interestType);
+	}
+	query(q, data, callback);
+})
+
+
+router.post('/removeInterest/:user_id/:interest', function(req, res) {
+	var user_id = 'gracejohnson';
+	var interest = req.params.interest;
+	var q = 'delete from user_interests where user_id=$1 and interest_type=$2';
+	var data = [user_id, interest];
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
+})
+
+
+router.post('/addInterest/:user_id/:interest', function(req, res) {
+	var user_id = 'gracejohnson';
+	var interest = req.params.interest;
+	var q = 'insert into user_interests values ($1, $2)';
+	var data = [user_id, interest];
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
+})
+
+
+router.get('/selectGenres/:user_id', function(req, res) {
+	var user_id = 'gracejohnson';
+	// var q = 'select p.file_name from interest_pictures p, interests i where i.interest_type = p.interest_type and i.interest_type in (select interest_type from user_interests where user_id=$1)';
+	var q = 'select genre_type from user_genres where user_id=$1';
+
+	var data = [user_id];
+	var callback = function(err, data) { 
+		console.log(err);
+		var genreType = []
+		for (var i = 0; i < data.rows.length; i++) {
+			genreType.push(data.rows[i].genre_type)
+		}
+		res.send(genreType);
+	}
+	query(q, data, callback);
+})
+
+
+router.post('/removeGenre/:user_id/:genre', function(req, res) {
+	var user_id = 'gracejohnson';
+	var genre = req.params.genre;
+	var q = 'delete from user_genres where user_id=$1 and genre_type=$2';
+	var data = [user_id, genre];
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
+})
+
+
+router.post('/addGenre/:user_id/:genre', function(req, res) {
+	var user_id = 'gracejohnson';
+	var genre = req.params.genre;
+	var q = 'insert into user_genres values ($1, $2)';
+	var data = [user_id, genre];
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
+})
+
+
+
+
 module.exports = router;
 
