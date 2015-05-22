@@ -108,19 +108,16 @@
 						  var get = $.get('/caption/' + imgName, function(data) {
 	  					  		$('#puzzle_solved').children('h2').text(data)	
 						  })
-							console.log(get)
-	  					 // $('#puzzle_solved').children('h2').text("enter caption here!")	
                 }
             });
         }
         $(function(){
-				//timeout to allow the picture to load before snappuzzle() call
 				setTimeout(function() {
-					console.log('timeout')	
-				}, 1000)	
+					//timeout to allow the image to load 
+					start_puzzle(2)
+				}, 400)	
 
             $('#pile').height($('#source_image').height());
-            start_puzzle(2);
             $('.restart-puzzle').click(function(){
                 $('#source_image').snapPuzzle('destroy');
                 start_puzzle($(this).data('grid'));
