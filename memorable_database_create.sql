@@ -44,6 +44,30 @@ CREATE TABLE song (
     user_id varchar(50)  REFERENCES resident_user
 );
 
+
+
+-- Table: interest types
+CREATE TABLE interests (
+    interest_type varchar(50) PRIMARY KEY
+);
+
+
+-- Table: picture files related to interests
+CREATE TABLE interest_pictures (
+    file_name varchar(100) NOT NULL,
+    interest_type varchar(50) REFERENCES interests(interest_type),
+    PRIMARY KEY (file_name, interest_type)
+); 
+
+
+-- Table: user's interests
+CREATE TABLE user_interests(
+    user_id varchar(50) REFERENCES resident_user(user_id),
+    interest_type varchar(100) REFERENCES interests(interest_type),
+    PRIMARY KEY (user_id, interest_type)
+);
+
+
 -- Insert Data into tables
 -- admin user
 INSERT INTO admin_user VALUES('admin', 'admin');
