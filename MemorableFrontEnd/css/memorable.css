@@ -326,25 +326,25 @@ h1, h2, h3, h4, h5, h6, p {
 .puzzles-table {
 	display:block;
 	margin:auto;
-	margin-top:30px;
-	margin-bottom:30px;
+	margin-top:25px;
+	margin-bottom:25px;
 	width:800px;
 }
 
 .fake-back-button-puzz {
  	position:absolute;
- 	top:385px;
- 	left:60px;
- 	width:65px;
- 	height:65px;
+ 	top:390px;
+ 	left:45px;
+ 	width:55px;
+ 	height:55px;
 }
 
 .fake-next-button-puzz {
 	position:absolute;
- 	top:385px;
- 	right:60px;
- 	width:65px;
- 	height:65px;
+ 	top:390px;
+ 	right:45px;
+ 	width:55px;
+ 	height:55px;
 }
 
 
