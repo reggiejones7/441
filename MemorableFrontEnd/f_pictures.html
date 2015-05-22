@@ -64,39 +64,39 @@
         <!-- Interests Row -->
         <div class="interests-row">
             <div class="favtitle-row">
-                <h3 class="fav-title" onclick="slideNext()">Select Interests
+                <h3 class="fav-title">Select Interests
                 </h3>
             </div>
             <div class="interests">
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_piano.jpg" alt="" id="interest1" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_piano.jpg" alt="" id="piano" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_farms.jpg" alt="" id="interest2" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_farms.jpg" alt="" id="farms" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_golf.jpg" alt="" id="interest3" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_golf.jpg" alt="" id="golf" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_beach.jpg" alt="" id="interest4" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_beach.jpg" alt="" id="beach" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_dog.jpg" alt="" id="interest5" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_dog.jpg" alt="" id="dog" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-md-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_football.jpg" alt="" id="interest6" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_football.jpg" alt="" id="football" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_flowers.jpg" alt="" id="interest7" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_flowers.jpg" alt="" id="flowers" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_horse.jpg" alt="" id="interest8" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_horse.jpg" alt="" id="horses" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_garden.jpg" alt="" id="interest9" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_garden.jpg" alt="" id="gardening" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_tennis.jpg" alt="" id="interest10" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_tennis.jpg" alt="" id="tennis" onclick="interestHighlight(this.id)">
                 </div>
             </div> 
         </div>
@@ -198,20 +198,37 @@
     </script>
     <style>
         .selectedInterest {
-            border: solid #B689BC;
+            border: solid #B689BC 5px;
         }
 
+
+
     </style>
+
     <script>
         function interestHighlight(id) {
             var docID = "#" + id;
             if($(docID).hasClass("selectedInterest")) {
                 $(docID).removeClass("selectedInterest");
+
+                // remove from db
+                var uid = '1';
+                $.post('/removeInterest/' + uid + '/' + id, function(data) {
+                    console.log("removed interest");
+                }); 
+
             } else {
                 $(docID).addClass("selectedInterest");
+
+                // add to db
+                var uid = '1';
+                $.post('/addInterest/' + uid + '/' + id, function(data) {
+                    console.log("added interest");
+                }); 
             }
         }
     </script>
+
     <script>
         function slideNext() {
             $('.interests').slick('slickNext');
@@ -241,39 +258,65 @@
 </body>
 </html>
 
-<script>
-	$(document).ready(function() {
-		$('#uploadForm').submit(function() {
-			var fileName = $('li').text() //hacky...
-			var caption = $('#caption').val()
-			var urll = '../uploads/' + fileName + '/' + caption;
-			console.log(urll)
+ <script>
+// 	$(document).ready(function() {
+// 		$('#uploadForm').submit(function() {
+// 			var fileName = $('li').text() //hacky...
+// 			var caption = $('#caption').val()
+// 			var urll = '../uploads/' + fileName + '/' + caption;
+// 			console.log(urll)
 
-			$(this).ajaxSubmit({
-				url: urll, 
-				error: function(xhr) {
-					status('Error: ' + xhr.status)
-                    console.log("ERROR uploading file")
-				},
-				success: function(response) {
-					console.log("suuuuuccccessssss")
-					//Cindy/Tiffany-you can display the newly uploaded photo however you want...
-					// $('.table').append("<img src='/upload/" + $('li').text() + "' />")		
+// 			$(this).ajaxSubmit({
+// 				url: urll, 
+// 				error: function(xhr) {
+// 					status('Error: ' + xhr.status)
+//                     console.log("ERROR uploading file")
+// 				},
+// 				success: function(response) {
+// 					console.log("suuuuuccccessssss")
+// 					//Cindy/Tiffany-you can display the newly uploaded photo however you want...
+// 					// $('.table').append("<img src='/upload/" + $('li').text() + "' />")		
 
-                    $('.table').append("<div class='col-sm-15'>
-                    <img class='personal-image img-responsive' src='/upload/" + $('li').text() + "' /></div>")  
+//                     $('.table').append("<div class='col-sm-15'>
+//                     <img class='personal-image img-responsive' src='/upload/" + $('li').text() + "' /></div>")  
 
-                //     <div class="col-sm-15">
-                //     <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
-                // </div>
+//                 //     <div class="col-sm-15">
+//                 //     <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
+//                 // </div>
 
 					
-					document.getElementById('uploadForm').reset()
-					$('output').val('')
-				}
-			});
-			return false;
-		});
-	});
+// 					document.getElementById('uploadForm').reset()
+// 					$('output').val('')
+// 				}
+// 			});
+// 			return false;
+// 		});
+// 	});
+// </script>
+
+<script>
+        $(document).ready(function() {
+            // highlight user's interests
+            var uid = '1';
+            $.get('/selectInterests/' + uid, function(data) {
+
+                $.ajax({
+                    success: function(response) {
+                        for (var i=0; i<data.length; i++) {
+                            loadHighlight(data[i]);
+                        }
+                    }
+                });
+            });     
+          });
+
+        function loadHighlight(id) {
+            var docID = "#" + id;
+            if($(docID).hasClass("selectedInterest")) {
+                $(docID).removeClass("selectedInterest");
+            } else {
+                $(docID).addClass("selectedInterest");
+            }
+        }
 </script>
 

@@ -263,11 +263,24 @@ $(document).ready(function(){
 
         function genreHighlight(id) {
             var docID = "#" + id;
+            alert("hello");
             if($(docID).hasClass("selectedGenre")) {
                 $(docID).removeClass("selectedGenre");
+
+                // remove from db
+                var uid = '1';
+                $.post('/removeGenre/' + uid + '/' + id, function(data) {
+                    console.log("removed genre");
+                }); 
             } else {
                 $(docID).addClass("selectedGenre");
                 loadTopSongs(id, 'in_rotation-best');
+
+                // add to db
+                var uid = '1';
+                $.post('/addGenre/' + uid + '/' + id, function(data) {
+                    console.log("added genre");
+                }); 
             }
         }
 
@@ -364,5 +377,34 @@ $(document).ready(function(){
         }
     });
 </script>
+<script>
+        $(document).ready(function() {
+            // highlight user's interests
+            var uid = '1';
+            $.get('/selectGenres/' + uid, function(data) {
+
+                $.ajax({
+                    success: function(response) {
+                        for (var i=0; i<data.length; i++) {
+                            loadHighlight(data[i]);
+                        }
+                    }
+                });
+            });     
+          });
+
+        function loadHighlight(id) {
+            var docID = "#" + id;
+            if($(docID).hasClass("selectedGenre")) {
+                $(docID).removeClass("selectedGenre");
+            } else {
+                $(docID).addClass("selectedGenre");
+            }
+        }
+</script>
+
+
+
+
 </body>
 </html>
