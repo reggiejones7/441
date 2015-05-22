@@ -118,7 +118,7 @@
 					 </form>
 					 <output id="list"></output>
             </div>
-            <div class="personal-table row" style="height: 450px; overflow-y: scroll; overflow-x:hidden">
+            <div class="personal-table row">
                 <div class="personal-row col-sm-12">
                     <div class="col-sm-15">
                         <img class="fav-pics img-responsive" src="img/fakePuzzles/family1.jpg" alt="">
@@ -186,21 +186,18 @@
           $('.interests').slick({
             infinite: true,
             slidesToShow: 5,
-            slidesToScroll: 5
+            slidesToScroll: 5,
+            arrows:false,
+            speed:800
           });
-          $('.slick-next').css({"width":"40px", "height":"90px", 
-                                "margin-top":"-10px", "top":"35%", "position":"none"});
-          $('.slick-prev').css({"width":"40px", "height":"90px", 
-                                "margin-top":"-10px", "top":"35%", "right":"10px"});
+
         });
     </script>
+
     <style>
         .selectedInterest {
             border: solid #B689BC 5px;
         }
-
-
-
     </style>
 
     <script>

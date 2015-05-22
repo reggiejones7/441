@@ -232,12 +232,10 @@ $(document).ready(function(){
         $('.genres').slick({
             infinite: true,
             slidesToShow: 5,
-            slidesToScroll: 5
+            slidesToScroll: 5,
+            arrows:false,
+            speed:800
         });
-        $('.slick-next').css({"width":"40px", "height":"90px", 
-            "margin-top":"-10px", "top":"35%", "position":"none"});
-        $('.slick-prev').css({"width":"40px", "height":"90px", 
-            "margin-top":"-10px", "top":"35%", "right":"10px"});
 
         // load playlist
         jQuery.ajaxSettings.traditional = true; 
