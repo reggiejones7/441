@@ -109,19 +109,50 @@
         <!-- Personal Photos Row-->
         <div class="personal-photos-row">
             <div class="favtitle-row">
-                <h3 class="fav-title">Personal Photos
-                </h3>
-					 <form id="uploadForm" enctype="multipart/form-data" method="post">
-						 <input class="choose-pic" type="file" id="files" name="files[]" multiple />
-						 <input class="save-pic" type="submit" id="go!" id="submit" ></input>
-						 <input type="text" id="caption" />
-					 </form>
-					 <output id="list"></output>
+                <h3 class="fav-title">Personal Photos </h3>
             </div>
-            <div class="personal-table row" style="height: 450px; overflow-y: scroll; overflow-x:hidden">
+            <div class="personal-table row" style="overflow-x:hidden">
+			
                 <div class="personal-row col-sm-12">
-                    <div class="col-sm-15">
-                        <img class="fav-pics img-responsive" src="img/fakePuzzles/family1.jpg" alt="">
+                    <div class="col-sm-15">					
+						<input type="image" src="img/tempUpload.jpg" alt="" class="personal-image img-responsive" onclick="chooseFile();"
+							data-toggle="modal" data-target="#myModal" />
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+							<div class="modal-dialog" style="width:330px"> <div class="modal-content"> 
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel">Upload a Photo</h4>
+								</div>
+								<form id="uploadForm" enctype="multipart/form-data" method="post">
+									<div class="modal-body">
+										<input class="choose-pic" type="file" accept="image/*" id="files" name="files[]"
+													onchange="loadFile(event)" />
+										<br/> <img class="personal-image img-responsive" style="width: 300px" id="output"/>
+										<br/> <p> Enter a message or caption for the picture: </p>
+										<textarea type="text" id="caption" rows="2" style="resize: vertical; width:100%" ></textarea> 
+										<script>
+											$('textarea').autoResize();
+										</script>										
+									</div>
+									<div class="modal-footer" style="text-align:center;">
+										<input class="save-pic btn btn-default" type="submit" id="go!" id="submit" ></input>					
+									</div>
+								</form>
+							</div> </div>
+						</div>
+						<script>
+						   function chooseFile() {
+							  $("#files").click();
+							  
+						   }
+						</script>
+						<script>
+						  var loadFile = function(event) {
+							var output = document.getElementById('output');
+							output.src = URL.createObjectURL(event.target.files[0]);
+						  };
+						</script>
+						
                     </div>
                     <div class="col-sm-15">
                         <img class="personal-image img-responsive" src="img/fakePuzzles/family2.jpg" alt="">
