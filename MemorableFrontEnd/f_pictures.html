@@ -64,7 +64,7 @@
         <!-- Interests Row -->
         <div class="interests-row">
             <div class="favtitle-row">
-                <h3 class="fav-title" onclick="slideNext()">Select Interests
+                <h3 class="fav-title">Select Interests
                 </h3>
             </div>
             <div class="interests">
@@ -302,10 +302,8 @@
 
                 $.ajax({
                     success: function(response) {
-                        console.log("back in picutres");
                         for (var i=0; i<data.length; i++) {
                             loadHighlight(data[i]);
-                            console.log("hightlight " + data[i]);
                         }
                     }
                 });

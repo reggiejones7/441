@@ -68,6 +68,20 @@ CREATE TABLE user_interests(
 );
 
 
+-- Table: music genres
+CREATE TABLE genres (
+    genre_type varchar(50) PRIMARY KEY
+);
+
+
+-- Table: user's music genres
+CREATE TABLE user_genres(
+    user_id varchar(50) REFERENCES resident_user(user_id),
+    genre_type varchar(100) REFERENCES genres(genre_type),
+    PRIMARY KEY (user_id, genre_type)
+);
+
+
 -- Insert Data into tables
 -- admin user
 INSERT INTO admin_user VALUES('admin', 'admin');
