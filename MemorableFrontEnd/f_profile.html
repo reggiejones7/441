@@ -78,14 +78,10 @@
             <div class="col-sm-2">
             </div>
             <div class="col-sm-4">
-                <a href="f_pictures.html">
-                    <img class="edit-photos img-responsive" src="img/editPicsBtn.jpg" alt="">
-                </a>
+                <img class="edit-photos img-responsive" src="img/editPicsBtn.jpg" onclick="goToPictures()">
             </div>
             <div class="col-sm-4">
-                <a href="f_music.html">
-                    <img class="edit-music img-responsive" src="img/editMusicBtn.jpg" alt="">
-                </a>
+                <img class="edit-music img-responsive" src="img/editMusicBtn.jpg" onclick="goToMusic()">
             </div>
             <div class="col-sm-2">
             </div>
@@ -200,6 +196,14 @@
 
         function backButton() {
             window.location = "r_puzzles.html"; 
+        }
+
+        function goToPictures() {
+            window.location = "f_pictures.html"; 
+        }
+
+        function goToMusic() {
+            window.location = "f_music.html"; 
         }
 	</script>
 </body>
