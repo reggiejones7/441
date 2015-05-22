@@ -201,7 +201,33 @@
             border: solid #B689BC 5px;
         }
 
+
+
     </style>
+
+    <script>
+        function interestHighlight(id) {
+            var docID = "#" + id;
+            if($(docID).hasClass("selectedInterest")) {
+                $(docID).removeClass("selectedInterest");
+
+                // remove from db
+                var uid = '1';
+                $.post('/removeInterest/' + uid + '/' + id, function(data) {
+                    console.log("removed interest");
+                }); 
+
+            } else {
+                $(docID).addClass("selectedInterest");
+
+                // add to db
+                var uid = '1';
+                $.post('/addInterest/' + uid + '/' + id, function(data) {
+                    console.log("added interest");
+                }); 
+            }
+        }
+    </script>
 
     <script>
         function slideNext() {
@@ -278,7 +304,7 @@
                     success: function(response) {
                         console.log("back in picutres");
                         for (var i=0; i<data.length; i++) {
-                            interestHighlight(data[i]);
+                            loadHighlight(data[i]);
                             console.log("hightlight " + data[i]);
                         }
                     }
@@ -286,7 +312,7 @@
             });     
           });
 
-        function interestHighlight(id) {
+        function loadHighlight(id) {
             var docID = "#" + id;
             if($(docID).hasClass("selectedInterest")) {
                 $(docID).removeClass("selectedInterest");

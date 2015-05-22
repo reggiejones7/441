@@ -255,15 +255,6 @@ router.get('/uploads/:fileName', function(req, res) {
 
 
 router.get('/selectInterests/:user_id', function(req, res) {
-	//saloni- to get this to work do the following.
-	//sudo -i -u postgres
-	//psql
-	//then enter the command 'create database memorable' (if we already created this for you than you're going to need to delete that database because I changed the sql script. do delete the already existing memorable db 'drop database memorable;' before creating it again.
-	//then \q. (also, you can exit from your sudo bash shell to just the normal shell)
-	// then run 'psql -f memorable_database_create.sql memorable'
-	// lastly, hit localhost:3000/tracks/jappleseed in your browser and you should
-	// see the word fake_id_1 displayed to the page
-	//var user_id = req.params.user_id;
 	var user_id = 'gracejohnson';
 	// var q = 'select p.file_name from interest_pictures p, interests i where i.interest_type = p.interest_type and i.interest_type in (select interest_type from user_interests where user_id=$1)';
 	var q = 'select interest_type from user_interests where user_id=$1';
@@ -271,18 +262,43 @@ router.get('/selectInterests/:user_id', function(req, res) {
 	var data = [user_id];
 	var callback = function(err, data) { 
 		console.log(err);
-		console.log('grab interests callback')
 		var interestType = []
 		for (var i = 0; i < data.rows.length; i++) {
 			interestType.push(data.rows[i].interest_type)
-			console.log(data.rows[i].interest_type)
 		}
-		// res.json({interestType:interest_type});
 		res.send(interestType);
-		// return interestType;
 	}
 	query(q, data, callback);
 })
+
+
+router.post('/removeInterest/:user_id/:interest', function(req, res) {
+	var user_id = 'gracejohnson';
+	var interest = req.params.interest;
+	console.log("in index " + user_id + " " + interest);
+	var q = 'delete from user_interests where user_id=$1 and interest_type=$2';
+	var data = [user_id, interest];
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
+})
+
+
+router.post('/addInterest/:user_id/:interest', function(req, res) {
+	var user_id = 'gracejohnson';
+	var interest = req.params.interest;
+	console.log("in index " + user_id + " " + interest);
+	var q = 'insert into user_interests values ($1, $2)';
+	var data = [user_id, interest];
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
+})
+
 
 
 
