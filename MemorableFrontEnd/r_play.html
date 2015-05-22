@@ -58,9 +58,7 @@
         
 
         <!-- Go Back -->
-        <a href="../r_puzzles.html">
-            <img src="../img/backButton.png" class="back-button">
-        </a>
+        <img src="img/backButton.png" class="back-button" onclick="backButton()">
 
         <!-- Page Header -->
         <div class="row">
@@ -279,7 +277,9 @@
     <script src="../js/bootstrap.min.js"></script>
 	
 	<script>
-		
+		function backButton() {
+            window.location = "r_puzzles.html"; 
+        }
 	</script>	
 	
 
