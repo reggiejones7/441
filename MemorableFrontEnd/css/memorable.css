@@ -521,3 +521,29 @@ h1, h2, h3, h4, h5, h6, p {
 	font-size: 25px;
 	margin-bottom:0px;
 }
+
+/*!
+ * SLIDESHOW CSS
+ */
+.slideshow {
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+.slideshow-photo{ 
+	max-height: 356px
+}
+
+.slideshow-message {
+	background: #EB5100;
+	background-color: white; 
+	color: black;
+	font-size: 20px; 
+	line-height: 30px; 
+	text-align: center; 
+	filter: inherit;
+	position: absolute; top: 90%; left: 20%; width: 60%; height: 30px;
+	transform: rotate(0deg) scale(1); 
+	opacity: 0.80;"> 
+}
