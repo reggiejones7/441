@@ -47,11 +47,10 @@
         <!-- Page Header -->
         <div class="edit-title-row">
             <div class="col-sm-2">
-                <img class="edit-user-pic img-responsive" src="img/fakeUsers/user2.jpg" alt="">
+                <img class="edit-user-pic img-responsive" id="profileImg" alt="">
             </div>
             <div class="col-sm-10">
-                <div class="edit-user-title">
-                    Grace's Pictures
+                <div id="editUserTitle" class="edit-user-title">
                 </div>
             </div>
         </div>
@@ -321,6 +320,12 @@
 
 <script>
         $(document).ready(function() {
+            var user_id = getCookie("username");
+            var fname = getCookie("fname");
+            var lname = getCookie("lname");
+            var imgPath = "img/fakeUsers/" + user_id + ".jpg";
+            $("#editUserTitle").html(fname + "'s Pictures");
+            $("#profileImg").attr("src", imgPath);
             // highlight user's interests
             var uid = '1';
             $.get('/selectInterests/' + uid, function(data) {
@@ -346,6 +351,17 @@
 
         function backButton() {
             window.location = "f_profile.html"; 
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+            }
+            return "";
         }
 </script>
 

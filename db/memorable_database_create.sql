@@ -65,7 +65,12 @@ CREATE TABLE user_interests(
 INSERT INTO admin_user VALUES('admin', 'admin');
 
 -- resident user
-INSERT INTO resident_user VALUES('jappleseed', 'test', 'Johnny Appleseed', 'admin', 2);
-
-
+INSERT INTO resident_user VALUES('jappleseed', 'test', 'Grace Johson', 'admin', 2);
+INSERT INTO resident_user VALUES('amartin', 'test', 'Alfredo Martin', 'admin', 2);
+INSERT INTO resident_user VALUES('eshah', 'test', 'Esther Shah', 'admin', 2);
+INSERT INTO resident_user VALUES('fparker', 'test', 'Frank Parker', 'admin', 2);
+INSERT INTO resident_user VALUES('glewis', 'test', 'Gerard Lewis', 'admin', 2);
+INSERT INTO resident_user VALUES('wanderson', 'test', 'Winston Anderson', 'admin', 2);
+INSERT INTO resident_user VALUES('estone', 'test', 'Eileen Stone', 'admin', 2);
+INSERT INTO resident_user VALUES('hwilson', 'test', 'Heather Wilson', 'admin', 2);
 

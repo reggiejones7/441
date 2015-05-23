@@ -56,11 +56,10 @@
             <!-- Page Header -->
             <div class="edit-title-row">
                 <div class="col-sm-3">
-                    <img class="edit-user-pic img-responsive" src="img/fakeUsers/user2.jpg" alt="">
+                    <img class="edit-user-pic img-responsive" id="profileImg" alt="">
                 </div>
                 <div class="col-sm-9">
-                    <div class="edit-user-title">
-                        Grace's Music
+                    <div id="editUserTitle" class="edit-user-title">
                     </div>
                 </div>
             </div>
@@ -75,8 +74,7 @@
                             Add Songs</a>
                         </li>
                         <li>
-                            <a href="#playlist-tab" data-toggle="tab">
-                                Grace's Playlist</a>
+                            <a href="#playlist-tab" id="playlistTitle" data-toggle="tab"></a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -357,6 +355,17 @@ $(document).ready(function(){
             });
         }
 
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+            }
+            return "";
+        }
+
         // convert milliseconds to min:sec
         function convertTime(time) {
             var num = parseInt(time);
@@ -375,6 +384,13 @@ $(document).ready(function(){
 </script>
 <script>
         $(document).ready(function() {
+            var user_id = getCookie("username");
+            var fname = getCookie("fname");
+            var lname = getCookie("lname");
+            var imgPath = "img/fakeUsers/" + user_id + ".jpg";
+            $("#editUserTitle").html(fname + "'s Music");
+            $("#playlistTitle").html(fname + "'s Playlist");
+            $("#profileImg").attr("src", imgPath);
             // highlight user's interests
             var uid = '1';
             $.get('/selectGenres/' + uid, function(data) {

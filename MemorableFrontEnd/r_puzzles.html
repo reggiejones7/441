@@ -44,10 +44,10 @@
         <img src="img/backButton.png" class="back-button" onclick="backButton()">
 
         <!-- User -->
-        <input type="image" src="img/fakeUsers/user2.jpg" class="btTxt submit user-icon" id="saveForm" 
+        <input type="image" id="profileImg" class="btTxt submit user-icon" value=" " id="saveForm" 
 					data-toggle="modal" data-target="#myModal2" />
 
-        <div class="user-name">Grace</div>
+        <div class="user-name" id="displayName"></div>
 
 		<input type="submit" value="Settings" class="btTxt submit user-edit text-center" id="saveForm" 
 				style="padding: 0; border: none; background: white;"
@@ -63,7 +63,7 @@
 			<div class="modal-dialog" style="width: 300px"> <div class="modal-content"> 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Please enter Grace's PIN</h4>
+					<h4 class="modal-title" id="myModalLabel">Please enter PIN</h4>
 				</div>
 				<form name="pass2" id="pass2" class="form-inline" role="form" 
 					action=" javascript: 
@@ -191,9 +191,28 @@
             speed:1000,
             arrows:false
           });
+          // Set upper profile info for user 
+          var user_id = getCookie("username");
+          var fname = getCookie("fname");
+          var lname = getCookie("lname");
+          var imgPath = "img/fakeUsers/" + user_id + ".jpg";
+          $("#displayName").html(fname);
+          $("#profileImg").attr("src", imgPath);
+
         });
     </script>
     <script>
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+            }
+            return "";
+        }
+
         function gotoSlideshow() {
             window.location = "r_slideshow.html"; 
         }
