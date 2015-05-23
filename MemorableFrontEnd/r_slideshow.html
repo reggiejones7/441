@@ -121,7 +121,7 @@
 
     <!-- User -->
     <a href="#">
-        <img src="img/fakeUsers/user2.jpg" class="user-icon">
+        <img id="profileImg" class="user-icon">
     </a>
 
 
@@ -375,8 +375,11 @@
 
 
             $(document).ready(function() {
-                // var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '0eGsygTp906u18L0Oimnem'];
-                // var sidString = sids.join();
+                // Set upper profile info for user 
+                var user_id = getCookie("username");
+                var imgPath = "img/fakeUsers/" + user_id + ".jpg";
+                $("#profileImg").attr("src", imgPath);
+
                 $("#song-info").attr("visibility", "hidden");
                 audio.addEventListener('ended', function() {
                     // play next track if current song ends
@@ -399,18 +402,19 @@
 
             });
             
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0; i<ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1);
+                    if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+                }
+                return "";
+            }
+            
             // ajax request to get tracks given params (track ids)
             function fetchData(functionName) { 
-            //     var uid = '1';
-            //     $.get('/tracks/' + uid, function(data) {
-            //         var sids = data.songIds;
-            //     $.ajax({
-            //         url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
-            //         success: function(response) {
-            //             addSongs(response);
-            //         }
-            //     });
-            // });
                 var sids = "2lS9HDs8slGZnu4vny2pWT,2g9kOw3klip4tdhpmDELI8,2Z22JutFajqTVKRwHNQqPT,1PoJanvces1oPEL2cWfu32,12wC2RYrCdKA7NOQujvQBi,0UdRGHCSRvn85nN0IfHFmq,3Bk4kjeoGmhfO8RRY87AzS,60rhBTUmtubm0OnLv9Mlim,1MwJMB0GyO9gY7GwfqcXYq,39JOQuh3W50pdnzxEx0URV,1byIZa6CFerX5WXShwqAvf";
                 $.ajax({
                     url: 'https://api.spotify.com/v1/tracks?ids=' + sids,

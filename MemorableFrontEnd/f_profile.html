@@ -42,12 +42,11 @@
         <!-- Page Header -->
         <div class="info-row">
             <div class="col-sm-6">
-                <img class="profile-image img-responsive" src="img/fakeUsers/user2.jpg" alt="">
+                <img id="profileImg" class="profile-image img-responsive" alt="">
             </div>
             <div class="col-sm-6">
                 <br>
-                <div class="profile-name row">
-                    Grace Johnson
+                <div id="displayName" class="profile-name row">
                 </div>
                 <div class="profile-puzzle-diff row">
                     Puzzle Difficulty
@@ -158,6 +157,13 @@
 	<script>
 	//change the puzzle difficulty ajax
 		$(document).ready(function() {
+            // Set upper profile info for user 
+          var user_id = getCookie("username");
+          var fname = getCookie("fname");
+          var lname = getCookie("lname");
+          var imgPath = "img/fakeUsers/" + user_id + ".jpg";
+          $("#displayName").html(fname + " " + lname);
+          $("#profileImg").attr("src", imgPath);
 			$('label').each(function() {
 				$(this).click(function() {
 					console.log($(this).children().first().attr('value'))
@@ -194,6 +200,17 @@
             });		
 		  });
 
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+            }
+            return "";
+        }
+        
         function backButton() {
             window.location = "r_puzzles.html"; 
         }
