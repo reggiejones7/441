@@ -174,10 +174,11 @@ router.get('/profile', function(req, res) {
 	res.sendFile(path.join(__dirname, "../MemorableFrontEnd/f_profile.html"))
 })
 
-//not done
+//done
 //update a puzzle difficulty from the user profile page
 router.put('/puzzle_difficulty', function(req, res) {
 	//will need to pass in user id, and puzzle difficulty
+	console.log(req.body)
 	var user_id = req.body.user_id
 	var puzzle_difficulty = req.body.puzzle_difficulty
 	var q = "update resident_user set puzzle_level=$1 where user_id=$2"
@@ -185,6 +186,19 @@ router.put('/puzzle_difficulty', function(req, res) {
 	var callback = function(err, data) {console.log(err) }
 	query(q, data, callback)	
 	res.end()
+})
+
+router.get('/puzzle_difficulty', function(req, res) {
+	var user_id = req.cookies.username
+	var q = "select puzzle_level from resident_user where user_id=$1"
+	var data = [user_id]
+	callback = function(err, data) {
+	   if (err)	console.log(err)
+		res.send(data.rows[0])
+	}
+	query(q, data, callback)
+	
+
 })
 
 router.post('/tracks/:song_id/:user_id', function(req, res) {
@@ -211,7 +225,6 @@ router.get('/tracks/:user_id', function(req, res) {
 	// see the word fake_id_1 displayed to the page
 	//var user_id = req.params.user_id;
 	var user_id = 'jappleseed';
-	console.log("died here")
 	var q = 'select id from song where user_id=$1';
 	var data = [user_id];
 	var callback = function(err, data) { 
