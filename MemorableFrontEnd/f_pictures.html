@@ -294,13 +294,20 @@
 				},
 				success: function(response) {
 					console.log("suuuuuccccessssss")
-					//Cindy/Tiffany-you can display the newly uploaded photo however you want...
-					// $('.table').append("<img src='/upload/" + $('li').text() + "' />")
-	/*
-	$('.table').append("<div class='col-sm-15'>  <img class='personal-image img-responsive' src='/upload/" + fileName + "' /></div>")  
-*/					
+					
 					document.getElementById('uploadForm').reset()
 					$('.close').click()
+					
+					//now display the image that was just uploaded
+					var outterDiv = $('<div></div>')
+					outterDiv.attr('class', 'col-sm-15')
+					var image = $('<img>')
+					image.attr('class', 'personal-image img-responsive')
+					image.attr('src', '/uploads/' + fileName)
+					outterDiv.append(image)
+
+					$('.personal-row:last').append(outterDiv)
+
 				}
 			});
 			return false;
