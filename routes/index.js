@@ -292,10 +292,12 @@ router.get('/selectInterests/:user_id', function(req, res) {
 	var callback = function(err, data) { 
 		console.log(err);
 		var interestType = []
-		for (var i = 0; i < data.rows.length; i++) {
-			interestType.push(data.rows[i].interest_type)
+		if (data.rows) { 
+			for (var i = 0; i < data.rows.length; i++) {
+				interestType.push(data.rows[i].interest_type)
+			}
+			res.send(interestType);
 		}
-		res.send(interestType);
 	}
 	query(q, data, callback);
 })

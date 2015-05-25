@@ -121,16 +121,13 @@
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 									<h4 class="modal-title" id="myModalLabel">Upload a Photo</h4>
 								</div>
-								<form id="uploadForm" enctype="multipart/form-data" method="post">
+								<form id="uploadForm" enctype="multipart/form-data" >
 									<div class="modal-body">
 										<input class="choose-pic" type="file" accept="image/*" id="files" name="files[]"
 													onchange="loadFile(event)" />
 										<br/> <img class="personal-image img-responsive" style="width: 300px" id="output"/>
 										<br/> <p> Enter a message or caption for the picture: </p>
 										<textarea type="text" id="caption" rows="2" style="resize: vertical; width:100%" ></textarea> 
-										<script>
-											$('textarea').autoResize();
-										</script>										
 									</div>
 									<div class="modal-footer" style="text-align:center;">
 										<input class="save-pic btn btn-default" type="submit" id="submit" ></input>					
@@ -272,45 +269,38 @@
     for (var i = 0, f; f = files[i]; i++) {
       output.push('<li id="img_', i,  '"><strong>', escape(f.name), '</strong></li>');
     }
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 </script>
 
  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-</body>
-</html>
 
  <script>
 	$(document).ready(function() {
 		$('#uploadForm').submit(function() {
-			var fileName = $('li').text() //hacky...
+			var path = $('#files').val()
+			var fileName = path.substring(path.lastIndexOf('\\') + 1)
 			var caption = $('#caption').val()
-			var urll = '../uploads/' + fileName + '/' + caption;
+			var urll = '../upload/' + fileName + '/' + caption;
+			console.log('this is the url')	
 			console.log(urll)
 
 			$(this).ajaxSubmit({
 				url: urll, 
+				method: 'POST',
 				error: function(xhr) {
-					status('Error: ' + xhr.status)
-                    console.log("ERROR uploading file")
+                   console.log("ERROR uploading file")
 				},
 				success: function(response) {
 					console.log("suuuuuccccessssss")
 					//Cindy/Tiffany-you can display the newly uploaded photo however you want...
-					// $('.table').append("<img src='/upload/" + $('li').text() + "' />")		
-
-                    $('.table').append("<div class='col-sm-15'>
-                    <img class='personal-image img-responsive' src='/upload/" + $('li').text() + "' /></div>")  
-
-                //     <div class="col-sm-15">
-                //     <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
-                // </div>
-
-					
+					// $('.table').append("<img src='/upload/" + $('li').text() + "' />")
+	/*
+	$('.table').append("<div class='col-sm-15'>  <img class='personal-image img-responsive' src='/upload/" + fileName + "' /></div>")  
+*/					
 					document.getElementById('uploadForm').reset()
-					$('output').val('')
+					$('.close').click()
 				}
 			});
 			return false;
@@ -328,6 +318,7 @@
             $("#profileImg").attr("src", imgPath);
             // highlight user's interests
             var uid = '1';
+/*
             $.get('/selectInterests/' + uid, function(data) {
 
                 $.ajax({
@@ -339,29 +330,33 @@
                 });
             });     
           });
+*/
 
-        function loadHighlight(id) {
-            var docID = "#" + id;
-            if($(docID).hasClass("selectedInterest")) {
-                $(docID).removeClass("selectedInterest");
-            } else {
-                $(docID).addClass("selectedInterest");
-            }
-        }
+					 function loadHighlight(id) {
+						  var docID = "#" + id;
+						  if($(docID).hasClass("selectedInterest")) {
+								$(docID).removeClass("selectedInterest");
+						  } else {
+								$(docID).addClass("selectedInterest");
+						  }
+					 }
 
-        function backButton() {
-            window.location = "f_profile.html"; 
-        }
+					 function backButton() {
+						  window.location = "f_profile.html"; 
+					 }
 
-        function getCookie(cname) {
-            var name = cname + "=";
-            var ca = document.cookie.split(';');
-            for(var i=0; i<ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1);
-                if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-            }
-            return "";
-        }
+					 function getCookie(cname) {
+						  var name = cname + "=";
+						  var ca = document.cookie.split(';');
+						  for(var i=0; i<ca.length; i++) {
+								var c = ca[i];
+								while (c.charAt(0)==' ') c = c.substring(1);
+								if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+						  }
+						  return "";
+					 }
+	})
 </script>
 
+</body>
+</html>
