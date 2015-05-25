@@ -1,6 +1,3 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2015-05-05 00:13:46.332
-
 
 
 -- tables
@@ -93,3 +90,13 @@ INSERT INTO song values('fake_song_id_1', 'jappleseed');
 INSERT INTO song values('fake_song_id_2', 'jappleseed');
 
 
+--image
+INSERT INTO image VALUES('', '', '', NULL);
+INSERT INTO image VALUES('family1.jpg', 'jappleseed', 'family1 caption', NULL);
+INSERT INTO image VALUES('family2.jpg', 'jappleseed', 'family2 caption', NULL);
+INSERT INTO image VALUES('family3.jpg', 'jappleseed', 'family3 caption', NULL);
+INSERT INTO image VALUES('family4.jpg', 'jappleseed', 'family4 caption', NULL);
+INSERT INTO image VALUES('family5.jpg', 'jappleseed', 'family5 caption', NULL);
+INSERT INTO image VALUES('farm1.jpg', 'jappleseed', 'farm1 caption', NULL);
+INSERT INTO image VALUES('farm2.jpg', 'jappleseed', 'farm2 caption', NULL);
+INSERT INTO image VALUES('farm3.jpg', 'jappleseed', 'farm3 caption', NULL);

@@ -277,6 +277,22 @@
  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 
  <script>
+	function buildImg(fileName) {
+		 var outterDiv = $('<div></div>')
+		 outterDiv.attr('class', 'col-sm-15')
+		 var image = $('<img>')
+		 image.attr('class', 'personal-image img-responsive')
+		 image.attr('src', '/uploads/' + fileName)
+		 outterDiv.append(image)
+		 return outterDiv
+	}
+	
+	function appendPersonalImg(fileName) {
+		var image = buildImg(fileName)
+		$('.personal-row:last').append(image)
+	}
+
+
 	$(document).ready(function() {
 		$('#uploadForm').submit(function() {
 			var path = $('#files').val()
@@ -299,18 +315,19 @@
 					$('.close').click()
 					
 					//now display the image that was just uploaded
-					var outterDiv = $('<div></div>')
-					outterDiv.attr('class', 'col-sm-15')
-					var image = $('<img>')
-					image.attr('class', 'personal-image img-responsive')
-					image.attr('src', '/uploads/' + fileName)
-					outterDiv.append(image)
-
-					$('.personal-row:last').append(outterDiv)
-
+					appendPersonalImg(fileName)
 				}
 			});
 			return false;
+		});
+	
+		//get the pictures associated to this user and display them
+		$.get('/pictures', function(data) {
+			console.log(data)
+			for (var i = 0; i < data.length; i++) {
+				var fileName = data[i].file_name
+				appendPersonalImg(fileName)	
+			}
 		});
 	});
 </script>
@@ -326,6 +343,7 @@
             // highlight user's interests
             var uid = '1';
 /*
+				tiffany I commented this out because it was throwing a 404 and making this whole page unusable and I was working on something in this page
             $.get('/selectInterests/' + uid, function(data) {
 
                 $.ajax({
