@@ -42,6 +42,10 @@ var getClient = function() {
 		//heroku connection
 		return new pg.Client(connectionString)
 	}	 
+
+
+	//var host = require('../postgres.js').host
+	
 	//localhost
 	return new pg.Client({
 									database: 'memorable',
@@ -134,7 +138,8 @@ router.get('/upload/:file_name', function(req, res) {
 	var callback = function(err, readResults) { 
 		if (readResults.rows.length > 0) {
 			var img = readResults.rows[0].img	
-			console.log('iinside')
+			//convert to base64 before sending so clientside can render the image
+			//var base64Img = new Buffer(img, 'hex').toString('base64')
 			res.contentType = 'image'
 			res.end(img, 'binary')
 		} else {
@@ -209,7 +214,6 @@ router.get('/tracks/:user_id', function(req, res) {
 	var data = [user_id];
 	var callback = function(err, data) { 
 		console.log(err, data)
-		console.log('inside')
 		var song_ids = []
 		for (var i = 0; i < data.rows.length; i++) {
 			song_ids.push(data.rows[i].id)
@@ -229,7 +233,6 @@ var uploadFolderPath = function(fileName) {
 router.get('/play/:fileName', function(req, res) {
 	//first rewrite file under the uploads/ folder ie hacky
 	//	this is so we dont have to send binary image
-	console.log('inside')	
 	var fileName = req.params.fileName
 	var filePath = '../' + uploadDestination + fileName
 	filePath = path.join(__dirname, filePath)
@@ -249,6 +252,19 @@ router.get('/uploads/:fileName', function(req, res) {
 	var fileName = req.params.fileName
 
   res.sendFile(path.join(__dirname, '../uploads/'+fileName))
+})
+
+
+//get a list of pictures that belong to a user
+//	returns a list of file names of pictures instead of the actual file
+router.get('/pictures/:userID', function(req, res) {
+	var userID = req.params.userID
+	var userID = 'jappleseed' //fix this when changing multi user
+	//get picture names from db
+	//HARD CODING VALUES instead of talking to db
+	var pictures = ['family1.jpg', 'family4.jpg', 'farm2.jpg', 'piano.jpg', 'farm1.jpg', 'family2.jpg', 'family3.jpg']
+	res.json({files : pictures})
+
 })
 
 
