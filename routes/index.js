@@ -52,7 +52,7 @@ var getClient = function() {
 									//the host is going to be diff for cindy so we'll need to figure that out.
 									//https://github.com/brianc/node-postgres/issues/613
 									//fedora = uncomment out next line
-									//host: '/var/run/postgresql',
+								//	host: '/var/run/postgresql',
 									port: 5432});
 }
 
@@ -165,6 +165,17 @@ router.get('/caption/:file_name', function(req, res){
 })
 
 
+router.get('/pictures', function(req, res) {
+	var user_id = req.cookies.username
+	var q = "select file_name from image where user_id=$1"
+	var data = [user_id]
+	var callback = function(err, data) {
+		console.log(data.rows)
+		res.send(data.rows)
+	}
+	query(q, data, callback)
+
+})
 
 
 
@@ -177,8 +188,6 @@ router.get('/profile', function(req, res) {
 //done
 //update a puzzle difficulty from the user profile page
 router.put('/puzzle_difficulty', function(req, res) {
-	//will need to pass in user id, and puzzle difficulty
-	console.log(req.body)
 	var user_id = req.body.user_id
 	var puzzle_difficulty = req.body.puzzle_difficulty
 	var q = "update resident_user set puzzle_level=$1 where user_id=$2"
