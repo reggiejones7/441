@@ -149,48 +149,7 @@
 						</script>
 						
                     </div>
-                    <div class="col-sm-15">
-                        <img class="personal-image img-responsive" src="img/fakePuzzles/family2.jpg" alt="">
-                    </div>
-                    <div class="col-sm-15">
-                        <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
-                    </div>
-                    <div class="col-sm-15">
-                        <img class="personal-image img-responsive" src="img/fakePuzzles/family4.jpg" alt="">
-                    </div>
-                    <div class="col-sm-15">
-                        <img class="personal-image img-responsive" src="img/fakePuzzles/family5.jpg" alt="">
-                    </div>
                 </div>
-                <div class="personal-row col-sm-12">
-                <div class="col-sm-15">
-                    <img class="fav-pics img-responsive" src="img/fakePuzzles/family1.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family2.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family4.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family5.jpg" alt="">
-                </div>
-            </div>
-            <div class="personal-row col-sm-12">
-                <div class="col-sm-15">
-                    <img class="fav-pics img-responsive" src="img/fakePuzzles/family1.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family2.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
-                </div>
-                
-            </div>
         </div>
         </div>
         <!-- /.row -->
@@ -289,7 +248,16 @@
 	
 	function appendPersonalImg(fileName) {
 		var image = buildImg(fileName)
-		$('.personal-row:last').append(image)
+		
+		//create a new row if needed
+		if ($('.personal-row:last').children().length >= 5) {
+			var newRow = $('<div></div>')
+			newRow.attr('class', 'personal-row col-sm-12')
+			image = newRow.append(image)
+			$('.personal-row:last').parent().append(image)
+		} else {
+			$('.personal-row:last').append(image)
+		}
 	}
 
 
