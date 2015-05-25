@@ -189,14 +189,15 @@ router.put('/puzzle_difficulty', function(req, res) {
 
 router.post('/tracks/:song_id/:user_id', function(req, res) {
 	var song_id = req.params.song_id;
-	var user_id = req.params.user_id;
+	//var user_id = req.params.user_id;
+	var user_id = 'jappleseed';
 	var q = 'insert into song values ($1, $2)';
-	var data = [song_id, 'jappleseed'];
-	var callback = function(err, data) { console.log(err) }
 	var data = [song_id, user_id];
-	var callback = function(err, data) { console.log("worked");console.log(err) }
-	query(q, data, callback)
-	res.end();
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
 })
 
 router.get('/tracks/:user_id', function(req, res) {
@@ -208,19 +209,20 @@ router.get('/tracks/:user_id', function(req, res) {
 	// then run 'psql -f memorable_database_create.sql memorable'
 	// lastly, hit localhost:3000/tracks/jappleseed in your browser and you should
 	// see the word fake_id_1 displayed to the page
-	var user_id = req.params.user_id;
+	//var user_id = req.params.user_id;
+	var user_id = 'jappleseed';
 	console.log("died here")
 	var q = 'select id from song where user_id=$1';
 	var data = [user_id];
 	var callback = function(err, data) { 
-		console.log(err, data)
+		console.log(err);
 		var song_ids = []
 		for (var i = 0; i < data.rows.length; i++) {
 			song_ids.push(data.rows[i].id)
 		}
-		res.end(song_ids.toString())
+		res.json({songIds:song_ids});
 	}
-	query(q, data, callback)
+	query(q, data, callback);
 })
 
 
@@ -266,6 +268,95 @@ router.get('/pictures/:userID', function(req, res) {
 	res.json({files : pictures})
 
 })
+
+
+router.get('/selectInterests/:user_id', function(req, res) {
+	var user_id = 'gracejohnson';
+	// var q = 'select p.file_name from interest_pictures p, interests i where i.interest_type = p.interest_type and i.interest_type in (select interest_type from user_interests where user_id=$1)';
+	var q = 'select interest_type from user_interests where user_id=$1';
+
+	var data = [user_id];
+	var callback = function(err, data) { 
+		console.log(err);
+		var interestType = []
+		for (var i = 0; i < data.rows.length; i++) {
+			interestType.push(data.rows[i].interest_type)
+		}
+		res.send(interestType);
+	}
+	query(q, data, callback);
+})
+
+
+router.post('/removeInterest/:user_id/:interest', function(req, res) {
+	var user_id = 'gracejohnson';
+	var interest = req.params.interest;
+	var q = 'delete from user_interests where user_id=$1 and interest_type=$2';
+	var data = [user_id, interest];
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
+})
+
+
+router.post('/addInterest/:user_id/:interest', function(req, res) {
+	var user_id = 'gracejohnson';
+	var interest = req.params.interest;
+	var q = 'insert into user_interests values ($1, $2)';
+	var data = [user_id, interest];
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
+})
+
+
+router.get('/selectGenres/:user_id', function(req, res) {
+	var user_id = 'gracejohnson';
+	// var q = 'select p.file_name from interest_pictures p, interests i where i.interest_type = p.interest_type and i.interest_type in (select interest_type from user_interests where user_id=$1)';
+	var q = 'select genre_type from user_genres where user_id=$1';
+
+	var data = [user_id];
+	var callback = function(err, data) { 
+		console.log(err);
+		var genreType = []
+		for (var i = 0; i < data.rows.length; i++) {
+			genreType.push(data.rows[i].genre_type)
+		}
+		res.send(genreType);
+	}
+	query(q, data, callback);
+})
+
+
+router.post('/removeGenre/:user_id/:genre', function(req, res) {
+	var user_id = 'gracejohnson';
+	var genre = req.params.genre;
+	var q = 'delete from user_genres where user_id=$1 and genre_type=$2';
+	var data = [user_id, genre];
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
+})
+
+
+router.post('/addGenre/:user_id/:genre', function(req, res) {
+	var user_id = 'gracejohnson';
+	var genre = req.params.genre;
+	var q = 'insert into user_genres values ($1, $2)';
+	var data = [user_id, genre];
+	var callback = function(err, data) { 
+		console.log(err);
+		res.end();
+	}
+	query(q, data, callback);
+})
+
 
 
 module.exports = router;

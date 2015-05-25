@@ -8,7 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <meta name="apple-touch-fullscreen" content="yes" />
 
+    <link rel="shortcut icon" href="img/icon.jpg">
     <title>Memorable</title>
 
     <!-- Bootstrap Core CSS -->
@@ -55,9 +58,7 @@
         
 
         <!-- Go Back -->
-        <a href="../r_puzzles.html">
-            <img src="../img/backButton.png" class="back-button">
-        </a>
+        <img src="img/backButton.png" class="back-button" onclick="backButton()">
 
         <!-- Page Header -->
         <div class="row">
@@ -168,9 +169,7 @@
                     $("#music-play").html('<img style="height:80px;" src="../img/pause.png">');
                 });
                 // TODO: query track ids from database
-                var sids = ['5Z7ygHQo02SUrFmcgpwsKW', '4bi73jCM02fMpkI11Lqmfe', '0eGsygTp906u18L0Oimnem'];
-                var sidString = sids.join();
-                fetchData(sidString, addSongs);
+                fetchData(addSongs);
                 $("#music-play").click(function() {
                     playSongs();
                 });
@@ -186,9 +185,10 @@
             });
             
             // ajax request to get tracks given params (track ids)
-            function fetchData(params, functionName) { 
+            function fetchData(functionName) { 
+                var sids = "2lS9HDs8slGZnu4vny2pWT,2g9kOw3klip4tdhpmDELI8,2Z22JutFajqTVKRwHNQqPT,1PoJanvces1oPEL2cWfu32,12wC2RYrCdKA7NOQujvQBi,0UdRGHCSRvn85nN0IfHFmq,3Bk4kjeoGmhfO8RRY87AzS,60rhBTUmtubm0OnLv9Mlim,1MwJMB0GyO9gY7GwfqcXYq,39JOQuh3W50pdnzxEx0URV,1byIZa6CFerX5WXShwqAvf";    
                 $.ajax({
-                    url: 'https://api.spotify.com/v1/tracks?ids=' + params,
+                    url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
                     success: function(response) {
                         addSongs(response);
                     }
@@ -274,7 +274,9 @@
     <script src="../js/bootstrap.min.js"></script>
 	
 	<script>
-		
+		function backButton() {
+            window.location = "r_puzzles.html"; 
+        }
 	</script>	
 	
 

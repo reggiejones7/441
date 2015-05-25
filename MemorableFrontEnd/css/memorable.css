@@ -17,11 +17,13 @@
 .col-lg-15 {
     position: relative;
     min-height: 1px;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
     width: 20%;
     float: left;
+    margin:auto;
 }
+
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
     margin: 0;
@@ -34,11 +36,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 h1, h2, h3, h4, h5, h6, p {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	/*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
 	/*font-weight: lighter;*/
-	/*font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;*/
+	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
 }
 
+
+.family-screensize {
+	width:900px;
+}
 
 .memorable-header {
 	top:0px;
@@ -49,13 +55,17 @@ h1, h2, h3, h4, h5, h6, p {
 
 .header-logo {
 	display: block;
-	height:80px;
-	margin:auto ;
+	height:90px;
+	margin:auto;
 }
 
 .memorable-screensize {
 	/*height:500px;*/
 	/*width:700px;*/
+}
+
+.restrict-screensize {
+	width:850px;
 }
 
  .spacing {
@@ -116,7 +126,6 @@ h1, h2, h3, h4, h5, h6, p {
  	margin:auto;
 	width:140px;
 	height:140px;
-	border-radius:20px;
 }
 
 
@@ -139,7 +148,8 @@ h1, h2, h3, h4, h5, h6, p {
 	width:200px;
 }
 
- .profile-name {
+.profile-name {
+	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
  	font-size: 30px;
  	margin-top:-10px;
  	padding-bottom:16px;
@@ -147,6 +157,7 @@ h1, h2, h3, h4, h5, h6, p {
  }
 
  .profile-puzzle-diff {
+ 	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
  	font-size: 17px;
  	padding-bottom:3px;
  	padding-left:15px;
@@ -169,14 +180,16 @@ h1, h2, h3, h4, h5, h6, p {
 
 .edit-photos {
 	margin:auto;
-	margin-left:50px;
-	width:80%;
+	margin-left:95px;
+	width:65%;
+	border-radius:10px;
 }
 
 .edit-music {
 	margin:auto;
-	margin-right:50px;
-	width:80%;
+	margin-right:95px;
+	width:65%;
+	border-radius:10px;
 }
 
 .edit-row {
@@ -188,7 +201,7 @@ h1, h2, h3, h4, h5, h6, p {
 .favs-row {
 	padding-top:10px;
 	padding-bottom:10px;
-	height:215px;
+	height:250px;
 }
 
 .favorite-pics {
@@ -197,8 +210,9 @@ h1, h2, h3, h4, h5, h6, p {
 
 .fav-title {
 	display:inline-block;
-	margin-top:10px;
-	margin-bottom:10px;
+	margin-top:30px;
+	margin-bottom:20px;
+	font-size:25px;
 }
 
 
@@ -206,9 +220,6 @@ h1, h2, h3, h4, h5, h6, p {
 	width:180px;
 }
 
-.fav-pic {
-	border-radius:20px;
-}
 
 .music {
 	width: 500px;
@@ -216,6 +227,11 @@ h1, h2, h3, h4, h5, h6, p {
 	background-color:#4ACAA8;
 	display: block;
 	margin: auto;
+}
+
+.music-table {
+	margin-top:-5px;
+	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
 }
 
 .info-row {
@@ -241,7 +257,7 @@ h1, h2, h3, h4, h5, h6, p {
  	width:65px;
  	height:65px;
     border: 1px solid #FFFFFF;
-    border-radius:20px;
+    border-radius:50%;
  }
 
  .user-name {
@@ -250,25 +266,37 @@ h1, h2, h3, h4, h5, h6, p {
  	top: 12px;
  	right: 110px;
  	color:#FFFFFF;
+ 	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
  }
 
 .user-edit {
 	position: absolute;
-	font-size:15px;
+	font-size:14px;
 	top: 27px;
  	right: 104px;
  	width:80px;
-	height:40px;
-	padding-top:20px;
-	padding-bottom:20px;
+	height:27px;
+	margin-top:20px;
+	margin-bottom:20px;
+	padding-top:4px;
+	background-color:#FFFFFF;
+	color:#4ACAA8;
+	border-radius:10px;
+	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
+
 }
 
 .slideshow-button {
+	width:200px;
+	height:50px;
+	background-color:#B689BC;
+	color:#FFFFFF;
 	display:block;
 	margin:auto;
-	padding-top:20px;
-	padding-bottom:10px;
-	width:250px;
+	margin-top:5px;
+	padding-top:13px;
+	border-radius:10px;
+	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
 }
 
 .slideshow-button-row {
@@ -288,28 +316,44 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .puzzle-image {
-	display: block;
- 	margin:auto;
- 	width:155px;
- 	height:155px;
- 	border-radius:20px;
+	margin-left:-10px;
+ 	width:195px;
+ 	height:195px;
+ 	margin-top:20px;
+ 	margin-bottom:20px;
 }
 
 .puzzles-table {
-	padding-top:50px;
-	padding-bottom:30px;
+	display:block;
+	margin:auto;
+	margin-top:25px;
+	margin-bottom:25px;
+	width:800px;
 }
 
-.puzzles-row {
-
+.fake-back-button-puzz {
+ 	position:absolute;
+ 	top:390px;
+ 	left:45px;
+ 	width:55px;
+ 	height:55px;
 }
+
+.fake-next-button-puzz {
+	position:absolute;
+ 	top:390px;
+ 	right:45px;
+ 	width:55px;
+ 	height:55px;
+}
+
 
 
 /*!
  * EDIT PICS CSS
  */
 .edit-title-row {
-	padding-top:10px;
+	padding-top:30px;
 	height:130px;
 	padding-bottom:10px;
 }
@@ -319,16 +363,19 @@ h1, h2, h3, h4, h5, h6, p {
 	padding-right:0px;
 	width:100px;
 	height:100px;
+	border-radius:10px;
 }
 
 .edit-user-title {
 	font-size:35px;
 	margin-top:25px;
 	margin-left:-20px;
+	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
 }
 
 .interests-row {
-	height: 190px;
+	height: 220px;
+	margin-bottom:20px;
 }
 
 .interests{
@@ -346,25 +393,41 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .personal-photos-row {
-	height:200px;
+	height:630px;
 }
 
- .fake-back-button-int {
+.personal-table {
+	margin-top:20px;
+}
+
+.personal-row {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.fake-back-button-int {
  	position:absolute;
- 	top:290px;
- 	left:30px;
+ 	top:350px;
+ 	left:40px;
  	width:30px;
  	height:30px;
  }
 
 .fake-next-button-int {
  	position:absolute;
- 	top:290px;
- 	right:30px;
+ 	top:350px;
+ 	right:40px;
  	width:30px;
  	height:30px;
 }
 
+.choose-pic {
+	
+}
+
+.save-pic {
+
+}
 
 
 /*!
@@ -382,7 +445,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .fake-back-button-gen {
  	position:absolute;
- 	top:335px;
+ 	top:415px;
  	left:30px;
  	width:30px;
  	height:30px;
@@ -390,18 +453,22 @@ h1, h2, h3, h4, h5, h6, p {
 
 .fake-next-button-gen {
  	position:absolute;
- 	top:335px;
+ 	top:415px;
  	right:30px;
  	width:30px;
  	height:30px;
 }
 
 .search-bar-music {
-	padding-top:30px;
+	padding-top:15px;
 	padding-bottom:30px;
 	display:block;
 	margin:auto;
 	/*width:500px;*/
+}
+
+.music-tabs {
+	margin-top:30px;
 }
 
 .search-results-title {
@@ -452,5 +519,31 @@ h1, h2, h3, h4, h5, h6, p {
  */
 .puzzle-title {
 	font-size: 25px;
-	margin-bottom:10px;
+	margin-bottom:0px;
+}
+
+/*!
+ * SLIDESHOW CSS
+ */
+.slideshow {
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+.slideshow-photo{ 
+	max-height: 356px
+}
+
+.slideshow-message {
+	background: #EB5100;
+	background-color: white; 
+	color: black;
+	font-size: 20px; 
+	line-height: 30px; 
+	text-align: center; 
+	filter: inherit;
+	position: absolute; top: 90%; left: 20%; width: 60%; height: 30px;
+	transform: rotate(0deg) scale(1); 
+	opacity: 0.80;"> 
 }

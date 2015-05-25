@@ -8,7 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <meta name="apple-touch-fullscreen" content="yes" />
 
+    <link rel="shortcut icon" href="img/icon.jpg">
     <title>Memorable</title>
 
     <!-- Bootstrap Core CSS -->
@@ -31,22 +34,19 @@
     </div>
 
     <!-- Page Content -->
-    <div class="container memorable-screensize">
+    <div class="container family-screensize">
 
         <!-- Go Back -->
-        <a href="r_puzzles.html">
-            <img src="img/backButton.png" class="back-button">
-        </a>
+        <img src="img/backButton.png" class="back-button" onclick="backButton()">
 
         <!-- Page Header -->
         <div class="info-row">
             <div class="col-sm-6">
-                <img class="profile-image img-responsive" src="img/fakeUsers/user2.jpg" alt="">
+                <img id="profileImg" class="profile-image img-responsive" alt="">
             </div>
             <div class="col-sm-6">
                 <br>
-                <div class="profile-name row">
-                    Grace Johnson
+                <div id="displayName" class="profile-name row">
                 </div>
                 <div class="profile-puzzle-diff row">
                     Puzzle Difficulty
@@ -77,14 +77,10 @@
             <div class="col-sm-2">
             </div>
             <div class="col-sm-4">
-                <a href="f_pictures.html">
-                    <img class="edit-photos img-responsive" src="img/editPicsBtn.jpg" alt="">
-                </a>
+                <img class="edit-photos img-responsive" src="img/editPicsBtn.jpg" onclick="goToPictures()">
             </div>
             <div class="col-sm-4">
-                <a href="f_music.html">
-                    <img class="edit-music img-responsive" src="img/editMusicBtn.jpg" alt="">
-                </a>
+                <img class="edit-music img-responsive" src="img/editMusicBtn.jpg" onclick="goToMusic()">
             </div>
             <div class="col-sm-2">
             </div>
@@ -95,8 +91,8 @@
         <!-- Favorite Photos Row -->
         <div class="favs-row">
             <div class="favtitle-row">
-                <h3 class="fav-title">Favorite Photos
-                </h3>
+                <h2 class="fav-title">Favorite Photos
+                </h2>
             </div>
             <div class="favorite-pics">
                 <div class="col-sm-15">
@@ -109,10 +105,10 @@
                     <img class="fav-pic img-responsive" src="img/fakeInterests/farm2.jpg" alt="">
                 </div>
                 <div class="col-sm-15">
-                    <img class="fav-pic img-responsive" src="img/fakeInterests/dog.jpg" alt="">
+                    <img class="fav-pic img-responsive" src="img/fakeInterests/dog3.jpg" alt="">
                 </div>
                 <div class="col-sm-15">
-                    <img class="fav-pic img-responsive" src="img/fakeInterests/dog.jpg" alt="">
+                    <img class="fav-pic img-responsive" src="img/fakeInterests/golf1.jpg" alt="">
                 </div>
             </div>  
         </div>
@@ -123,42 +119,26 @@
         <!-- Favorite Music Row-->
         <div class="favs-row">
             <div class="favtitle-row">
-                <h3 class="fav-title">Favorite Music
-                </h3>
+                <h2 class="fav-title">Favorite Music
+                </h2>
             </div>
             <div class="col-sm-1">
             </div>
-            <div class="col-sm-11">
+            <div class="col-sm-10">
                 <div class="music-table">
                     <table class="table">
-                        <thead>
+                        <thead>      
                             <tr>
                                 <th>Song</th>
                                 <th>Artist</th>
                             </tr>
-                            <tr>
-                                <td>Sweet Pea</td>
-                                <td>Tommy Roe</td>
-                            </tr>
-                            <tr>
-                                <td>Every Little Thing She Does Is Magic</td>
-                                <td>Police</td>
-                            </tr>
-                            <tr>
-                                <td>I Was Made To Love You</td>
-                                <td>Stevie Wonder</td>
-                            </tr>
-                            <tr>
-                                <td>I Will Always Love You</td>
-                                <td>Whitney Houston</td>
-                            </tr>
-                            <tr>
-                                <td>Born To Be Wild</td>
-                                <td>Steppenwolf</td>
-                            </tr>
                         </thead>
+                        <tbody id="topSongs">
+                        </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="col-sm-1">
             </div>
         </div>
         <!-- /.row -->
@@ -177,6 +157,13 @@
 	<script>
 	//change the puzzle difficulty ajax
 		$(document).ready(function() {
+            // Set upper profile info for user 
+          var user_id = getCookie("username");
+          var fname = getCookie("fname");
+          var lname = getCookie("lname");
+          var imgPath = "img/fakeUsers/" + user_id + ".jpg";
+          $("#displayName").html(fname + " " + lname);
+          $("#profileImg").attr("src", imgPath);
 			$('label').each(function() {
 				$(this).click(function() {
 					console.log($(this).children().first().attr('value'))
@@ -191,8 +178,50 @@
 					   }
 					})
 				})
-			})		
-		});
+			})
+
+            var uid = '1';
+            $.get('/tracks/' + uid, function(data) {
+                var sids = data.songIds;
+                $.ajax({
+                    url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
+                    success: function(response) {
+                        var tracks = response.tracks;
+                        for (var i = 0; i < tracks.length; i++) {
+                            if(i > 4) {
+                                break;
+                            }
+                            var title = tracks[i].name;
+                            var artist = tracks[i].artists[0].name;
+                            $("#topSongs").append("<tr><td>" + title + "</td><td>" + artist + "</td></tr>");
+                        }
+                    }
+                });
+            });		
+		  });
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+            }
+            return "";
+        }
+        
+        function backButton() {
+            window.location = "r_puzzles.html"; 
+        }
+
+        function goToPictures() {
+            window.location = "f_pictures.html"; 
+        }
+
+        function goToMusic() {
+            window.location = "f_music.html"; 
+        }
 	</script>
 </body>
 

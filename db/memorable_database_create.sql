@@ -46,12 +46,31 @@ CREATE TABLE song (
     user_id varchar(50)  REFERENCES resident_user
 );
 
+
+-- Table: interest pictures
+CREATE TABLE interest_pictures (
+    file_name varchar(100) NOT NULL,
+    interest_type varchar(50) PRIMARY KEY
+); 
+
+-- Table: users & interests
+CREATE TABLE user_interests(
+    user_id varchar(50) REFERENCES resident_user(user_id),
+    interest_type varchar(100) REFERENCES interest_pictures(interest_type),
+    PRIMARY KEY (user_id, interest_type)
+);
+
 -- Insert Data into tables
 -- admin user
 INSERT INTO admin_user VALUES('admin', 'admin');
 
 -- resident user
-INSERT INTO resident_user VALUES('jappleseed', 'test', 'Johnny Appleseed', 'admin', 2);
-
-
+INSERT INTO resident_user VALUES('jappleseed', 'test', 'Grace Johson', 'admin', 2);
+INSERT INTO resident_user VALUES('amartin', 'test', 'Alfredo Martin', 'admin', 2);
+INSERT INTO resident_user VALUES('eshah', 'test', 'Esther Shah', 'admin', 2);
+INSERT INTO resident_user VALUES('fparker', 'test', 'Frank Parker', 'admin', 2);
+INSERT INTO resident_user VALUES('glewis', 'test', 'Gerard Lewis', 'admin', 2);
+INSERT INTO resident_user VALUES('wanderson', 'test', 'Winston Anderson', 'admin', 2);
+INSERT INTO resident_user VALUES('estone', 'test', 'Eileen Stone', 'admin', 2);
+INSERT INTO resident_user VALUES('hwilson', 'test', 'Heather Wilson', 'admin', 2);
 
