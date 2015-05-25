@@ -102,61 +102,7 @@
 
 
         <!-- Puzzles Row -->
-<<<<<<< HEAD
-        <div class="puzzles-row row">
-<!--
-=======
-        <div class="puzzles-table">
->>>>>>> 834a49698dbed0295f3c73fd27cb52400f2abc60
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakePuzzles/family1.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakePuzzles/family4.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/farm2.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/piano1.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/farm1.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakePuzzles/family2.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakePuzzles/family3.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/garden1.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/golf1.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/beach1.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/dog1.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/dog2.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/dog3.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/piano1.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/horse1.jpg" onclick="playPuzzle()">
-            </div>
-            <div class="col-sm-3">
-                <img class="puzzle-image img-responsive" src="img/fakeInterests/golf2.jpg" onclick="playPuzzle()">
-            </div>
-			-->
+        <div class="puzzles-table puzzles-row row">
         </div>
         <!-- /.row -->
 
@@ -189,6 +135,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
+			/*
           $('.puzzles-table').slick({
             infinite: true,
             rows: 2,
@@ -197,6 +144,7 @@
             speed:1000,
             arrows:false
           });
+			*/
           // Set upper profile info for user 
           var user_id = getCookie("username");
           var fname = getCookie("fname");
@@ -227,8 +175,8 @@
             window.location = "home.html"; 
         }
 
-        function playPuzzle() {
-            window.location = "r_play.html"; 
+        function playPuzzle(fileName) {
+            window.location = "/play/" + fileName; 
         }
 
         function slideNext() {
@@ -239,23 +187,37 @@
         }
     </script>
 
-	<!-- get the images to display them -->
+	<!-- get the images and display them -->
 	<script>
 		//do a single picture first
 		//var userID = ...  finish this when we impliment multi user
-		$.get('/pictures/userID', function(data) {
-			for (var i = 0; i < data.files.length; i++) {
-				console.log(i)
-				var fileName = data.files[i]
-				var anchor = $('<a></a>')
-				anchor.attr('id', 'puzzle' + i)
-				anchor.attr('href', '/play/' + fileName)
+/*
+            <div class="col-sm-3">
+                <img class="puzzle-image img-responsive" src="img/fakeInterests/golf2.jpg" onclick="playPuzzle()">
+*/
+		$.get('/pictures', function(data) {
+			for (var i = 0; i < data.length; i++) {
+				var fileName = data[i].file_name
 				var img = $('<img>')
 				img.attr('class', 'puzzle-image img-responsive')
 				img.attr('src', '/uploads/' + fileName) 
-				anchor.append(img)
-				$('.puzzles-row:last').append(anchor)	
+				img.attr('id', fileName)
+				img.attr('onclick', 'playPuzzle("' + fileName + '")')
+
+				var div = $('<div></div>')
+				div.attr('class', 'col-sm-3')
+				div.append(img)
+				$('.puzzles-row:last').append(div)	
 			}
+
+          $('.puzzles-table').slick({
+            infinite: true,
+            rows: 2,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            speed:1000,
+            arrows:false
+          });
 		})
 	</script>
 </body>

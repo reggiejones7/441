@@ -52,7 +52,7 @@ var getClient = function() {
 									//the host is going to be diff for cindy so we'll need to figure that out.
 									//https://github.com/brianc/node-postgres/issues/613
 									//fedora = uncomment out next line
-								//	host: '/var/run/postgresql',
+									//host: '/var/run/postgresql',
 									port: 5432});
 }
 
@@ -153,6 +153,7 @@ router.get('/upload/:file_name', function(req, res) {
 router.get('/caption/:file_name', function(req, res){
 	//return the caption associated with a given photo file_name
 	var file_name = req.params.file_name
+	console.log("filename" + file_name)
 	var q = "select caption from image where file_name = $1;"
 	var data = [file_name]
 	var callback = function(err, data) {
@@ -166,6 +167,7 @@ router.get('/caption/:file_name', function(req, res){
 
 
 router.get('/pictures', function(req, res) {
+	
 	var user_id = req.cookies.username
 	var q = "select file_name from image where user_id=$1"
 	var data = [user_id]
@@ -279,17 +281,6 @@ router.get('/uploads/:fileName', function(req, res) {
 })
 
 
-//get a list of pictures that belong to a user
-//	returns a list of file names of pictures instead of the actual file
-router.get('/pictures/:userID', function(req, res) {
-	var userID = req.params.userID
-	var userID = 'jappleseed' //fix this when changing multi user
-	//get picture names from db
-	//HARD CODING VALUES instead of talking to db
-	var pictures = ['family1.jpg', 'family4.jpg', 'farm2.jpg', 'piano.jpg', 'farm1.jpg', 'family2.jpg', 'family3.jpg']
-	res.json({files : pictures})
-
-})
 
 
 router.get('/selectInterests/:user_id', function(req, res) {
