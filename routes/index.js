@@ -284,8 +284,7 @@ router.get('/uploads/:fileName', function(req, res) {
 
 
 router.get('/selectInterests/:user_id', function(req, res) {
-	var user_id = 'gracejohnson';
-	// var q = 'select p.file_name from interest_pictures p, interests i where i.interest_type = p.interest_type and i.interest_type in (select interest_type from user_interests where user_id=$1)';
+	var user_id = 'jappleseed';
 	var q = 'select interest_type from user_interests where user_id=$1';
 
 	var data = [user_id];
@@ -304,7 +303,7 @@ router.get('/selectInterests/:user_id', function(req, res) {
 
 
 router.post('/removeInterest/:user_id/:interest', function(req, res) {
-	var user_id = 'gracejohnson';
+	var user_id = 'jappleseed';
 	var interest = req.params.interest;
 	var q = 'delete from user_interests where user_id=$1 and interest_type=$2';
 	var data = [user_id, interest];
@@ -317,7 +316,7 @@ router.post('/removeInterest/:user_id/:interest', function(req, res) {
 
 
 router.post('/addInterest/:user_id/:interest', function(req, res) {
-	var user_id = 'gracejohnson';
+	var user_id = 'jappleseed';
 	var interest = req.params.interest;
 	var q = 'insert into user_interests values ($1, $2)';
 	var data = [user_id, interest];
@@ -330,8 +329,7 @@ router.post('/addInterest/:user_id/:interest', function(req, res) {
 
 
 router.get('/selectGenres/:user_id', function(req, res) {
-	var user_id = 'gracejohnson';
-	// var q = 'select p.file_name from interest_pictures p, interests i where i.interest_type = p.interest_type and i.interest_type in (select interest_type from user_interests where user_id=$1)';
+	var user_id = 'jappleseed';
 	var q = 'select genre_type from user_genres where user_id=$1';
 
 	var data = [user_id];
@@ -348,7 +346,7 @@ router.get('/selectGenres/:user_id', function(req, res) {
 
 
 router.post('/removeGenre/:user_id/:genre', function(req, res) {
-	var user_id = 'gracejohnson';
+	var user_id = 'jappleseed';
 	var genre = req.params.genre;
 	var q = 'delete from user_genres where user_id=$1 and genre_type=$2';
 	var data = [user_id, genre];
@@ -361,7 +359,7 @@ router.post('/removeGenre/:user_id/:genre', function(req, res) {
 
 
 router.post('/addGenre/:user_id/:genre', function(req, res) {
-	var user_id = 'gracejohnson';
+	var user_id = 'jappleseed';
 	var genre = req.params.genre;
 	var q = 'insert into user_genres values ($1, $2)';
 	var data = [user_id, genre];
