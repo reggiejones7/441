@@ -251,22 +251,25 @@ $(document).ready(function(){
 
         // load playlist
         jQuery.ajaxSettings.traditional = true; 
-        $.get('/tracks/' + uid, function(data) {
-            var sids = data.songIds;
-            $.ajax({
-                url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
-                success: function(response) {
-                    var tracks = response.tracks;
-                    for (var i = 0; i < tracks.length; i++) {
-                        var title = tracks[i].name;
-                        var artist = tracks[i].artists[0].name;
-                        var ms = tracks[i].duration_ms;
-                        var time = convertTime(ms);
-                        $("#playlist").append("<tr><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+        $("#playlistTitle").click(function() { 
+            $.get('/tracks/' + uid, function(data) {
+                var sids = data.songIds;
+                $.ajax({
+                    url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
+                    success: function(response) {
+                        var tracks = response.tracks;
+                        for (var i = 0; i < tracks.length; i++) {
+                            var title = tracks[i].name;
+                            var artist = tracks[i].artists[0].name;
+                            var ms = tracks[i].duration_ms;
+                            var time = convertTime(ms);
+                            $("#playlist").append("<tr><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+                        }
                     }
-                }
+                });
             });
         });
+
 
 
     });
