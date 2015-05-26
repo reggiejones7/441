@@ -310,8 +310,8 @@
             $("#profileImg").attr("src", imgPath);
             // highlight user's interests
             var uid = '1';
-/*
-				tiffany I commented this out because it was throwing a 404 and making this whole page unusable and I was working on something in this page
+
+				// tiffany I commented this out because it was throwing a 404 and making this whole page unusable and I was working on something in this page
             $.get('/selectInterests/' + uid, function(data) {
 
                 $.ajax({
@@ -322,32 +322,32 @@
                     }
                 });
             });     
-          });
-*/
+       
 
-					 function loadHighlight(id) {
-						  var docID = "#" + id;
-						  if($(docID).hasClass("selectedInterest")) {
-								$(docID).removeClass("selectedInterest");
-						  } else {
-								$(docID).addClass("selectedInterest");
-						  }
-					 }
 
-					 function backButton() {
-						  window.location = "f_profile.html"; 
-					 }
+			 function loadHighlight(id) {
+				  var docID = "#" + id;
+				  if($(docID).hasClass("selectedInterest")) {
+						$(docID).removeClass("selectedInterest");
+				  } else {
+						$(docID).addClass("selectedInterest");
+				  }
+			 }
 
-					 function getCookie(cname) {
-						  var name = cname + "=";
-						  var ca = document.cookie.split(';');
-						  for(var i=0; i<ca.length; i++) {
-								var c = ca[i];
-								while (c.charAt(0)==' ') c = c.substring(1);
-								if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-						  }
-						  return "";
-					 }
+			 function backButton() {
+				  window.location = "f_profile.html"; 
+			 }
+
+			 function getCookie(cname) {
+				  var name = cname + "=";
+				  var ca = document.cookie.split(';');
+				  for(var i=0; i<ca.length; i++) {
+						var c = ca[i];
+						while (c.charAt(0)==' ') c = c.substring(1);
+						if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+				  }
+				  return "";
+			 }
 	})
 </script>
 

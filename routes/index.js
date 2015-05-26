@@ -273,6 +273,7 @@ router.get('/play/:fileName', function(req, res) {
   res.sendFile(path.join(__dirname, '../MemorableFrontEnd/r_play.html'))
 })
 
+ 
 
 router.get('/uploads/:fileName', function(req, res) {
 	var fileName = req.params.fileName
@@ -293,7 +294,7 @@ router.get('/selectInterests/:user_id', function(req, res) {
 		var interestType = []
 		if (data.rows) { 
 			for (var i = 0; i < data.rows.length; i++) {
-				interestType.push(data.rows[i].interest_type)
+				interestType.push(data.rows[i].interest_type);
 			}
 			res.send(interestType);
 		}
