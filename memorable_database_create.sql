@@ -211,5 +211,21 @@ INSERT INTO user_interests VALUES ('amartin', 'dog');
 INSERT INTO user_interests VALUES ('amartin', 'flowers');
 
 
+-- genres
+INSERT INTO genres VALUES('soul');
+INSERT INTO genres VALUES('opera');
+INSERT INTO genres VALUES('rock');
+INSERT INTO genres VALUES('jazz');
+INSERT INTO genres VALUES('hip hop');
+INSERT INTO genres VALUES('blue grass');
+INSERT INTO genres VALUES('classic rock');
+INSERT INTO genres VALUES('piano');
+INSERT INTO genres VALUES('guitar');
+INSERT INTO genres VALUES('blues');
 
+INSERT INTO user_genres VALUES ('jappleseed', 'soul');
+INSERT INTO user_genres VALUES ('jappleseed', 'jazz');
+INSERT INTO user_genres VALUES ('jappleseed', 'piano');
+INSERT INTO user_genres VALUES ('jappleseed', 'blue grass');
+INSERT INTO user_genres VALUES ('jappleseed', 'hip hop');
 
