@@ -88,7 +88,6 @@ INSERT INTO resident_user VALUES('jappleseed', 'test', 'Johnny Appleseed', 'admi
 INSERT INTO resident_user VALUES('interest', 'interest', 'interest', 'admin', 2);
 
 -- update resident user
-INSERT INTO resident_user VALUES('jappleseed', 'test', 'Grace Johson', 'admin', 2);
 INSERT INTO resident_user VALUES('amartin', 'test', 'Alfredo Martin', 'admin', 2);
 INSERT INTO resident_user VALUES('eshah', 'test', 'Esther Shah', 'admin', 2);
 INSERT INTO resident_user VALUES('fparker', 'test', 'Frank Parker', 'admin', 2);
@@ -96,10 +95,6 @@ INSERT INTO resident_user VALUES('glewis', 'test', 'Gerard Lewis', 'admin', 2);
 INSERT INTO resident_user VALUES('wanderson', 'test', 'Winston Anderson', 'admin', 2);
 INSERT INTO resident_user VALUES('estone', 'test', 'Eileen Stone', 'admin', 2);
 INSERT INTO resident_user VALUES('hwilson', 'test', 'Heather Wilson', 'admin', 2);
-
-
-INSERT INTO song values('fake_song_id_1', 'jappleseed');
-INSERT INTO song values('fake_song_id_2', 'jappleseed');
 
 
 --image
