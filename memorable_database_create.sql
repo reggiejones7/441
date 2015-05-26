@@ -108,18 +108,6 @@ INSERT INTO image VALUES('farm1.jpg', 'jappleseed', 'farm1 caption', NULL);
 INSERT INTO image VALUES('farm2.jpg', 'jappleseed', 'farm2 caption', NULL);
 INSERT INTO image VALUES('farm3.jpg', 'jappleseed', 'farm3 caption', NULL);
 
-INSERT INTO image VALUES('beach1.jpg', 'amartin', 'beach1 caption', NULL);
-INSERT INTO image VALUES('beach2.jpg', 'amartin', 'beach2  caption', NULL);
-INSERT INTO image VALUES('beach3.jpg', 'amartin', 'beach3 caption', NULL);
-
-INSERT INTO image VALUES('dog1.jpg', 'amartin', 'dog1 caption', NULL);
-INSERT INTO image VALUES('dog2.jpg', 'amartin', 'dog2 caption', NULL);
-INSERT INTO image VALUES('dog3.jpg', 'amartin', 'dog3 caption', NULL);
-
-INSERT INTO image VALUES('flowers1.jpg', 'amartin', 'flowers1 caption', NULL);
-INSERT INTO image VALUES('flowers2.jpg', 'amartin', 'flowers2 caption', NULL);
-INSERT INTO image VALUES('flowers3.jpg', 'amartin', 'flowers3 caption', NULL);
-
 INSERT INTO image VALUES('football1.jpg', 'jappleseed', 'football1 caption', NULL);
 INSERT INTO image VALUES('football2.jpg', 'jappleseed', 'football2 caption', NULL);
 INSERT INTO image VALUES('football3.jpg', 'jappleseed', 'football3 caption', NULL);
@@ -140,6 +128,10 @@ INSERT INTO image VALUES('piano1.jpg', 'jappleseed', 'piano1 caption', NULL);
 INSERT INTO image VALUES('piano2.jpg', 'jappleseed', 'piano2 caption', NULL);
 INSERT INTO image VALUES('piano3.jpg', 'jappleseed', 'piano3 caption', NULL);
 
+INSERT INTO image VALUES('tennis1.jpg', 'jappleseed', 'tennis1 caption', NULL);
+INSERT INTO image VALUES('tennis2.jpg', 'jappleseed', 'tennis2 caption', NULL);
+INSERT INTO image VALUES('tennis3.jpg', 'jappleseed', 'tennis3 caption', NULL);
+
 INSERT INTO image VALUES('s_beach.jpg', 'interest', 's_beach caption', NULL);
 INSERT INTO image VALUES('s_dog.jpg', 'interest', 's_dog caption', NULL);
 INSERT INTO image VALUES('s_farms.jpg', 'interest', 's_farms caption', NULL);
@@ -151,6 +143,73 @@ INSERT INTO image VALUES('s_horse.jpg', 'interest', 's_horse caption', NULL);
 INSERT INTO image VALUES('s_piano.jpg', 'interest', 's_piano caption', NULL);
 INSERT INTO image VALUES('s_tennis.jpg', 'interest', 's_tennis caption', NULL);
 
-INSERT INTO image VALUES('tennis1.jpg', 'jappleseed', 'tennis1 caption', NULL);
-INSERT INTO image VALUES('tennis2.jpg', 'jappleseed', 'tennis2 caption', NULL);
-INSERT INTO image VALUES('tennis3.jpg', 'jappleseed', 'tennis3 caption', NULL);
+INSERT INTO image VALUES('beach1.jpg', 'amartin', 'beach1 caption', NULL);
+INSERT INTO image VALUES('beach2.jpg', 'amartin', 'beach2  caption', NULL);
+INSERT INTO image VALUES('beach3.jpg', 'amartin', 'beach3 caption', NULL);
+
+INSERT INTO image VALUES('dog1.jpg', 'amartin', 'dog1 caption', NULL);
+INSERT INTO image VALUES('dog2.jpg', 'amartin', 'dog2 caption', NULL);
+INSERT INTO image VALUES('dog3.jpg', 'amartin', 'dog3 caption', NULL);
+
+INSERT INTO image VALUES('flowers1.jpg', 'amartin', 'flowers1 caption', NULL);
+INSERT INTO image VALUES('flowers2.jpg', 'amartin', 'flowers2 caption', NULL);
+INSERT INTO image VALUES('flowers3.jpg', 'amartin', 'flowers3 caption', NULL);
+
+--interests
+INSERT INTO interests VALUES('beach');
+INSERT INTO interests VALUES('dog');
+INSERT INTO interests VALUES('farm');
+INSERT INTO interests VALUES('flowers');
+INSERT INTO interests VALUES('football');
+INSERT INTO interests VALUES('football');
+INSERT INTO interests VALUES('garden');
+INSERT INTO interests VALUES('golf');
+INSERT INTO interests VALUES('horse');
+INSERT INTO interests VALUES('piano');
+INSERT INTO interests VALUES('tennis');
+
+INSERT INTO interest_pictures VALUES ('beach1.jpg', 'beach');
+INSERT INTO interest_pictures VALUES ('beach2.jpg', 'beach');
+INSERT INTO interest_pictures VALUES ('beach3.jpg', 'beach');
+INSERT INTO interest_pictures VALUES ('dog1.jpg', 'dog');
+INSERT INTO interest_pictures VALUES ('dog2.jpg', 'dog');
+INSERT INTO interest_pictures VALUES ('dog3.jpg', 'dog');
+INSERT INTO interest_pictures VALUES ('farm1.jpg', 'farm');
+INSERT INTO interest_pictures VALUES ('farm2.jpg', 'farm');
+INSERT INTO interest_pictures VALUES ('farm3.jpg', 'farm');
+INSERT INTO interest_pictures VALUES ('flowers1.jpg', 'flowers');
+INSERT INTO interest_pictures VALUES ('flowers2.jpg', 'flowers');
+INSERT INTO interest_pictures VALUES ('flowers3.jpg', 'flowers');
+INSERT INTO interest_pictures VALUES ('football1.jpg', 'football');
+INSERT INTO interest_pictures VALUES ('football2.jpg', 'football');
+INSERT INTO interest_pictures VALUES ('football3.jpg', 'football');
+INSERT INTO interest_pictures VALUES ('garden1.jpg', 'garden');
+INSERT INTO interest_pictures VALUES ('garden2.jpg', 'garden');
+INSERT INTO interest_pictures VALUES ('garden3.jpg', 'garden');
+INSERT INTO interest_pictures VALUES ('golf1.jpg', 'golf');
+INSERT INTO interest_pictures VALUES ('golf2.jpg', 'golf');
+INSERT INTO interest_pictures VALUES ('golf3.jpg', 'golf');
+INSERT INTO interest_pictures VALUES ('horse1.jpg', 'horse');
+INSERT INTO interest_pictures VALUES ('horse2.jpg', 'horse');
+INSERT INTO interest_pictures VALUES ('horse3.jpg', 'horse');
+INSERT INTO interest_pictures VALUES ('piano1.jpg', 'piano');
+INSERT INTO interest_pictures VALUES ('piano2.jpg', 'piano');
+INSERT INTO interest_pictures VALUES ('piano3.jpg', 'piano');
+INSERT INTO interest_pictures VALUES ('tennis1.jpg', 'tennis');
+INSERT INTO interest_pictures VALUES ('tennis2.jpg', 'tennis');
+INSERT INTO interest_pictures VALUES ('tennis3.jpg', 'tennis');
+
+INSERT INTO user_interests VALUES ('jappleseed', 'farm');
+INSERT INTO user_interests VALUES ('jappleseed', 'football');
+INSERT INTO user_interests VALUES ('jappleseed', 'garden');
+INSERT INTO user_interests VALUES ('jappleseed', 'golf');
+INSERT INTO user_interests VALUES ('jappleseed', 'horse');
+INSERT INTO user_interests VALUES ('jappleseed', 'piano');
+INSERT INTO user_interests VALUES ('jappleseed', 'tennis');
+INSERT INTO user_interests VALUES ('amartin', 'beach');
+INSERT INTO user_interests VALUES ('amartin', 'dog');
+INSERT INTO user_interests VALUES ('amartin', 'flowers');
+
+
+
+
