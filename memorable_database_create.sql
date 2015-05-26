@@ -98,39 +98,43 @@ INSERT INTO resident_user VALUES('hwilson', 'test', 'Heather Wilson', 'admin', 2
 
 
 --image
-INSERT INTO image VALUES('family1.jpg', 'jappleseed', 'family1 caption', NULL);
-INSERT INTO image VALUES('family2.jpg', 'jappleseed', 'family2 caption', NULL);
-INSERT INTO image VALUES('family3.jpg', 'jappleseed', 'family3 caption', NULL);
-INSERT INTO image VALUES('family4.jpg', 'jappleseed', 'family4 caption', NULL);
-INSERT INTO image VALUES('family5.jpg', 'jappleseed', 'family5 caption', NULL);
+INSERT INTO image VALUES('family1.jpg', 'jappleseed', 'Sammy is excited for the holidays!', NULL);
+INSERT INTO image VALUES('family2.jpg', 'jappleseed', 'All the siblings on the farm, 1965', NULL);
+INSERT INTO image VALUES('family3.jpg', 'jappleseed', '4 beautiful grandchildren', NULL);
+INSERT INTO image VALUES('family4.jpg', 'jappleseed', 'Milking ol'' Betsy', NULL);
+INSERT INTO image VALUES('family5.jpg', 'jappleseed', 'Grace and John before Delilah''s wedding', NULL);
 
-INSERT INTO image VALUES('farm1.jpg', 'jappleseed', 'farm1 caption', NULL);
-INSERT INTO image VALUES('farm2.jpg', 'jappleseed', 'farm2 caption', NULL);
-INSERT INTO image VALUES('farm3.jpg', 'jappleseed', 'farm3 caption', NULL);
+INSERT INTO image VALUES('farm1.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('farm2.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('farm3.jpg', 'jappleseed', 'Well done!', NULL);
 
-INSERT INTO image VALUES('football1.jpg', 'jappleseed', 'football1 caption', NULL);
-INSERT INTO image VALUES('football2.jpg', 'jappleseed', 'football2 caption', NULL);
-INSERT INTO image VALUES('football3.jpg', 'jappleseed', 'football3 caption', NULL);
+INSERT INTO image VALUES('football1.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('football2.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('football3.jpg', 'jappleseed', 'Well done!', NULL);
 
-INSERT INTO image VALUES('garden1.jpg', 'jappleseed', 'garden1 caption', NULL);
-INSERT INTO image VALUES('garden2.jpg', 'jappleseed', 'garden2 caption', NULL);
-INSERT INTO image VALUES('garden3.jpg', 'jappleseed', 'garden3 caption', NULL);
+INSERT INTO image VALUES('garden1.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('garden2.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('garden3.jpg', 'jappleseed', 'Well done!', NULL);
 
-INSERT INTO image VALUES('golf1.jpg', 'jappleseed', 'golf1 caption', NULL);
-INSERT INTO image VALUES('golf2.jpg', 'jappleseed', 'golf2 caption', NULL);
-INSERT INTO image VALUES('golf3.jpg', 'jappleseed', 'golf3 caption', NULL);
+INSERT INTO image VALUES('golf1.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('golf2.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('golf3.jpg', 'jappleseed', 'Well done!', NULL);
 
-INSERT INTO image VALUES('horse1.jpg', 'jappleseed', 'horse1 caption', NULL);
-INSERT INTO image VALUES('horse2.jpg', 'jappleseed', 'horse2 caption', NULL);
-INSERT INTO image VALUES('horse3.jpg', 'jappleseed', 'horse3 caption', NULL);
+INSERT INTO image VALUES('horse1.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('horse2.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('horse3.jpg', 'jappleseed', 'Well done!', NULL);
 
-INSERT INTO image VALUES('piano1.jpg', 'jappleseed', 'piano1 caption', NULL);
-INSERT INTO image VALUES('piano2.jpg', 'jappleseed', 'piano2 caption', NULL);
-INSERT INTO image VALUES('piano3.jpg', 'jappleseed', 'piano3 caption', NULL);
+INSERT INTO image VALUES('piano1.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('piano2.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('piano3.jpg', 'jappleseed', 'Well done!', NULL);
 
-INSERT INTO image VALUES('tennis1.jpg', 'jappleseed', 'tennis1 caption', NULL);
-INSERT INTO image VALUES('tennis2.jpg', 'jappleseed', 'tennis2 caption', NULL);
-INSERT INTO image VALUES('tennis3.jpg', 'jappleseed', 'tennis3 caption', NULL);
+INSERT INTO image VALUES('tennis1.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('tennis2.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('tennis3.jpg', 'jappleseed', 'Well done!', NULL);
+
+INSERT INTO image VALUES('dog1.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('dog2.jpg', 'jappleseed', 'Well done!', NULL);
+INSERT INTO image VALUES('dog3.jpg', 'jappleseed', 'Well done!', NULL);
 
 INSERT INTO image VALUES('s_beach.jpg', 'interest', 's_beach caption', NULL);
 INSERT INTO image VALUES('s_dog.jpg', 'interest', 's_dog caption', NULL);
@@ -143,17 +147,13 @@ INSERT INTO image VALUES('s_horse.jpg', 'interest', 's_horse caption', NULL);
 INSERT INTO image VALUES('s_piano.jpg', 'interest', 's_piano caption', NULL);
 INSERT INTO image VALUES('s_tennis.jpg', 'interest', 's_tennis caption', NULL);
 
-INSERT INTO image VALUES('beach1.jpg', 'amartin', 'beach1 caption', NULL);
-INSERT INTO image VALUES('beach2.jpg', 'amartin', 'beach2  caption', NULL);
-INSERT INTO image VALUES('beach3.jpg', 'amartin', 'beach3 caption', NULL);
+INSERT INTO image VALUES('beach1.jpg', 'amartin', 'Well done!', NULL);
+INSERT INTO image VALUES('beach2.jpg', 'amartin', 'Well done!', NULL);
+INSERT INTO image VALUES('beach3.jpg', 'amartin', 'Well done!', NULL);
 
-INSERT INTO image VALUES('dog1.jpg', 'amartin', 'dog1 caption', NULL);
-INSERT INTO image VALUES('dog2.jpg', 'amartin', 'dog2 caption', NULL);
-INSERT INTO image VALUES('dog3.jpg', 'amartin', 'dog3 caption', NULL);
-
-INSERT INTO image VALUES('flowers1.jpg', 'amartin', 'flowers1 caption', NULL);
-INSERT INTO image VALUES('flowers2.jpg', 'amartin', 'flowers2 caption', NULL);
-INSERT INTO image VALUES('flowers3.jpg', 'amartin', 'flowers3 caption', NULL);
+INSERT INTO image VALUES('flowers1.jpg', 'amartin', 'Well done!', NULL);
+INSERT INTO image VALUES('flowers2.jpg', 'amartin', 'Well done!', NULL);
+INSERT INTO image VALUES('flowers3.jpg', 'amartin', 'Well done!', NULL);
 
 --interests
 INSERT INTO interests VALUES('beach');
