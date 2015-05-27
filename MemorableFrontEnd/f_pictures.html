@@ -113,9 +113,13 @@
             </div>
             <div class="personal-table row">
                 <div class="personal-row col-sm-12">
-                    <div class="col-sm-15">					
+                    <div class="col-sm-15">
+
+						<!-- upload image button -->
 						<input type="image" src="img/tempUpload.jpg" alt="" class="personal-image img-responsive" onclick="chooseFile();"
 							data-toggle="modal" data-target="#myModal" />
+						
+						<!-- upload image modal -->
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 							<div class="modal-dialog" style="width:330px"> <div class="modal-content"> 
 								<div class="modal-header">
@@ -136,13 +140,12 @@
 									<div class="modal-footer" style="text-align:center;">
 										<input class="save-pic btn btn-default" type="submit" id="submit" ></input>					
 									</div>
-								</form>
-							</div> </div>
+								</form>								
+							</div> </div>						
 						</div>
 						<script>
 						   function chooseFile() {
-							  $("#files").click();
-							  
+							  $("#files").click();							  
 						   }
 						</script>
 						<script>
