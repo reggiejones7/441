@@ -56,11 +56,10 @@
             <!-- Page Header -->
             <div class="edit-title-row">
                 <div class="col-sm-3">
-                    <img class="edit-user-pic img-responsive" src="img/fakeUsers/user2.jpg" alt="">
+                    <img class="edit-user-pic img-responsive" id="profileImg" alt="">
                 </div>
                 <div class="col-sm-9">
-                    <div class="edit-user-title">
-                        Grace's Music
+                    <div id="editUserTitle" class="edit-user-title">
                     </div>
                 </div>
             </div>
@@ -75,8 +74,7 @@
                             Add Songs</a>
                         </li>
                         <li>
-                            <a href="#playlist-tab" data-toggle="tab">
-                                Grace's Playlist</a>
+                            <a href="#playlist-tab" id="playlistTitle" data-toggle="tab"></a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -157,18 +155,16 @@
                                                         <th>Artist</th>
                                                         <th>Time</th>
                                                     </tr>
-    <!-- For every song result, create a row
-    Use ADD button to add to playlist. -->
-</thead>
-<tbody  id="results">
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<!-- /.row -->
-<!-- /.End Add Songs Tab -->
-</div>
+                                                </thead>
+                                                <tbody  id="results">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            <!-- /.End Add Songs Tab -->
+                            </div>
 <div class="tab-pane" id="playlist-tab">
     <!-- /.Start Playlist Tab -->
 
@@ -196,7 +192,7 @@
 
 <style>
 .selectedGenre {
-    border: solid #B689BC;
+    border: solid #B689BC 5px;
 }
 
 </style>
@@ -215,7 +211,7 @@ $(document).ready(function(){
     $('.favorite-pics').slick({
         infinite: true,
         slidesToShow: 5,
-        slidesToScroll: 3
+        slidesToScroll: 5
     });
 });
 </script>
@@ -237,56 +233,58 @@ $(document).ready(function(){
             speed:800
         });
 
-        // load playlist
-        jQuery.ajaxSettings.traditional = true; 
+
         var uid = '1';
-        $.get('/tracks/' + uid, function(data) {
-            var sids = data.songIds;
+        $.get('/selectGenres/' + uid, function(data) {
+
             $.ajax({
-                url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
                 success: function(response) {
-                    var tracks = response.tracks;
-                    for (var i = 0; i < tracks.length; i++) {
-                        var title = tracks[i].name;
-                        var artist = tracks[i].artists[0].name;
-                        var ms = tracks[i].duration_ms;
-                        var time = convertTime(ms);
-                        $("#playlist").append("<tr><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+                    for (var i=0; i<data.length; i++) {
+                        console.log(data[i]);
+                        loadHighlight(data[i]);
                     }
                 }
             });
+        }); 
+
+
+
+        // load playlist
+        jQuery.ajaxSettings.traditional = true; 
+        $("#playlistTitle").click(function() { 
+            $.get('/tracks/' + uid, function(data) {
+                var sids = data.songIds;
+                $.ajax({
+                    url: 'https://api.spotify.com/v1/tracks?ids=' + sids,
+                    success: function(response) {
+                        var tracks = response.tracks;
+                        for (var i = 0; i < tracks.length; i++) {
+                            var title = tracks[i].name;
+                            var artist = tracks[i].artists[0].name;
+                            var ms = tracks[i].duration_ms;
+                            var time = convertTime(ms);
+                            $("#playlist").append("<tr><td>" + title + "</td><td>" + artist + "</td><td>" + time + "</td></tr>");
+                        }
+                    }
+                });
+            });
         });
 
-        function genreHighlight(id) {
-            var docID = "#" + id;
-            alert("hello");
-            if($(docID).hasClass("selectedGenre")) {
-                $(docID).removeClass("selectedGenre");
 
-                // remove from db
-                var uid = '1';
-                $.post('/removeGenre/' + uid + '/' + id, function(data) {
-                    console.log("removed genre");
-                }); 
-            } else {
-                $(docID).addClass("selectedGenre");
-                loadTopSongs(id, 'in_rotation-best');
 
-                // add to db
-                var uid = '1';
-                $.post('/addGenre/' + uid + '/' + id, function(data) {
-                    console.log("added genre");
-                }); 
-            }
-        }
-
-        function slideNext() {
-            $('.genres').slick('slickNext');
-        }
-
-        function slideBack() {
-            $('.genres').slick('slickPrev');
-        }
+    });
+</script>
+<script>
+        $(document).ready(function() {
+            var user_id = getCookie("username");
+            var fname = getCookie("fname");
+            var lname = getCookie("lname");
+            var imgPath = "img/fakeUsers/" + user_id + ".jpg";
+            $("#editUserTitle").html(fname + "'s Music");
+            $("#playlistTitle").html(fname + "'s Playlist");
+            $("#profileImg").attr("src", imgPath);
+  
+          });
 
         var host = 'http://developer.echonest.com/api/v4/';
         var apiKey =  'Q02TB0UTUYB9F4CKX';
@@ -371,23 +369,46 @@ $(document).ready(function(){
         function hasTrack(song) {
             return song.tracks.length > 0;
         }
-    });
-</script>
-<script>
-        $(document).ready(function() {
-            // highlight user's interests
-            var uid = '1';
-            $.get('/selectGenres/' + uid, function(data) {
+        
+        
+        function genreHighlight(id) {
+            var docID = "#" + id;
+            if($(docID).hasClass("selectedGenre")) {
+                $(docID).removeClass("selectedGenre");
 
-                $.ajax({
-                    success: function(response) {
-                        for (var i=0; i<data.length; i++) {
-                            loadHighlight(data[i]);
-                        }
-                    }
-                });
-            });     
-          });
+                // remove from db
+                var uid = '1';
+                $.post('/removeGenre/' + uid + '/' + id, function(data) {
+                }); 
+            } else {
+                $(docID).addClass("selectedGenre");
+                loadTopSongs(id, 'in_rotation-best');
+
+                // add to db
+                var uid = '1';
+                $.post('/addGenre/' + uid + '/' + id, function(data) {
+                }); 
+            }
+        }
+
+        function slideNext() {
+            $('.genres').slick('slickNext');
+        }
+
+        function slideBack() {
+            $('.genres').slick('slickPrev');
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+            }
+            return "";
+        }
 
         function loadHighlight(id) {
             var docID = "#" + id;
@@ -402,8 +423,6 @@ $(document).ready(function(){
             window.location = "f_profile.html"; 
         }
 </script>
-
-
 
 
 </body>

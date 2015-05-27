@@ -42,16 +42,19 @@
     <div class="container family-screensize">
 
         <!-- Go Back -->
-        <img src="img/backButton.png" class="back-button" onclick="backButton()">
+<!--         <img src="img/backButton.png" class="back-button" onclick="backButton()">
+ -->
+    <a href="f_profile.html">
+        <img src="img/backButton.png" class="back-button">
+    </a>
 
         <!-- Page Header -->
         <div class="edit-title-row">
             <div class="col-sm-2">
-                <img class="edit-user-pic img-responsive" src="img/fakeUsers/user2.jpg" alt="">
+                <img class="edit-user-pic img-responsive" id="profileImg" alt="">
             </div>
             <div class="col-sm-10">
-                <div class="edit-user-title">
-                    Grace's Pictures
+                <div id="editUserTitle" class="edit-user-title">
                 </div>
             </div>
         </div>
@@ -70,7 +73,7 @@
                     <img class="interest img-responsive" src="img/fakeInterests/s_piano.jpg" alt="" id="piano" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_farms.jpg" alt="" id="farms" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_farms.jpg" alt="" id="farm" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_golf.jpg" alt="" id="golf" onclick="interestHighlight(this.id)">
@@ -88,10 +91,10 @@
                     <img class="interest img-responsive" src="img/fakeInterests/s_flowers.jpg" alt="" id="flowers" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_horse.jpg" alt="" id="horses" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_horse.jpg" alt="" id="horse" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
-                    <img class="interest img-responsive" src="img/fakeInterests/s_garden.jpg" alt="" id="gardening" onclick="interestHighlight(this.id)">
+                    <img class="interest img-responsive" src="img/fakeInterests/s_garden.jpg" alt="" id="garden" onclick="interestHighlight(this.id)">
                 </div>
                 <div class="col-sm-2">
                     <img class="interest img-responsive" src="img/fakeInterests/s_tennis.jpg" alt="" id="tennis" onclick="interestHighlight(this.id)">
@@ -126,16 +129,13 @@
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 									<h4 class="modal-title" id="myModalLabel">Upload a Photo</h4>
 								</div>
-								<form id="uploadForm" enctype="multipart/form-data" method="post">
+								<form id="uploadForm" enctype="multipart/form-data" >
 									<div class="modal-body">
 										<input class="choose-pic" type="file" accept="image/*" id="files" name="files[]"
 													onchange="loadFile(event)" />
 										<br/> <img class="personal-image img-responsive" style="width: 300px" id="output"/>
 										<br/> <p> Enter a message or caption for the picture: </p>
 										<textarea type="text" id="caption" rows="2" style="resize: vertical; width:100%" ></textarea> 
-										<script>
-											$('textarea').autoResize();
-										</script>										
 									</div>
 									<div class="modal-footer" style="text-align:center;">
 										<input class="save-pic btn btn-default" type="submit" id="submit" ></input>					
@@ -156,48 +156,7 @@
 						</script>
 						
                     </div>
-                    <div class="col-sm-15">
-                        <img class="personal-image img-responsive" src="img/fakePuzzles/family2.jpg" alt="">
-                    </div>
-                    <div class="col-sm-15">
-                        <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
-                    </div>
-                    <div class="col-sm-15">
-                        <img class="personal-image img-responsive" src="img/fakePuzzles/family4.jpg" alt="">
-                    </div>
-                    <div class="col-sm-15">
-                        <img class="personal-image img-responsive" src="img/fakePuzzles/family5.jpg" alt="">
-                    </div>
                 </div>
-                <div class="personal-row col-sm-12">
-                <div class="col-sm-15">
-                    <img class="fav-pics img-responsive" src="img/fakePuzzles/family1.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family2.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family4.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family5.jpg" alt="">
-                </div>
-            </div>
-            <div class="personal-row col-sm-12">
-                <div class="col-sm-15">
-                    <img class="fav-pics img-responsive" src="img/fakePuzzles/family1.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family2.jpg" alt="">
-                </div>
-                <div class="col-sm-15">
-                    <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
-                </div>
-                
-            </div>
         </div>
         </div>
         <!-- /.row -->
@@ -276,56 +235,90 @@
     for (var i = 0, f; f = files[i]; i++) {
       output.push('<li id="img_', i,  '"><strong>', escape(f.name), '</strong></li>');
     }
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 </script>
 
  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-</body>
-</html>
 
  <script>
+	function buildImg(fileName) {
+		 var outterDiv = $('<div></div>')
+		 outterDiv.attr('class', 'col-sm-15')
+		 var image = $('<img>')
+		 image.attr('class', 'personal-image img-responsive')
+		 image.attr('src', '/uploads/' + fileName)
+		 outterDiv.append(image)
+		 return outterDiv
+	}
+	
+	function appendPersonalImg(fileName) {
+		var image = buildImg(fileName)
+		
+		//create a new row if needed
+		if ($('.personal-row:last').children().length >= 5) {
+			var newRow = $('<div></div>')
+			newRow.attr('class', 'personal-row col-sm-12')
+			image = newRow.append(image)
+			$('.personal-row:last').parent().append(image)
+		} else {
+			$('.personal-row:last').append(image)
+		}
+	}
+
+
 	$(document).ready(function() {
 		$('#uploadForm').submit(function() {
-			var fileName = $('li').text() //hacky...
+			var path = $('#files').val()
+			var fileName = path.substring(path.lastIndexOf('\\') + 1)
 			var caption = $('#caption').val()
-			var urll = '../uploads/' + fileName + '/' + caption;
+			var urll = '../upload/' + fileName + '/' + caption;
+			console.log('this is the url')	
 			console.log(urll)
 
 			$(this).ajaxSubmit({
 				url: urll, 
+				method: 'POST',
 				error: function(xhr) {
-					status('Error: ' + xhr.status)
-                    console.log("ERROR uploading file")
+                   console.log("ERROR uploading file")
 				},
 				success: function(response) {
 					console.log("suuuuuccccessssss")
-					//Cindy/Tiffany-you can display the newly uploaded photo however you want...
-					// $('.table').append("<img src='/upload/" + $('li').text() + "' />")		
-
-                    $('.table').append("<div class='col-sm-15'>
-                    <img class='personal-image img-responsive' src='/upload/" + $('li').text() + "' /></div>")  
-
-                //     <div class="col-sm-15">
-                //     <img class="personal-image img-responsive" src="img/fakePuzzles/family3.jpg" alt="">
-                // </div>
-
 					
 					document.getElementById('uploadForm').reset()
-					$('output').val('')
+					$('.close').click()
+					
+					//now display the image that was just uploaded
+					appendPersonalImg(fileName)
 				}
 			});
 			return false;
+		});
+	
+		//get the pictures associated to this user and display them
+		$.get('/pictures', function(data) {
+			console.log(data)
+			for (var i = 0; i < data.length; i++) {
+				var fileName = data[i].file_name
+				appendPersonalImg(fileName)	
+			}
 		});
 	});
 </script>
 
 <script>
         $(document).ready(function() {
+            var user_id = getCookie("username");
+            var fname = getCookie("fname");
+            var lname = getCookie("lname");
+            var imgPath = "img/fakeUsers/" + user_id + ".jpg";
+            $("#editUserTitle").html(fname + "'s Pictures");
+            $("#profileImg").attr("src", imgPath);
             // highlight user's interests
             var uid = '1';
+
+				// tiffany I commented this out because it was throwing a 404 and making this whole page unusable and I was working on something in this page
             $.get('/selectInterests/' + uid, function(data) {
 
                 $.ajax({
@@ -336,19 +329,34 @@
                     }
                 });
             });     
-          });
+       
 
-        function loadHighlight(id) {
-            var docID = "#" + id;
-            if($(docID).hasClass("selectedInterest")) {
-                $(docID).removeClass("selectedInterest");
-            } else {
-                $(docID).addClass("selectedInterest");
-            }
-        }
 
-        function backButton() {
-            window.location = "f_profile.html"; 
-        }
+			 function loadHighlight(id) {
+				  var docID = "#" + id;
+				  if($(docID).hasClass("selectedInterest")) {
+						$(docID).removeClass("selectedInterest");
+				  } else {
+						$(docID).addClass("selectedInterest");
+				  }
+			 }
+
+			 function backButton() {
+				  window.location = "f_profile.html"; 
+			 }
+
+			 function getCookie(cname) {
+				  var name = cname + "=";
+				  var ca = document.cookie.split(';');
+				  for(var i=0; i<ca.length; i++) {
+						var c = ca[i];
+						while (c.charAt(0)==' ') c = c.substring(1);
+						if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+				  }
+				  return "";
+			 }
+	})
 </script>
 
+</body>
+</html>

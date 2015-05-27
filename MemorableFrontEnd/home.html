@@ -71,7 +71,7 @@
         <!-- Users Row -->
         <div class="resident-row row">
             <div class="resident-image col-sm-3">
-				<input type="image" src="img/fakeUsers/user1.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
+				<input type="image" src="img/fakeUsers/amartin.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
 					data-toggle="modal" data-target="#myModal" />
 				<h4 class="text-center resident-name">Alfredo</h4>
 				
@@ -83,16 +83,15 @@
 						</div>
 						<form name="pass1" id="pass1" class="form-inline" role="form" 
 							action=" javascript: 
-								if (window.document.pass1.page.value == '1111') {
-									location.href = 'r_puzzles.html';
-								} else {
-									document.getElementById('pass1').reset();
-								}							
+                                document.cookie='username=amartin';
+                                document.cookie='fname=Alfredo';
+                                document.cookie='lname=Martin';
+								location.href = 'r_puzzles.html';							
 							">
 							<div class="modal-body">
 							    <div class="form-group">
 								    <label for="pwd">PIN:</label>
-								    <input type="text" class="form-control" id="pwd" name="page" placeholder="####">
+								    <input type="text" value="" class="form-control" id="pwd" name="page" placeholder="####" autofocus/>
 							    </div>
 							</div>
 							<div class="modal-footer" style="text-align:center;">
@@ -104,7 +103,7 @@
 
             </div>
             <div class="resident-image col-sm-3">
-                <input type="image" src="img/fakeUsers/user2.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
+                <input type="image" src="img/fakeUsers/jappleseed.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
 					data-toggle="modal" data-target="#myModal2" />
 				<h4 class="text-center resident-name">Grace</h4>
 				
@@ -116,11 +115,10 @@
 						</div>
 						<form name="pass2" id="pass2" class="form-inline" role="form" 
 							action=" javascript: 
-								if (window.document.pass2.page.value == '1234') {
-									location.href = 'r_puzzles.html';
-								} else {
-									document.getElementById('pass2').reset();
-								}							
+								location.href = 'r_puzzles.html';
+                                document.cookie='username=jappleseed';
+                                document.cookie='fname=Grace';
+                                document.cookie='lname=Johnson';						
 							">
 							<div class="modal-body">
 							    <div class="form-group">
@@ -136,42 +134,194 @@
 				</div>
             </div>
             <div class="resident-image col-sm-3">
-                <a href="#">
-                    <img class="resident-pic img-responsive" src="img/fakeUsers/user3.jpg" alt="">
-                </a>
+                <input type="image" src="img/fakeUsers/eshah.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
+                    data-toggle="modal" data-target="#myModal3" />
                 <h4 class="text-center resident-name">Esther</h4>
+
+
+                <div class="modal fade" id="myModal3" tabindex="-1" style="top:20%" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" style="width: 300px"> <div class="modal-content"> 
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Please enter Esther's PIN</h4>
+                        </div>
+                        <form name="pass3" id="pass3" class="form-inline" role="form" 
+                            action=" javascript: 
+                                document.cookie='username=eshah';
+                                document.cookie='fname=Esther';
+                                document.cookie='lname=Shah';
+                                location.href = 'r_puzzles.html';                      
+                            ">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="pwd">PIN:</label>
+                                    <input type="text" class="form-control" id="pwd" name="page" placeholder="####">
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="text-align:center;">
+                                <input type="submit" value="Enter" class="btn btn-default"></input>                     
+                            </div>
+                        </form>
+                    </div> </div>
+                </div>
             </div>
+
             <div class="resident-image col-sm-3">
-                <a href="#">
-                    <img class="resident-pic img-responsive" src="img/fakeUsers/user4.jpg" alt="">
-                </a>
+                <input type="image" src="img/fakeUsers/fparker.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
+                    data-toggle="modal" data-target="#myModal4" />
                 <h4 class="text-center resident-name">Frank</h4>
+
+                <div class="modal fade" id="myModal4" tabindex="-1" style="top:20%" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" style="width: 300px"> <div class="modal-content"> 
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Please enter Frank's PIN</h4>
+                        </div>
+                        <form name="pass4" id="pass4" class="form-inline" role="form" 
+                            action=" javascript: 
+                                document.cookie='username=fparker';
+                                document.cookie='fname=Frank';
+                                document.cookie='lname=Parker';
+                                location.href = 'r_puzzles.html';                       
+                            ">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="pwd">PIN:</label>
+                                    <input type="text" class="form-control" id="pwd" name="page" placeholder="####">
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="text-align:center;">
+                                <input type="submit" value="Enter" class="btn btn-default"></input>                     
+                            </div>
+                        </form>
+                    </div> </div>
+                </div>
             </div>
         </div>
         <div class="resident-row row">
             <div class="resident-image col-sm-3">
-                <a href="#">
-                    <img class="resident-pic img-responsive" src="img/fakeUsers/user5.jpg" alt="">
-                </a>
+                <input type="image" src="img/fakeUsers/glewis.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
+                    data-toggle="modal" data-target="#myModal5" />
                 <h4 class="text-center resident-name">Gerard</h4>
+
+                <div class="modal fade" id="myModal5" tabindex="-1" style="top:20%" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" style="width: 300px"> <div class="modal-content"> 
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Please enter Gerard's PIN</h4>
+                        </div>
+                        <form name="pass5" id="pass5" class="form-inline" role="form" 
+                            action=" javascript: 
+                                document.cookie='username=glewis';
+                                document.cookie='fname=Gerard';
+                                document.cookie='lname=Lewis';
+                                location.href = 'r_puzzles.html';                       
+                            ">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="pwd">PIN:</label>
+                                    <input type="text" class="form-control" id="pwd" name="page" placeholder="####">
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="text-align:center;">
+                                <input type="submit" value="Enter" class="btn btn-default"></input>                     
+                            </div>
+                        </form>
+                    </div> </div>
+                </div>
             </div>
             <div class="resident-image col-sm-3">
-                <a href="#">
-                    <img class="resident-pic img-responsive" src="img/fakeUsers/user6.jpg" alt="">
-                </a>
+                <input type="image" src="img/fakeUsers/wanderson.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
+                    data-toggle="modal" data-target="#myModal6" />
                 <h4 class="text-center resident-name">Winston</h4>
+
+                <div class="modal fade" id="myModal6" tabindex="-1" style="top:20%" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" style="width: 300px"> <div class="modal-content"> 
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Please enter Winston's PIN</h4>
+                        </div>
+                        <form name="pass6" id="pass6" class="form-inline" role="form" 
+                            action=" javascript: 
+                                document.cookie='username=wanderson';
+                                document.cookie='fname=Winston';
+                                document.cookie='lname=Anderson';
+                                location.href = 'r_puzzles.html';                         
+                            ">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="pwd">PIN:</label>
+                                    <input type="text" class="form-control" id="pwd" name="page" placeholder="####">
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="text-align:center;">
+                                <input type="submit" value="Enter" class="btn btn-default"></input>                     
+                            </div>
+                        </form>
+                    </div> </div>
+                </div>
             </div>
             <div class="resident-image col-sm-3">
-                <a href="#">
-                    <img class="resident-pic img-responsive" src="img/fakeUsers/user7.jpg" alt="">
-                </a>
+                <input type="image" src="img/fakeUsers/estone.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
+                    data-toggle="modal" data-target="#myModal7" />
                 <h4 class="text-center resident-name">Eileen</h4>
+
+                <div class="modal fade" id="myModal7" tabindex="-1" style="top:20%" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" style="width: 300px"> <div class="modal-content"> 
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Please enter Eileen's PIN</h4>
+                        </div>
+                        <form name="pass7" id="pass7" class="form-inline" role="form" 
+                            action=" javascript: 
+                                document.cookie='username=estone';
+                                document.cookie='fname=Eileen';
+                                document.cookie='lname=Stone';
+                                location.href = 'r_puzzles.html';                         
+                            ">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="pwd">PIN:</label>
+                                    <input type="text" class="form-control" id="pwd" name="page" placeholder="####">
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="text-align:center;">
+                                <input type="submit" value="Enter" class="btn btn-default"></input>                     
+                            </div>
+                        </form>
+                    </div> </div>
+                </div>
             </div>
             <div class="resident-image col-sm-3">
-                <a href="#">
-                    <img class="resident-pic img-responsive" src="img/fakeUsers/user8.jpg" alt="">
-                </a>
+                <input type="image" src="img/fakeUsers/hwilson.jpg" class="btTxt submit resident-pic img-responsive" id="saveForm" 
+                    data-toggle="modal" data-target="#myModal8" />
                 <h4 class="text-center resident-name">Heather</h4>
+
+                <div class="modal fade" id="myModal8" tabindex="-1" style="top:20%" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" style="width: 300px"> <div class="modal-content"> 
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Please enter Heather's PIN</h4>
+                        </div>
+                        <form name="pass8" id="pass8" class="form-inline" role="form" 
+                            action=" javascript: 
+                                document.cookie='username=hwilson';
+                                document.cookie='fname=Heather';
+                                document.cookie='lname=Wilson';
+                                location.href = 'r_puzzles.html';                          
+                            ">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="pwd">PIN:</label>
+                                    <input type="text" class="form-control" id="pwd" name="page" placeholder="####">
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="text-align:center;">
+                                <input type="submit" value="Enter" class="btn btn-default"></input>                     
+                            </div>
+                        </form>
+                    </div> </div>
+                </div>
             </div>
         </div>
         <!-- /.row -->

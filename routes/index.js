@@ -42,6 +42,10 @@ var getClient = function() {
 		//heroku connection
 		return new pg.Client(connectionString)
 	}	 
+
+
+	//var host = require('../postgres.js').host
+	
 	//localhost
 	return new pg.Client({
 									database: 'memorable',
@@ -134,7 +138,8 @@ router.get('/upload/:file_name', function(req, res) {
 	var callback = function(err, readResults) { 
 		if (readResults.rows.length > 0) {
 			var img = readResults.rows[0].img	
-			console.log('iinside')
+			//convert to base64 before sending so clientside can render the image
+			//var base64Img = new Buffer(img, 'hex').toString('base64')
 			res.contentType = 'image'
 			res.end(img, 'binary')
 		} else {
@@ -148,6 +153,7 @@ router.get('/upload/:file_name', function(req, res) {
 router.get('/caption/:file_name', function(req, res){
 	//return the caption associated with a given photo file_name
 	var file_name = req.params.file_name
+	console.log("filename" + file_name)
 	var q = "select caption from image where file_name = $1;"
 	var data = [file_name]
 	var callback = function(err, data) {
@@ -160,6 +166,18 @@ router.get('/caption/:file_name', function(req, res){
 })
 
 
+router.get('/pictures', function(req, res) {
+	
+	var user_id = req.cookies.username
+	var q = "select file_name from image where user_id=$1"
+	var data = [user_id]
+	var callback = function(err, data) {
+		console.log(data.rows)
+		res.send(data.rows)
+	}
+	query(q, data, callback)
+
+})
 
 
 
@@ -169,10 +187,9 @@ router.get('/profile', function(req, res) {
 	res.sendFile(path.join(__dirname, "../MemorableFrontEnd/f_profile.html"))
 })
 
-//not done
+//done
 //update a puzzle difficulty from the user profile page
 router.put('/puzzle_difficulty', function(req, res) {
-	//will need to pass in user id, and puzzle difficulty
 	var user_id = req.body.user_id
 	var puzzle_difficulty = req.body.puzzle_difficulty
 	var q = "update resident_user set puzzle_level=$1 where user_id=$2"
@@ -180,6 +197,19 @@ router.put('/puzzle_difficulty', function(req, res) {
 	var callback = function(err, data) {console.log(err) }
 	query(q, data, callback)	
 	res.end()
+})
+
+router.get('/puzzle_difficulty', function(req, res) {
+	var user_id = req.cookies.username
+	var q = "select puzzle_level from resident_user where user_id=$1"
+	var data = [user_id]
+	callback = function(err, data) {
+	   if (err)	console.log(err)
+		res.send(data.rows[0])
+	}
+	query(q, data, callback)
+	
+
 })
 
 router.post('/tracks/:song_id/:user_id', function(req, res) {
@@ -206,12 +236,10 @@ router.get('/tracks/:user_id', function(req, res) {
 	// see the word fake_id_1 displayed to the page
 	//var user_id = req.params.user_id;
 	var user_id = 'jappleseed';
-	console.log("died here")
 	var q = 'select id from song where user_id=$1';
 	var data = [user_id];
 	var callback = function(err, data) { 
 		console.log(err);
-		console.log('inside')
 		var song_ids = []
 		for (var i = 0; i < data.rows.length; i++) {
 			song_ids.push(data.rows[i].id)
@@ -231,7 +259,6 @@ var uploadFolderPath = function(fileName) {
 router.get('/play/:fileName', function(req, res) {
 	//first rewrite file under the uploads/ folder ie hacky
 	//	this is so we dont have to send binary image
-	console.log('inside')	
 	var fileName = req.params.fileName
 	var filePath = '../' + uploadDestination + fileName
 	filePath = path.join(__dirname, filePath)
@@ -246,6 +273,7 @@ router.get('/play/:fileName', function(req, res) {
   res.sendFile(path.join(__dirname, '../MemorableFrontEnd/r_play.html'))
 })
 
+ 
 
 router.get('/uploads/:fileName', function(req, res) {
 	var fileName = req.params.fileName
@@ -254,26 +282,29 @@ router.get('/uploads/:fileName', function(req, res) {
 })
 
 
+
+
 router.get('/selectInterests/:user_id', function(req, res) {
-	var user_id = 'gracejohnson';
-	// var q = 'select p.file_name from interest_pictures p, interests i where i.interest_type = p.interest_type and i.interest_type in (select interest_type from user_interests where user_id=$1)';
+	var user_id = 'jappleseed';
 	var q = 'select interest_type from user_interests where user_id=$1';
 
 	var data = [user_id];
 	var callback = function(err, data) { 
 		console.log(err);
 		var interestType = []
-		for (var i = 0; i < data.rows.length; i++) {
-			interestType.push(data.rows[i].interest_type)
+		if (data.rows) { 
+			for (var i = 0; i < data.rows.length; i++) {
+				interestType.push(data.rows[i].interest_type);
+			}
+			res.send(interestType);
 		}
-		res.send(interestType);
 	}
 	query(q, data, callback);
 })
 
 
 router.post('/removeInterest/:user_id/:interest', function(req, res) {
-	var user_id = 'gracejohnson';
+	var user_id = 'jappleseed';
 	var interest = req.params.interest;
 	var q = 'delete from user_interests where user_id=$1 and interest_type=$2';
 	var data = [user_id, interest];
@@ -286,7 +317,7 @@ router.post('/removeInterest/:user_id/:interest', function(req, res) {
 
 
 router.post('/addInterest/:user_id/:interest', function(req, res) {
-	var user_id = 'gracejohnson';
+	var user_id = 'jappleseed';
 	var interest = req.params.interest;
 	var q = 'insert into user_interests values ($1, $2)';
 	var data = [user_id, interest];
@@ -299,8 +330,7 @@ router.post('/addInterest/:user_id/:interest', function(req, res) {
 
 
 router.get('/selectGenres/:user_id', function(req, res) {
-	var user_id = 'gracejohnson';
-	// var q = 'select p.file_name from interest_pictures p, interests i where i.interest_type = p.interest_type and i.interest_type in (select interest_type from user_interests where user_id=$1)';
+	var user_id = 'jappleseed';
 	var q = 'select genre_type from user_genres where user_id=$1';
 
 	var data = [user_id];
@@ -317,7 +347,7 @@ router.get('/selectGenres/:user_id', function(req, res) {
 
 
 router.post('/removeGenre/:user_id/:genre', function(req, res) {
-	var user_id = 'gracejohnson';
+	var user_id = 'jappleseed';
 	var genre = req.params.genre;
 	var q = 'delete from user_genres where user_id=$1 and genre_type=$2';
 	var data = [user_id, genre];
@@ -330,7 +360,7 @@ router.post('/removeGenre/:user_id/:genre', function(req, res) {
 
 
 router.post('/addGenre/:user_id/:genre', function(req, res) {
-	var user_id = 'gracejohnson';
+	var user_id = 'jappleseed';
 	var genre = req.params.genre;
 	var q = 'insert into user_genres values ($1, $2)';
 	var data = [user_id, genre];
@@ -340,7 +370,6 @@ router.post('/addGenre/:user_id/:genre', function(req, res) {
 	}
 	query(q, data, callback);
 })
-
 
 
 
