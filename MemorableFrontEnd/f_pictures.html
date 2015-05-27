@@ -112,13 +112,17 @@
         <!-- Personal Photos Row-->
         <div class="personal-photos-row">
             <div class="favtitle-row">
-                <h3 class="fav-title">Personal Photos </h3>
+                <h3 class="fav-title">Photos</h3>
             </div>
             <div class="personal-table row">
                 <div class="personal-row col-sm-12">
-                    <div class="col-sm-15">					
+                    <div class="col-sm-15">
+
+						<!-- upload image button -->
 						<input type="image" src="img/tempUpload.jpg" alt="" class="personal-image img-responsive" onclick="chooseFile();"
 							data-toggle="modal" data-target="#myModal" />
+						
+						<!-- upload image modal -->
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 							<div class="modal-dialog" style="width:330px"> <div class="modal-content"> 
 								<div class="modal-header">
@@ -136,13 +140,12 @@
 									<div class="modal-footer" style="text-align:center;">
 										<input class="save-pic btn btn-default" type="submit" id="submit" ></input>					
 									</div>
-								</form>
-							</div> </div>
+								</form>								
+							</div> </div>						
 						</div>
 						<script>
 						   function chooseFile() {
-							  $("#files").click();
-							  
+							  $("#files").click();							  
 						   }
 						</script>
 						<script>
@@ -150,9 +153,51 @@
 							var output = document.getElementById('output');
 							output.src = URL.createObjectURL(event.target.files[0]);
 						  };
-						</script>
-						
+						</script>						
                     </div>
+					
+					<!-- ============================================================================ -->
+					<!-- ========= @Reggie: Translate to javascript to load for every image ========= -->
+					<!-- ============================================================================ -->
+					
+					<div class="col-sm-15">
+						<div class="img-wrap" style="position: relative">
+							<span class="close" style="position: absolute; top: 2px; right: 5px;" onclick="delImage();"
+								data-toggle="modal" data-target="#deleteModal">&times;</span>
+							<img class="personal-image img-responsive" src="images/reggie.jpg" id="1"/>
+						</div>
+						<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+							<div class="modal-dialog" style="width:330px"> <div class="modal-content"> 
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+								</div>
+								<form id="uploadForm" enctype="multipart/form-data" >
+									<div class="modal-body">
+										<br/> <p> Are you sure you would like to delete this photo? </p>
+										<br/> <img class="personal-image img-responsive" style="width: 300px" id="delimg"/>
+									</div>
+									<div class="modal-footer" style="text-align:center;">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+										<a class="btn btn-danger btn-ok">Delete</a>					
+									</div>
+								</form>								
+							</div> </div>						
+						</div>
+						<!-- display image in modal -->
+						<script>
+							function delImage() {
+								var img = document.getElementById('1');
+								var delimg = document.getElementById('delimg');
+								delimg.src = img.src;
+							}
+						</script>
+					</div>
+					
+					<!-- ============================================================================ -->
+					<!-- ============================================================================ -->
+					<!-- ============================================================================ -->
+					
                 </div>
         </div>
         </div>
@@ -239,10 +284,22 @@
 
  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 
+ <!--
+ <div class="img-wrap">
+    <span class="close">&times;</span>
+    <img src="http://lorempixel.com/100/80">
+</div>
+ -->
+ 
  <script>
 	function buildImg(fileName) {
 		 var outterDiv = $('<div></div>')
 		 outterDiv.attr('class', 'col-sm-15')
+		 var innerDiv = $('<div></div>'))
+		 innerDiv.attr('class', 'img-wrap')
+		 var wrap = !('<span></span>')
+		 wrap.attr('class', 'close')
+		 wrap.innerHTML = "&times;"
 		 var image = $('<img>')
 		 image.attr('class', 'personal-image img-responsive')
 		 image.attr('src', '/uploads/' + fileName)
