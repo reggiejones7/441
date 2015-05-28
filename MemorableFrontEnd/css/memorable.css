@@ -101,7 +101,7 @@ h1, h2, h3, h4, h5, h6, p, tr, a {
 
  .back-button {
  	position: absolute;
- 	top: 20px;
+ 	top: 22px;
  	left: 20px;
  	width:40px;
  	height:40px;
@@ -492,6 +492,11 @@ h1, h2, h3, h4, h5, h6, p, tr, a {
 	display:block;
 	margin:auto;
 	padding-top:30px;
+}
+
+.song-info {
+	margin-top:15px;
+	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
 }
 
 /*!
