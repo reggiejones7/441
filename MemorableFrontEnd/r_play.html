@@ -137,7 +137,12 @@
             });
 				
 				setTimeout(function() {
+					//to ensure the music player shows instead of having to scroll to it	
 					$(window).scrollTop(1000);
+				
+					//bug fix: snappuzzle is putting the cut up puzzle pieces outside
+					// of the div that its supposed to be in.
+					$(window).resize();
 				}, 100)
         });
     </script>
