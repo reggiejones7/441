@@ -67,7 +67,7 @@ var query = function(query, data, callback) {
 	//from crashing from too many db connections 
 	setTimeout(function() {
 		client.end()
-	}, 30000)
+	}, 10000)
 	
 }
 
