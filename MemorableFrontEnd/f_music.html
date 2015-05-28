@@ -70,13 +70,13 @@
             <div class="tabbable music-tabs">
                 <ul class="nav nav-tabs nav-justified">
                     <li class="active">
-                        <a href="#add-songs-tab" data-toggle="tab">
+                        <a href="#add-songs-tab" id="tab-add" data-toggle="tab">
                             Add Songs</a>
-                        </li>
-                        <li>
-                            <a href="#playlist-tab" id="playlistTitle" data-toggle="tab"></a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a href="#playlist-tab" id="playlistTitle" data-toggle="tab"></a>
+                    </li>
+                </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="add-songs-tab">
                                 <!-- /.Add Songs Tab -->
@@ -122,8 +122,8 @@
                                 <!-- /.row -->
 
                                 <!-- Back & Next Buttons -->
-                                <img src="img/interests_back.png" class="fake-back-button-gen" onclick="slideBack()">
-                                <img src="img/interests_next.png" class="fake-next-button-gen" onclick="slideNext()">
+                                <img src="img/slick_back.png" class="fake-back-button-gen" onclick="slideBack()">
+                                <img src="img/slick_next.png" class="fake-next-button-gen" onclick="slideNext()">
 
                                 <!-- Search for Music Row -->
                                 <div class="favs-row">
@@ -191,9 +191,25 @@
 <!-- /.container -->
 
 <style>
-.selectedGenre {
-    border: solid #B689BC 5px;
-}
+    .selectedGenre {
+        border: solid #B689BC 5px;
+    }
+
+    .nav-tabs > li.active > a,
+    .nav-tabs > li.active > a:hover,
+    .nav-tabs > li.active > a:focus {
+          color: black;
+          cursor: default;
+          background-color: #ffffff;
+          border: 1px solid #dddddd;
+          border-bottom-color: transparent;
+    }
+     
+    .nav-tabs > li > a {
+        color: black;
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+    }
 
 </style>
 
@@ -246,8 +262,6 @@ $(document).ready(function(){
                 }
             });
         }); 
-
-
 
         // load playlist
         jQuery.ajaxSettings.traditional = true; 

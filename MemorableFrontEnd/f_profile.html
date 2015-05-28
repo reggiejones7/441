@@ -23,6 +23,12 @@
     <!-- Memorable CSS -->
     <link href="css/memorable.css" rel="stylesheet">
 
+    <style>
+        .active {
+            color: black;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -174,7 +180,7 @@
 						  console.log(data)
 						  var parent = $('#puzzle_difficulty_' + data.puzzle_level).parent()
 						  var classes = parent.attr('class')
-						  parent.attr('class', classes + ' active')
+                          parent.attr('class', classes + ' active')
 					}
 			})
 

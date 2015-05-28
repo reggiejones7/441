@@ -79,7 +79,10 @@
                 <div id="pile" style="margin:10px">
                     <div id="puzzle_solved" style="display:none;text-align:center;position:relative;top:25%">
                         <h2 style="margin:0 0 20px">Well done!</h2>
-                        <a class="pure-button button-lg restart-puzzle" data-grid="2" style="background-color:#B689BC; color:#FFFFFF">Restart Puzzle</a>
+                        <a class="pure-button button-lg restart-puzzle" data-grid="2" style="background-color:#B689BC; color:#FFFFFF; font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif; width:215px">Restart Puzzle</a>
+                        <br>
+                        <br>
+                        <a class="pure-button button-lg new-puzzle" data-grid="2" style="background-color:#7B787C; color:#FFFFFF; font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif; width:215px">Play Different Puzzle</a>
                         <br><br>
                     </div>
                 </div>
@@ -131,13 +134,22 @@
                 $('#source_image').snapPuzzle('destroy');
                 start_puzzle($(this).data('grid'));
             });
+            $('.new-puzzle').click(function(){
+                window.location="../r_puzzles.html";
+            });
+
             $(window).resize(function(){
                 $('#pile').height($('#source_image').height());
                 $('#source_image').snapPuzzle('refresh');
             });
 				
 				setTimeout(function() {
+					//to ensure the music player shows instead of having to scroll to it	
 					$(window).scrollTop(1000);
+				
+					//bug fix: snappuzzle is putting the cut up puzzle pieces outside
+					// of the div that its supposed to be in.
+					$(window).resize();
 				}, 100)
         });
     </script>
@@ -152,13 +164,13 @@
         
         <div id="scrollBottom" style="position:center;">
             <a id="music-back">
-                 <img style="height:80px;" src="../img/backward.png" role="button">
+                 <img style="height:70px;" src="../img/backward.png" role="button">
             </a>
             <a id="music-play">
-                <img style="height:80px;" src="../img/play.png">
+                <img style="height:70px;" src="../img/play.png">
             </a>
             <a id="music-next">
-                 <img style="height:80px;" src="../img/forward.png">
+                 <img style="height:70px;" src="../img/forward.png">
             </a>
         </div>
         
@@ -174,7 +186,7 @@
                 audio.addEventListener('ended', function() {
                     // play next track if current song ends
                     playNextSong();
-                    $("#music-play").html('<img style="height:80px;" src="../img/pause.png">');
+                    $("#music-play").html('<img style="height:70px;" src="../img/pause.png">');
                 });
                 // TODO: query track ids from database
                 fetchData(addSongs);
@@ -183,11 +195,11 @@
                 });
                 $("#music-next").click(function() {
                     playNextSong();
-                    $("#music-play").html('<img style="height:80px;" src="../img/pause.png">');
+                    $("#music-play").html('<img style="height:70px;" src="../img/pause.png">');
                 });
                 $("#music-back").click(function() {
                     playPrevSong();
-                    $("#music-play").html('<img style="height:80px;" src="../img/pause.png">');
+                    $("#music-play").html('<img style="height:70px;" src="../img/pause.png">');
                 });
 
             });
@@ -211,8 +223,8 @@
 
             // called when play or pause is clicked
             function playSongs() {
-                 pausei='<img style="height:80px;" src="../img/pause.png">';
-                 playi='<img style="height:80px;" src="../img/play.png">';
+                 pausei='<img style="height:70px;" src="../img/pause.png">';
+                 playi='<img style="height:70px;" src="../img/play.png">';
          
                 // Update the Button
                  var pause = $("#music-play").html() === pausei;

@@ -42,11 +42,11 @@
     <div class="container family-screensize">
 
         <!-- Go Back -->
-<!--         <img src="img/backButton.png" class="back-button" onclick="backButton()">
- -->
-    <a href="f_profile.html">
+        <img src="img/backButton.png" class="back-button" onclick="backButton()">
+
+<!--     <a href="f_profile.html">
         <img src="img/backButton.png" class="back-button">
-    </a>
+    </a> -->
 
         <!-- Page Header -->
         <div class="edit-title-row">
@@ -105,8 +105,8 @@
 
 
         <!-- Fake Back & Next Buttons -->
-        <img src="img/interests_back.png" class="fake-back-button-int" onclick="slideBack()">
-        <img src="img/interests_next.png" class="fake-next-button-int" onclick="slideNext()">
+        <img src="img/slick_back.png" class="fake-back-button-int" onclick="slideBack()">
+        <img src="img/slick_next.png" class="fake-next-button-int" onclick="slideNext()">
 
 
         <!-- Personal Photos Row-->
@@ -162,8 +162,8 @@
 					
 					<div class="col-sm-15">
 						<div class="img-wrap" style="position: relative">
-							<span class="close" style="position: absolute; top: 2px; right: 5px;" onclick="delImage();"
-								data-toggle="modal" data-target="#deleteModal">&times;</span>
+							<span class="close" style="position: absolute; top: 2px; right: 8px; text-align: center" onclick="delImage();"
+								data-toggle="modal" data-target="#deleteModal">&nbsp;&times;</span>
 							<img class="personal-image img-responsive" src="images/reggie.jpg" id="1"/>
 						</div>
 						<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
@@ -386,30 +386,32 @@
        
 
 
-			 function loadHighlight(id) {
-				  var docID = "#" + id;
-				  if($(docID).hasClass("selectedInterest")) {
-						$(docID).removeClass("selectedInterest");
-				  } else {
-						$(docID).addClass("selectedInterest");
-				  }
-			 }
+		 function loadHighlight(id) {
+			  var docID = "#" + id;
+			  if($(docID).hasClass("selectedInterest")) {
+					$(docID).removeClass("selectedInterest");
+			  } else {
+					$(docID).addClass("selectedInterest");
+			  }
+		 }
 
-			 function backButton() {
-				  window.location = "f_profile.html"; 
-			 }
+			 
 
-			 function getCookie(cname) {
-				  var name = cname + "=";
-				  var ca = document.cookie.split(';');
-				  for(var i=0; i<ca.length; i++) {
-						var c = ca[i];
-						while (c.charAt(0)==' ') c = c.substring(1);
-						if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-				  }
-				  return "";
-			 }
+		 function getCookie(cname) {
+			  var name = cname + "=";
+			  var ca = document.cookie.split(';');
+			  for(var i=0; i<ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0)==' ') c = c.substring(1);
+					if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+			  }
+			  return "";
+		 }
 	})
+
+    function backButton() {
+        window.location = "f_profile.html"; 
+    }
 </script>
 
 </body>

@@ -62,6 +62,13 @@ var query = function(query, data, callback) {
 	var client = getClient()
 	client.connect()
 	client.query(query, data, callback)
+	
+	//probably a very poor way of closing the client to avoid the app
+	//from crashing from too many db connections 
+	setTimeout(function() {
+		client.end()
+	}, 10000)
+	
 }
 
 

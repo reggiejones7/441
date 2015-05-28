@@ -35,7 +35,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     background: transparent;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, tr, a {
 	/*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
 	/*font-weight: lighter;*/
 	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
@@ -101,7 +101,7 @@ h1, h2, h3, h4, h5, h6, p {
 
  .back-button {
  	position: absolute;
- 	top: 20px;
+ 	top: 22px;
  	left: 20px;
  	width:40px;
  	height:40px;
@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5, h6, p {
  	display: block;
  	width:130px;
  	float: right;
- 	border-radius: 20px;
+ 	border-radius: 75px;
  }
 
 .edit-button {
@@ -492,6 +492,11 @@ h1, h2, h3, h4, h5, h6, p {
 	display:block;
 	margin:auto;
 	padding-top:30px;
+}
+
+.song-info {
+	margin-top:15px;
+	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif;
 }
 
 /*!
