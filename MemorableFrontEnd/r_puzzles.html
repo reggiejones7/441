@@ -55,8 +55,8 @@
 					action=" javascript: location.href = 'home.html'; ">
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="pwd">Code:</label>
-							<input type="number" class="form-control" id="pwd" name="page" placeholder="####">
+							<label for="pwd1">Code:</label>
+							<input type="number" class="form-control" id="pwd1" placeholder="####" autofocus="autofocus">
 						</div>
 					</div>
 					<div class="modal-footer" style="text-align:center;">
@@ -82,16 +82,14 @@
 			<div class="modal-dialog" style="width: 300px"> <div class="modal-content"> 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Please enter PIN</h4>
+					<h4 class="modal-title" id="myModalLabel">Please enter passcode:</h4>
 				</div>
 				<form name="pass2" id="pass2" class="form-inline" role="form" 
-					action=" javascript: 
-						location.href = 'f_profile.html';					
-					">
+					action=" javascript: location.href = 'f_profile.html'; ">
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="pwd">PIN:</label>
-							<input type="text" class="form-control" id="pwd" name="page" placeholder="####">
+							<label for="pwd2">Code:</label>
+							<input type="number" class="form-control" id="pwd2" placeholder="####" autofocus="autofocus">
 						</div>
 					</div>
 					<div class="modal-footer" style="text-align:center;">
@@ -100,6 +98,17 @@
 				</form>
 			</div> </div>
 		</div>
+		
+		<script>
+			$('#myModal1').on('shown.bs.modal', function () {
+				$('#pwd1').focus();
+			});
+		</script>
+		<script>
+			$('#myModal2').on('shown.bs.modal', function () {
+				$('#pwd2').focus();
+			});
+		</script>
 
 
         <!-- Page Header -->
@@ -235,6 +244,7 @@
           });
 		})
 	</script>
+	
 </body>
 
 </html>

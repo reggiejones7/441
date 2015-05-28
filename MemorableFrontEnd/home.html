@@ -71,23 +71,17 @@
         <!-- Users Row -->
         <div class="resident-row row">
             <div class="resident-image col-sm-3">
-				<a href="r_puzzles.html">
-					<img src="img/fakeUsers/amartin.jpg" class="resident-pic img-responsive"/>
-				</a>
+				<img src="img/fakeUsers/amartin.jpg" class="resident-pic img-responsive" onclick="goToPuzzles()"/>
 				<h4 class="text-center resident-name">Alfredo</h4>
             </div>
 			
 			<div class="resident-image col-sm-3">
-				<a href="r_puzzles.html">
-					<img src="img/fakeUsers/jappleseed.jpg" class="resident-pic img-responsive"/>
-				</a>
+				<img src="img/fakeUsers/jappleseed.jpg" class="resident-pic img-responsive" onclick="goToPuzzles()"/>
 				<h4 class="text-center resident-name">Grace</h4>
             </div>
 			
 			<div class="resident-image col-sm-3">
-				<a href="r_puzzles.html">
-					<img src="img/fakeUsers/eshah.jpg" class="resident-pic img-responsive"/>
-				</a>
+				<img src="img/fakeUsers/eshah.jpg" class="resident-pic img-responsive" onclick="goToPuzzles()"/>
 				<h4 class="text-center resident-name">Esther</h4>
             </div>
 			
@@ -130,6 +124,12 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+	
+	<script>
+        function goToPuzzles() {
+            window.location = "r_puzzles.html"; 
+        }
+    </script>
 
 </body>
 
