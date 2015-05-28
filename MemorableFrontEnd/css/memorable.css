@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5, h6, p, tr, a {
  	display: block;
  	width:130px;
  	float: right;
- 	border-radius: 20px;
+ 	border-radius: 75px;
  }
 
 .edit-button {
