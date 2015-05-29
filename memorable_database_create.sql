@@ -104,6 +104,18 @@ INSERT INTO image VALUES('family3.jpg', 'jappleseed', '4 beautiful grandchildren
 INSERT INTO image VALUES('family4.jpg', 'jappleseed', 'Milking ol'' Betsy', NULL);
 INSERT INTO image VALUES('family5.jpg', 'jappleseed', 'Grace and John before Delilah''s wedding', NULL);
 
+INSERT INTO image VALUES('family6.jpg', 'amartin', 'Micah loves his breakfast!', NULL);
+INSERT INTO image VALUES('family7.jpg', 'amartin', 'Father and daughter dance at the military ball!', NULL);
+INSERT INTO image VALUES('family8.jpg', 'amartin', 'Steve, Roxanne, Emily, and Jordan at the beach', NULL);
+INSERT INTO image VALUES('family9.jpg', 'amartin', 'The kids love the beach!', NULL);
+INSERT INTO image VALUES('family10.jpg', 'amartin', 'Hiking Machu Picchu, 1995', NULL);
+
+INSERT INTO image VALUES('family11.jpg', 'eshah', 'Jonah loves his breakfast!', NULL);
+INSERT INTO image VALUES('family12.jpg', 'eshah', 'You were a beautiful dancer, mom!', NULL);
+INSERT INTO image VALUES('family13.jpg', 'eshah', 'You were a beautiful dancer, mom!', NULL);
+INSERT INTO image VALUES('family14.jpg', 'eshah', 'Look at these cute little toddlers!', NULL);
+INSERT INTO image VALUES('family15.jpg', 'eshah', 'Back at our Korean home.', NULL);
+
 INSERT INTO image VALUES('farm1.jpg', 'jappleseed', 'Well done!', NULL);
 INSERT INTO image VALUES('farm2.jpg', 'jappleseed', 'Well done!', NULL);
 INSERT INTO image VALUES('farm3.jpg', 'jappleseed', 'Well done!', NULL);
@@ -154,6 +166,18 @@ INSERT INTO image VALUES('beach3.jpg', 'amartin', 'Well done!', NULL);
 INSERT INTO image VALUES('flowers1.jpg', 'amartin', 'Well done!', NULL);
 INSERT INTO image VALUES('flowers2.jpg', 'amartin', 'Well done!', NULL);
 INSERT INTO image VALUES('flowers3.jpg', 'amartin', 'Well done!', NULL);
+
+INSERT INTO image VALUES('dog1.jpg', 'amartin', 'Well done!', NULL);
+INSERT INTO image VALUES('dog2.jpg', 'amartin', 'Well done!', NULL);
+INSERT INTO image VALUES('dog3.jpg', 'amartin', 'Well done!', NULL);
+
+INSERT INTO image VALUES('piano1.jpg', 'eshah', 'Well done!', NULL);
+INSERT INTO image VALUES('piano2.jpg', 'eshah', 'Well done!', NULL);
+INSERT INTO image VALUES('piano3.jpg', 'eshah', 'Well done!', NULL);
+
+INSERT INTO image VALUES('flowers1.jpg', 'eshah', 'Well done!', NULL);
+INSERT INTO image VALUES('flowers2.jpg', 'eshah', 'Well done!', NULL);
+INSERT INTO image VALUES('flowers3.jpg', 'eshah', 'Well done!', NULL);
 
 --interests
 INSERT INTO interests VALUES('beach');
@@ -206,9 +230,13 @@ INSERT INTO user_interests VALUES ('jappleseed', 'golf');
 INSERT INTO user_interests VALUES ('jappleseed', 'horse');
 INSERT INTO user_interests VALUES ('jappleseed', 'piano');
 INSERT INTO user_interests VALUES ('jappleseed', 'tennis');
+
 INSERT INTO user_interests VALUES ('amartin', 'beach');
 INSERT INTO user_interests VALUES ('amartin', 'dog');
 INSERT INTO user_interests VALUES ('amartin', 'flowers');
+
+INSERT INTO user_interests VALUES ('eshah', 'piano');
+INSERT INTO user_interests VALUES ('eshah', 'flowers');
 
 
 -- genres
@@ -228,4 +256,15 @@ INSERT INTO user_genres VALUES ('jappleseed', 'jazz');
 INSERT INTO user_genres VALUES ('jappleseed', 'piano');
 INSERT INTO user_genres VALUES ('jappleseed', 'blue grass');
 INSERT INTO user_genres VALUES ('jappleseed', 'hip hop');
+
+INSERT INTO user_genres VALUES ('amartin', 'hip hop');
+INSERT INTO user_genres VALUES ('amartin', 'soul');
+INSERT INTO user_genres VALUES ('amartin', 'guitar');
+INSERT INTO user_genres VALUES ('amartin', 'rock');
+
+INSERT INTO user_genres VALUES ('eshah', 'opera');
+INSERT INTO user_genres VALUES ('eshah', 'guitar');
+INSERT INTO user_genres VALUES ('eshah', 'piano');
+INSERT INTO user_genres VALUES ('eshah', 'jazz');
+INSERT INTO user_genres VALUES ('eshah', 'blue grass');
 

@@ -291,18 +291,20 @@
 </div>
  -->
  
+
+
  <script>
 	function buildImg(fileName) {
 		 var outterDiv = $('<div></div>')
-		 outterDiv.attr('class', 'col-sm-15')
-			 var innerDiv = $('<div></div>'))
-			 innerDiv.attr('class', 'img-wrap')
-			 var wrap = !('<span></span>')
-			 wrap.attr('class', 'close')
-			 wrap.innerHTML = "&times;"
+		 	.attr('class', 'col-sm-15')
+		 var innerDiv = $('<div></div>'))
+		 	.attr('class', 'img-wrap')
+		 var wrap = !('<span></span>')
+		 	.attr('class', 'close')
+		   .innerHTML = "&times;"
 		 var image = $('<img>')
-		 image.attr('class', 'personal-image img-responsive')
-		 image.attr('src', '/uploads/' + fileName)
+		 	.attr('class', 'personal-image img-responsive')
+		 	.attr('src', '/uploads/' + fileName)
 		 outterDiv.append(image)
 		 return outterDiv
 	}
