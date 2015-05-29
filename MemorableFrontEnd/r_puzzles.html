@@ -56,7 +56,7 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="pwd1">Code:</label>
-							<input type="number" class="form-control" id="pwd1" placeholder="####" autofocus="autofocus">
+							<input type="number" class="form-control" id="pwd1" placeholder="####">
 						</div>
 					</div>
 					<div class="modal-footer" style="text-align:center;">
@@ -89,7 +89,7 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="pwd2">Code:</label>
-							<input type="number" class="form-control" id="pwd2" placeholder="####" autofocus="autofocus">
+							<input type="number" class="form-control" id="pwd2" placeholder="####">
 						</div>
 					</div>
 					<div class="modal-footer" style="text-align:center;">
@@ -107,6 +107,18 @@
 		<script>
 			$('#myModal2').on('shown.bs.modal', function () {
 				$('#pwd2').focus();
+			});
+		</script>
+		<script>
+			$('#myModal1').on('shown.bs.modal',function() {
+				setTimeout(function(){
+						//If modal has class
+					if ($('#myModal1').hasClass('modal')) {
+						//Whatever input you want to focus in
+						$('#pwd1').focus();
+					}
+				},100);
+
 			});
 		</script>
 

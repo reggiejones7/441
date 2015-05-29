@@ -549,7 +549,7 @@ h1, h2, h3, h4, h5, h6, p, tr, a {
 	line-height: 30px; 
 	text-align: center; 
 	filter: inherit;
-	position: absolute; top: 90%; left: 20%; width: 60%; height: 30px;
+	position: absolute; top: 88%; left: 20%; width: 60%; height: 30px;
 	transform: rotate(0deg) scale(1); 
 	opacity: 0.80;"> 
 }
