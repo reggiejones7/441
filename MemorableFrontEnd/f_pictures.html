@@ -371,10 +371,10 @@
             var imgPath = "img/fakeUsers/" + user_id + ".jpg";
             $("#editUserTitle").html(fname + "'s Pictures");
             $("#profileImg").attr("src", imgPath);
-            // highlight user's interests
+            
             var uid = '1';
 
-				// tiffany I commented this out because it was throwing a 404 and making this whole page unusable and I was working on something in this page
+            // highlight user's interests
             $.get('/selectInterests/' + uid, function(data) {
 
                 $.ajax({
