@@ -188,7 +188,6 @@ router.get('/pictures', function(req, res) {
 
 
 router.get('/slideshow', function(req, res) {
-	console.log("in index.js")
 	var user_id = req.cookies.username
 	var q = "select file_name, caption from image where user_id=$1"
 	var data = [user_id]
@@ -197,29 +196,8 @@ router.get('/slideshow', function(req, res) {
 		if (err) console.log(err)
 		var slides = []
 		res.send(data.rows)
-		console.log("send data")
-
-		// if (data.rows) { 
-		// 	for (var i = 0; i < data.rows.length; i++) {
-		// 		slides.push({data.rows[i].interest_type, });
-		// 	}
-		// 	res.send(slides);
-		// 	console.log("send data")
-		// }
 	}
 	query(q, data, callback);
-
-	// var callback = function(err, data) { 
-	// 	console.log(err);
-	// 	var interestType = []
-	// 	if (data.rows) { 
-	// 		for (var i = 0; i < data.rows.length; i++) {
-	// 			interestType.push(data.rows[i].interest_type);
-	// 		}
-	// 		res.send(interestType);
-	// 	}
-	// }
-	// query(q, data, callback);
 })
 
 
