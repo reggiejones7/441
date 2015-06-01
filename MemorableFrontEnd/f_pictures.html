@@ -155,49 +155,6 @@
 						  };
 						</script>						
                     </div>
-					
-					<!-- ============================================================================ -->
-					<!-- ========= @Reggie: Translate to javascript to load for every image ========= -->
-					<!-- ============================================================================ -->
-					
-					<div class="col-sm-15">
-						<div class="img-wrap" style="position: relative">
-							<span class="close" style="position: absolute; top: 2px; right: 8px; text-align: center" onclick="delImage();"
-								data-toggle="modal" data-target="#deleteModal">&nbsp;&times;</span>
-							<img class="personal-image img-responsive" src="images/reggie.jpg" id="1"/>
-						</div>
-						<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-							<div class="modal-dialog" style="width:330px"> <div class="modal-content"> 
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
-								</div>
-								<form id="uploadForm" enctype="multipart/form-data" >
-									<div class="modal-body">
-										<br/> <p> Are you sure you would like to delete this photo? </p>
-										<br/> <img class="personal-image img-responsive" style="width: 300px" id="delimg"/>
-									</div>
-									<div class="modal-footer" style="text-align:center;">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-										<a class="btn btn-danger btn-ok">Delete</a>					
-									</div>
-								</form>								
-							</div> </div>						
-						</div>
-						<!-- display image in modal -->
-						<script>
-							function delImage() {
-								var img = document.getElementById('1');
-								var delimg = document.getElementById('delimg');
-								delimg.src = img.src;
-							}
-						</script>
-					</div>
-					
-					<!-- ============================================================================ -->
-					<!-- ============================================================================ -->
-					<!-- ============================================================================ -->
-					
                 </div>
         </div>
         </div>
@@ -297,15 +254,12 @@
 	function buildImg(fileName) {
 		 var outterDiv = $('<div></div>')
 		 	.attr('class', 'col-sm-15')
-		 var innerDiv = $('<div></div>'))
-		 	.attr('class', 'img-wrap')
-		 var wrap = !('<span></span>')
-		 	.attr('class', 'close')
-		   .innerHTML = "&times;"
+
 		 var image = $('<img>')
 		 	.attr('class', 'personal-image img-responsive')
 		 	.attr('src', '/uploads/' + fileName)
 		 outterDiv.append(image)
+		  
 		 return outterDiv
 	}
 	
