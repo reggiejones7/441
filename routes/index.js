@@ -187,7 +187,18 @@ router.get('/pictures', function(req, res) {
 })
 
 
+router.get('/slideshow', function(req, res) {
+	var user_id = req.cookies.username
+	var q = "select file_name, caption from image where user_id=$1"
+	var data = [user_id]
 
+	var callback = function(err, data) {
+		if (err) console.log(err)
+		var slides = []
+		res.send(data.rows)
+	}
+	query(q, data, callback);
+})
 
 
 router.get('/profile', function(req, res) {

@@ -40,7 +40,60 @@
 
 </head>
 
+
 <body>
+
+<script>
+    $(document).ready(function() {
+        // Get pictures and captions for slideshow
+        $.get('/slideshow', function(data) {
+            
+            $.ajax({
+                success: function(response) {
+                    for (var i = 0; i < data.length; i++) {
+
+                        var fileName = data[i].file_name
+                        var caption = data[i].caption
+                        
+                        var outerouter = $('<div></div>')
+
+                        var outerdiv = $('<div></div>')
+
+                        var img = $('<img>')
+                        img.attr('u', 'image')
+                        img.attr('src', '/uploads/' + fileName) 
+                        img.attr('class', 'slideshow slideshow-photo')
+
+                        var slidediv = $('<div></div>')
+                        slidediv.append(img)
+
+                        var thumbnail = $('<img>')
+                        thumbnail.attr('u', 'thumb')
+                        thumbnail.attr('src', '/uploads/' + fileName) 
+                        thumbnail.attr('class', 'slideshow')
+
+                        var message = $('<div></div>')
+                        message.attr('class', 'slideshow-message')
+                        message.html(caption)
+
+                        outerdiv.append(slidediv)
+                        outerdiv.append(thumbnail)
+                        outerdiv.append(message)
+
+                        outerouter.append(outerdiv)
+
+                        $('#slide' + i).append(outerdiv)  
+                        $('#slide' + i).show()
+                    }
+                }
+            });
+        }); 
+
+        $('slideshow-container').show()
+    });
+
+
+    </script>
 
 
     <!-- it works the same with all jquery version from 1.x to 2.x -->
@@ -56,7 +109,7 @@
             var _SlideshowTransitions = [,];
 
             var options = {
-                $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+                $AutoPlay: false,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
                 $AutoPlayInterval: 5000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
                 $PauseOnHover: 3,                                //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
 
@@ -78,12 +131,13 @@
 
                 $ThumbnailNavigatorOptions: {                       //[Optional] Options to specify and enable thumbnail navigator or not
                     $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
-                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $ChanceToShow: 0,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
 
                     $ActionMode: 1,                                 //[Optional] 0 None, 1 act by click, 2 act by mouse hover, 3 both, default value is 1
                     $SpacingX: 8,                                   //[Optional] Horizontal space between each thumbnail in pixel, default value is 0
                     $DisplayPieces: 10,                             //[Optional] Number of pieces to display, default value is 1
-                    $ParkingPosition: 360                          //[Optional] The offset position to park thumbnail
+                    $ParkingPosition: 360,                          //[Optional] The offset position to park thumbnail
+                    $LazyLoading: 3
                 }
             };
 
@@ -119,14 +173,10 @@
     <!-- Go Back -->
     <img src="img/backButton.png" class="back-button" onclick="backButton()">
 
-    <!-- User -->
-    <img id="profileImg" class="user-icon">
-
-
 
     <!-- Jssor Slider Begin -->
     <!-- To move inline styles to css file/block, please specify a class name for each element. --> 
-    <div id="slider1_container" style="display: block; margin-left: auto; margin-right: auto; position: relative; top: 35px; left: 0px; width: 800px; height: 456px; background: #191919; overflow: hidden;">
+    <div id="slider1_container" style="display: block; margin-left: auto; margin-right: auto; position: relative; top: 80px; bottom:20px; left: 0px; width: 800px; height: 466px; overflow: hidden;">
 
         <!-- Loading Screen -->
         <div u="loading" style="position: absolute; top: 0px; left: 0px;">
@@ -139,61 +189,23 @@
         </div>
 
         <!-- Slides Container -->
-        <div u="slides" style="cursor: move; position: relative; left: 0px; top: 0px; width: 800px; height: 356px; overflow: hidden;">
-            <div>
+        <div id="slideshow-container" u="slides" style="cursor: move; position: relative; left: 0px; top: 0px; width: 800px; height: 356px; overflow: hidden;">
+           <!-- <div>
 				<div><img u="image" src="img/fakePuzzles/family1.jpg" class="slideshow slideshow-photo"/></div>
 				<img u="thumb" src="img/fakePuzzles/family1.jpg" class="slideshow"/>
                 <div class="slideshow-message"> Sammy is excited for the holidays! </div>
-                </div>
-            <div>
-                <div><img u="image" src="img/fakePuzzles/family2.jpg" class="slideshow slideshow-photo"/></div>
-				<img u="thumb" src="img/fakePuzzles/family2.jpg" class="slideshow"/>
-                <div class="slideshow-message"> All the siblings on the farm, 1965 </div>
-            </div>
-            <div>
-                <div><img u="image" src="img/fakePuzzles/family3.jpg" class="slideshow slideshow-photo"/></div>
-				<img u="thumb" src="img/fakePuzzles/family3.jpg" class="slideshow"/>
-				<div class="slideshow-message"> 4 beautiful grandchildren </div>
-			</div>
-            <div>
-                <div><img u="image" src="img/fakePuzzles/family-4.jpg" class="slideshow slideshow-photo"/></div>
-				<img u="thumb" src="img/fakePuzzles/family4.jpg" class="slideshow"/>
-				<div class="slideshow-message"> Milking ol' Betsy </div>
-            </div>
-            <div>
-                <div><img u="image" src="img/fakePuzzles/family5.jpg" class="slideshow slideshow-photo"/></div>
-				<img u="thumb" src="img/fakePuzzles/family5.jpg" class="slideshow"/>
-				<div class="slideshow-message"> Grace and John before Delilah's wedding </div>
-            </div>
-<!--             <div>
-                <img u="image" src="img/alila/06.jpg" />
-                <img u="thumb" src="img/alila/thumb-06.jpg" />
-            </div>
-            <div>
-                <img u="image" src="img/alila/07.jpg" />
-                <img u="thumb" src="img/alila/thumb-07.jpg" />
-            </div>
-            <div>
-                <img u="image" src="img/alila/08.jpg" />
-                <img u="thumb" src="img/alila/thumb-08.jpg" />
-            </div>
-            <div>
-                <img u="image" src="img/alila/09.jpg" />
-                <img u="thumb" src="img/alila/thumb-09.jpg" />
-            </div>
-            <div>
-                <img u="image" src="img/alila/10.jpg" />
-                <img u="thumb" src="img/alila/thumb-10.jpg" />
-            </div>
-            
-            <div>
-                <img u="image" src="img/alila/11.jpg" />
-                <img u="thumb" src="img/alila/thumb-11.jpg" />
-            </div>
-            <div>
-                <img u="image" src="img/alila/12.jpg" />
-                <img u="thumb" src="img/alila/thumb-12.jpg" />
-            </div> -->
+            </div>-->
+            <div id="slide0"></div>
+            <div id="slide2"></div>
+            <div id="slide3"></div>
+            <div id="slide4"></div>
+            <div id="slide5"></div>
+            <div id="slide6"></div>
+            <div id="slide7"></div>
+            <div id="slide8"></div>
+            <div id="slide9"></div>
+            <div id="slide10"></div>
+
         </div>
         
         <!--#region Arrow Navigator Skin Begin -->
@@ -216,6 +228,8 @@
                 cursor: pointer;
                 background: url(img/a17.png) no-repeat;
                 overflow: hidden;
+				-webkit-filter: invert(1);
+				filter: invert(1);
             }
             .jssora05l { background-position: -10px -40px; }
             .jssora05r { background-position: -70px -40px; }
@@ -323,20 +337,6 @@
                     height /**/: 72px;
                 }
         </style>
-
-        <!-- thumbnail navigator container -->
-        <div u="thumbnavigator" class="jssort01" style="left: 0px; bottom: 0px;">
-            <!-- Thumbnail Item Skin Begin -->
-            <div u="slides" style="cursor: default;">
-                <div u="prototype" class="p">
-                    <div class=w><div u="thumbnailtemplate" class="t"></div></div>
-                    <div class=c></div>
-                </div>
-            </div>
-            <!-- Thumbnail Item Skin End -->
-        </div>
-        <!--#endregion Thumbnail Navigator Skin End -->
-        <a style="display: none" href="http://www.jssor.com">slider in html</a>
         
     </div>
 </div>
@@ -385,6 +385,8 @@
                     playNextSong();
                     $("#music-play").html('<img style="height:70px;" src="img/pause.png">');
                 });
+
+
                 // TODO: query track ids from database
                 fetchData(addSongs);
                 $("#music-play").click(function() {
@@ -411,7 +413,7 @@
                 }
                 return "";
             }
-            
+
             // ajax request to get tracks given params (track ids)
             function fetchData(functionName) { 
                 var sids = "2lS9HDs8slGZnu4vny2pWT,2g9kOw3klip4tdhpmDELI8,2Z22JutFajqTVKRwHNQqPT,1PoJanvces1oPEL2cWfu32,12wC2RYrCdKA7NOQujvQBi,0UdRGHCSRvn85nN0IfHFmq,3Bk4kjeoGmhfO8RRY87AzS,60rhBTUmtubm0OnLv9Mlim,1MwJMB0GyO9gY7GwfqcXYq,39JOQuh3W50pdnzxEx0URV,1byIZa6CFerX5WXShwqAvf";
@@ -489,6 +491,7 @@
         </script>
         
     </div>
+
 
   
         
